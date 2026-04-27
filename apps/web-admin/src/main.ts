@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import './style.css'
 // 引入全局响应式样式
 import './assets/css/responsive.css'
-// 引入宇宙主题样式
-import './assets/css/cosmic-theme.css'
+// 引入设计令牌（基于 web-user 主题）
+import './assets/css/design-tokens.css'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'

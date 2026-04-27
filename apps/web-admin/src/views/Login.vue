@@ -671,12 +671,12 @@ const triggerErrorAnimation = () => {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: #1A2A3A;
+  background-color: #f5f7f5;
 }
 
 .canvas-side {
   flex: 1;
-  background: linear-gradient(135deg, #4A6A8A, #6A4A6A);
+  background: linear-gradient(135deg, #a8d8c8, #8bb8a8);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -706,7 +706,7 @@ const triggerErrorAnimation = () => {
 
 .star {
   position: absolute;
-  background-color: #FFE9A7;
+  background-color: #ffffff;
   border-radius: 50%;
   animation: twinkle 3s infinite ease-in-out;
 }
@@ -779,7 +779,7 @@ const triggerErrorAnimation = () => {
   line-height: 1.5;
   white-space: nowrap;
   opacity: 0;
-  background: linear-gradient(45deg, #E6F0FF, #FFE9A7);
+  background: linear-gradient(45deg, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -830,7 +830,7 @@ const triggerErrorAnimation = () => {
 .brand-title span {
   display: inline-block;
   opacity: 0;
-  background: linear-gradient(to right, #FFE9A7, #E6F0FF);
+  background: linear-gradient(to right, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -853,17 +853,17 @@ const triggerErrorAnimation = () => {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background-color: #1A2A3A;
+  background-color: #f5f7f5;
   max-width: 600px;
 }
 
 .login-card {
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-  border: none !important;
-  background-color: #3A4A5A !important;
-  border-radius: 20px !important;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06) !important;
+  border: 1px solid #e8eee8 !important;
+  background-color: #ffffff !important;
+  border-radius: 16px !important;
   padding: 40px;
 }
 
@@ -871,12 +871,12 @@ const triggerErrorAnimation = () => {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #E6F0FF;
+  color: #1a2e1a;
   text-align: center;
 }
 
 .subtitle {
-  color: #B0BEC5;
+  color: #6b7b6b;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -886,10 +886,10 @@ const triggerErrorAnimation = () => {
   display: flex;
   gap: 0;
   margin-bottom: 24px;
-  background-color: #2A3A4A;
-  border-radius: 10px;
+  background-color: #e8f5ee;
+  border-radius: 9999px;
   padding: 4px;
-  border: 1px solid #4A5A6A;
+  border: none;
 }
 
 .login-tab {
@@ -897,21 +897,22 @@ const triggerErrorAnimation = () => {
   text-align: center;
   padding: 10px;
   cursor: pointer;
-  border-radius: 8px;
-  color: #B0BEC5;
+  border-radius: 9999px;
+  color: #6b7b6b;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .login-tab.active {
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F);
-  color: #1A2A3A;
+  background: #3dad6f;
+  color: #ffffff;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(61, 173, 111, 0.25);
 }
 
 .login-tab:not(.active):hover {
-  color: #E6F0FF;
+  color: #3dad6f;
 }
 
 /* 邮箱登录方式切换 */
@@ -924,25 +925,25 @@ const triggerErrorAnimation = () => {
 }
 
 .mode-btn {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 13px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 .mode-btn.active {
-  color: #FFE9A7;
+  color: #3dad6f;
   font-weight: 600;
 }
 
 .mode-btn:not(.active):hover {
-  color: #E6F0FF;
+  color: #3dad6f;
 }
 
 .mode-divider {
-  color: #4A5A6A;
+  color: #e8eee8;
 }
 
 /* 验证码输入行 */
@@ -960,55 +961,55 @@ const triggerErrorAnimation = () => {
   flex-shrink: 0;
   height: 42px;
   min-width: 120px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 10px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 14px;
   white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .send-code-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  background: #2d8a55 !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3);
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25);
 }
 
 .send-code-btn:disabled {
-  background: #3A4A5A !important;
-  color: #B0BEC5 !important;
+  background: #e8eee8 !important;
+  color: #9ead9e !important;
   cursor: not-allowed;
 }
 
 /* 自定义输入框样式 */
 .custom-input :deep(.el-input__wrapper) {
-  background-color: #2A3A4A !important;
-  border: 1px solid #4A5A6A;
-  border-radius: 10px;
+  background-color: #f5f7f5 !important;
+  border: 1px solid #e8eee8;
+  border-radius: 9999px;
   box-shadow: none !important;
 }
 
 .custom-input :deep(.el-input__wrapper:hover) {
-  border-color: #FFE9A7;
+  border-color: #3dad6f;
 }
 
 .custom-input :deep(.el-input__wrapper.is-focus) {
-  border-color: #FFE9A7;
-  box-shadow: 0 0 0 2px rgba(255, 233, 167, 0.2) !important;
+  border-color: #3dad6f;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.12) !important;
 }
 
 .custom-input :deep(.el-input__inner) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
 }
 
 .custom-input :deep(.el-input__prefix) {
-  color: #FFE9A7;
+  color: #3dad6f;
 }
 
 :deep(.el-form-item__label) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
   font-weight: 500;
   margin-bottom: 8px;
 }
@@ -1021,80 +1022,80 @@ const triggerErrorAnimation = () => {
 }
 
 .remember-checkbox :deep(.el-checkbox__label) {
-  color: #B0BEC5 !important;
+  color: #6b7b6b !important;
 }
 
 .remember-checkbox :deep(.el-checkbox__inner) {
-  border-color: #4A5A6A;
-  background-color: #2A3A4A;
+  border-color: #e8eee8;
+  background-color: #ffffff;
 }
 
 .remember-checkbox :deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
-  background-color: #FFE9A7;
-  border-color: #FFE9A7;
+  background-color: #3dad6f;
+  border-color: #3dad6f;
 }
 
 .forgot-link {
-  color: #B0BEC5 !important;
+  color: #6b7b6b !important;
 }
 
 .forgot-link:hover {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
 }
 
 .privacy-agreement {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: rgba(42, 58, 74, 0.5);
-  border-radius: 10px;
-  border: 1px solid #4A5A6A;
+  background-color: #f5f7f5;
+  border-radius: 12px;
+  border: 1px solid #e8eee8;
 }
 
 .privacy-checkbox :deep(.el-checkbox__label) {
-  color: #B0BEC5 !important;
+  color: #6b7b6b !important;
   font-size: 14px;
 }
 
 .privacy-checkbox :deep(.el-checkbox__inner) {
-  border-color: #4A5A6A;
-  background-color: #2A3A4A;
+  border-color: #e8eee8;
+  background-color: #ffffff;
 }
 
 .privacy-checkbox :deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
-  background-color: #FFE9A7;
-  border-color: #FFE9A7;
+  background-color: #3dad6f;
+  border-color: #3dad6f;
 }
 
 .privacy-link {
   margin-left: 4px;
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
 }
 
 .privacy-link:hover {
-  color: #E6F0FF !important;
+  color: #2d8a55 !important;
   text-decoration: underline !important;
 }
 
 .full-width-btn {
   width: 100%;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-size: 16px;
   font-weight: 600;
   border: none;
 }
 
 .login-btn {
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
-  color: #1A2A3A !important;
+  background: #3dad6f !important;
+  color: #ffffff !important;
   border: none !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.2s ease !important;
 }
 
 .login-btn:hover {
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  background: #2d8a55 !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25) !important;
 }
 
 .login-btn:active {
@@ -1105,29 +1106,29 @@ const triggerErrorAnimation = () => {
   margin-top: 24px;
   text-align: center;
   font-size: 14px;
-  color: #B0BEC5;
+  color: #6b7b6b;
 }
 
 .register-link-btn {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   font-weight: 500;
 }
 
 .register-link-btn:hover {
-  color: #E6F0FF !important;
+  color: #2d8a55 !important;
   text-decoration: underline !important;
 }
 
 .cursor-pointer {
   cursor: pointer;
-  color: #FFE9A7;
+  color: #3dad6f;
 }
 
 /* 隐私政策弹窗样式 */
 .privacy-dialog :deep(.el-dialog) {
-  background-color: #2A3A4A;
+  background-color: #ffffff;
   border-radius: 16px;
-  border: 1px solid #4A5A6A;
+  border: 1px solid #e8eee8;
   max-height: 90vh;
   overflow: hidden;
   display: flex;
@@ -1135,14 +1136,14 @@ const triggerErrorAnimation = () => {
 }
 
 .privacy-dialog :deep(.el-dialog__header) {
-  border-bottom: 1px solid #4A5A6A;
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px;
   margin-right: 0;
   flex-shrink: 0;
 }
 
 .privacy-dialog :deep(.el-dialog__title) {
-  color: #E6F0FF;
+  color: #1a2e1a;
   font-weight: 600;
   font-size: 20px;
 }
@@ -1152,48 +1153,48 @@ const triggerErrorAnimation = () => {
 }
 
 .privacy-dialog :deep(.el-dialog__headerbtn .el-dialog__close) {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 20px;
 }
 
 .privacy-dialog :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
-  color: #FFE9A7;
+  color: #3dad6f;
 }
 
 .privacy-dialog :deep(.el-dialog__body) {
   padding: 24px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   height: 400px;
   overflow-y: auto;
   flex: 1;
 }
 
 .privacy-dialog :deep(.el-dialog__footer) {
-  border-top: 1px solid #4A5A6A;
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px;
   flex-shrink: 0;
 }
 
 .close-privacy-btn {
-  background-color: #FFE9A7 !important;
-  color: #1A2A3A !important;
+  background-color: #3dad6f !important;
+  color: #ffffff !important;
   border: none !important;
   font-weight: 500;
 }
 
 .close-privacy-btn:hover {
-  background-color: #FFD54F !important;
+  background-color: #2d8a55 !important;
 }
 
 .close-privacy-btn-secondary {
   background-color: transparent !important;
-  color: #B0BEC5 !important;
-  border: 1px solid #4A5A6A !important;
+  color: #6b7b6b !important;
+  border: 1px solid #e8eee8 !important;
 }
 
 .close-privacy-btn-secondary:hover {
-  background-color: #3A4A5A !important;
-  color: #E6F0FF !important;
+  background-color: #f5f7f5 !important;
+  color: #3dad6f !important;
 }
 
 .privacy-content {
@@ -1206,11 +1207,11 @@ const triggerErrorAnimation = () => {
 }
 
 .privacy-section h3 {
-  color: #E6F0FF;
+  color: #1a2e1a;
   margin-bottom: 12px;
   font-size: 16px;
   padding-left: 8px;
-  border-left: 3px solid #FFE9A7;
+  border-left: 3px solid #3dad6f;
 }
 
 .privacy-section p {
@@ -1228,7 +1229,7 @@ const triggerErrorAnimation = () => {
 }
 
 .privacy-section strong {
-  color: #FFE9A7;
+  color: #3dad6f;
 }
 
 .subsection {
@@ -1236,7 +1237,7 @@ const triggerErrorAnimation = () => {
 }
 
 .subsection h4 {
-  color: #B0BEC5;
+  color: #6b7b6b;
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -1247,25 +1248,25 @@ const triggerErrorAnimation = () => {
 }
 
 .privacy-dialog :deep(.el-dialog__body::-webkit-scrollbar-track) {
-  background: #2A3A4A;
+  background: #f5f7f5;
   border-radius: 3px;
 }
 
 .privacy-dialog :deep(.el-dialog__body::-webkit-scrollbar-thumb) {
-  background: #4A5A6A;
+  background: #e8eee8;
   border-radius: 3px;
 }
 
 .privacy-dialog :deep(.el-dialog__body::-webkit-scrollbar-thumb:hover) {
-  background: #5A6A7A;
+  background: #d0d8d0;
 }
 </style>
 
 <style lang="css">
 .login-privacy-dialog.el-dialog {
-  background-color: #2A3A4A !important;
+  background-color: #ffffff !important;
   border-radius: 16px;
-  border: 1px solid #4A5A6A;
+  border: 1px solid #e8eee8;
   max-height: 90vh !important;
   overflow: hidden !important;
   display: flex !important;
@@ -1273,7 +1274,7 @@ const triggerErrorAnimation = () => {
 }
 
 .login-privacy-dialog .el-dialog__header {
-  border-bottom: 1px solid #4A5A6A;
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px;
   margin-right: 0;
   flex-shrink: 0;
@@ -1281,7 +1282,7 @@ const triggerErrorAnimation = () => {
 
 .login-privacy-dialog .el-dialog__body {
   padding: 24px !important;
-  color: #B0BEC5 !important;
+  color: #6b7b6b !important;
   height: 400px !important;
   max-height: 400px !important;
   overflow-y: auto !important;
@@ -1290,7 +1291,7 @@ const triggerErrorAnimation = () => {
 }
 
 .login-privacy-dialog .el-dialog__footer {
-  border-top: 1px solid #4A5A6A;
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px;
   flex-shrink: 0;
 }
@@ -1300,42 +1301,42 @@ const triggerErrorAnimation = () => {
 }
 
 .login-privacy-dialog .el-dialog__body::-webkit-scrollbar-track {
-  background: #2A3A4A;
+  background: #f5f7f5;
   border-radius: 3px;
 }
 
 .login-privacy-dialog .el-dialog__body::-webkit-scrollbar-thumb {
-  background: #4A5A6A;
+  background: #e8eee8;
   border-radius: 3px;
 }
 
 .login-privacy-dialog .el-dialog__body::-webkit-scrollbar-thumb:hover {
-  background: #5A6A7A;
+  background: #d0d8d0;
 }
 
 .login-privacy-dialog .close-privacy-btn {
-  background-color: #FFE9A7 !important;
-  color: #1A2A3A !important;
+  background-color: #3dad6f !important;
+  color: #ffffff !important;
   border: none !important;
   font-weight: 500;
 }
 
 .login-privacy-dialog .close-privacy-btn:hover {
-  background-color: #FFD54F !important;
+  background-color: #2d8a55 !important;
 }
 
 .login-privacy-dialog .close-privacy-btn-secondary {
   background-color: transparent !important;
-  color: #B0BEC5 !important;
-  border: 1px solid #4A5A6A !important;
+  color: #6b7b6b !important;
+  border: 1px solid #e8eee8 !important;
 }
 
 .login-privacy-dialog .close-privacy-btn-secondary:hover {
-  background-color: #3A4A5A !important;
-  color: #E6F0FF !important;
+  background-color: #f5f7f5 !important;
+  color: #3dad6f !important;
 }
 
 .login-privacy-dialog .el-dialog__title {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
 }
 </style>

@@ -157,99 +157,50 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* ==================== 背景：行星+彗星 ==================== */
 .assessment-history {
-  position: relative;
   padding: 24px 40px;
   min-height: calc(100vh - 60px);
-  color: #fff;
-  overflow-x: hidden;
-}
-.assessment-history::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  z-index: 0;
-  pointer-events: none;
-}
-.assessment-history::after {
-  content: '';
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2px 2px at 80px 120px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 160px 60px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(2px 2px at 320px 200px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 480px 80px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 640px 300px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 800px 150px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(2px 2px at 960px 400px, rgba(255,255,255,0.8), transparent);
-  background-repeat: repeat;
-  background-size: 1000px 500px;
-  animation: starsMove 200s linear infinite;
-  z-index: 0;
-  pointer-events: none;
-}
-@keyframes starsMove {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-2000px); }
 }
 
 .page-header {
-  position: relative;
-  z-index: 1;
   text-align: center;
   margin-bottom: 32px;
   padding: 28px 32px;
-  background: linear-gradient(135deg, rgba(10, 10, 42, 0.6) 0%, rgba(26, 26, 74, 0.4) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 18px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 .page-header h2 {
   font-size: 28px;
-  color: #fff;
+  color: #3dad6f;
   margin-bottom: 10px;
-  background: linear-gradient(90deg, #7EC8FF, #FFE9A7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .subtitle {
-  color: rgba(255,255,255,0.65);
+  color: #6b7b6b;
   font-size: 15px;
 }
 
 .content-container {
-  position: relative;
-  z-index: 1;
   display: flex;
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* ==================== 玻璃态卡片 ==================== */
+/* Cards */
 :deep(.patient-list-card.el-card),
 :deep(.history-card.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  border-radius: 16px !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.07);
-  color: #fff !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06) !important;
+  color: #1a2e1a !important;
 }
 :deep(.patient-list-card .el-card__body),
 :deep(.history-card .el-card__body) {
   background: transparent !important;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .patient-list-card {
@@ -265,182 +216,157 @@ onMounted(() => {
   font-weight: 700;
   margin-bottom: 18px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  color: #FFE9A7 !important;
+  border-bottom: 1px solid #e8eee8;
+  color: #3dad6f !important;
 }
 
-/* ==================== 就诊人菜单 ==================== */
+/* Patient Menu */
 :deep(.patient-menu.el-menu) {
   background: transparent !important;
   border-right: none !important;
 }
 :deep(.patient-menu .el-menu-item) {
-  color: rgba(255, 255, 255, 0.8) !important;
-  border-radius: 10px;
+  color: #6b7b6b !important;
+  border-radius: 8px;
   margin-bottom: 4px;
   transition: all 0.2s;
 }
 :deep(.patient-menu .el-menu-item:hover) {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #fff !important;
+  background: #e8f5ee !important;
+  color: #3dad6f !important;
 }
 :deep(.patient-menu .el-menu-item.is-active) {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.5), rgba(54, 207, 201, 0.35)) !important;
-  border: 1px solid rgba(255, 233, 167, 0.3) !important;
-  color: #fff !important;
-}
-:deep(.patient-menu .el-menu-item .el-icon) {
-  color: rgba(255, 233, 167, 0.85) !important;
-}
-:deep(.patient-menu .el-menu-item.is-active .el-icon) {
-  color: #FFE9A7 !important;
+  background: #e8f5ee !important;
+  color: #3dad6f !important;
+  font-weight: 600;
 }
 
-/* ==================== 表格 ==================== */
+/* Table */
 :deep(.history-card .el-table) {
   --el-table-bg-color: transparent;
-  --el-table-tr-bg-color: rgba(10, 10, 42, 0.25);
-  --el-table-header-bg-color: rgba(10, 10, 42, 0.7);
-  --el-table-row-hover-bg-color: rgba(64, 158, 255, 0.12);
-  --el-table-border-color: rgba(255, 255, 255, 0.1);
+  --el-table-tr-bg-color: transparent;
+  --el-table-header-bg-color: #f5f7f5;
+  --el-table-row-hover-bg-color: #e8f5ee;
+  --el-table-border-color: #e8eee8;
   background: transparent !important;
-  color: #E6E8EB !important;
+  color: #1a2e1a !important;
 }
 :deep(.history-card .el-table__inner-wrapper::before) {
   display: none;
 }
 :deep(.history-card .el-table th.el-table__cell) {
-  background: rgba(10, 10, 42, 0.75) !important;
-  color: #FFE9A7 !important;
+  background: #f5f7f5 !important;
+  color: #3dad6f !important;
   font-weight: 700;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid #e8eee8 !important;
 }
 :deep(.history-card .el-table td.el-table__cell) {
   background: transparent !important;
-  color: #E6E8EB !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  color: #1a2e1a !important;
+  border-bottom: 1px solid #e8eee8 !important;
 }
 :deep(.history-card .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
-  background: rgba(10, 10, 42, 0.18) !important;
+  background: #f5f7f5 !important;
 }
 
-/* 表格内按钮：渐变玻璃态 */
-:deep(.history-card .el-button) {
-  border-radius: 8px !important;
-  font-weight: 500;
-  transition: all 0.2s;
-}
 :deep(.history-card .el-button--primary.is-link) {
   background: transparent !important;
   border: none !important;
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
   font-weight: 600;
   padding: 0;
 }
 :deep(.history-card .el-button--primary.is-link:hover) {
-  color: #FFE9A7 !important;
+  color: #2d8a55 !important;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* ==================== 分页 ==================== */
+/* Pagination */
 :deep(.history-card .el-pagination) {
-  color: rgba(255,255,255,0.85) !important;
   justify-content: center;
 }
 :deep(.history-card .el-pagination button) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  color: #6b7b6b !important;
 }
 :deep(.history-card .el-pagination .el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  color: #6b7b6b !important;
   border-radius: 6px;
 }
 :deep(.history-card .el-pager li.is-active) {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.7), rgba(103, 194, 58, 0.45)) !important;
+  background: #3dad6f !important;
   color: #fff !important;
-  border-color: rgba(255, 233, 167, 0.45) !important;
 }
 
-/* ==================== 弹窗 ==================== */
+/* Dialog */
 :deep(.report-dialog.el-dialog) {
-  background: linear-gradient(160deg, rgba(12, 12, 46, 0.98) 0%, rgba(26, 26, 74, 0.96) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.65), 0 0 48px rgba(64,158,255,0.14) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(61,173,111,0.12) !important;
 }
 :deep(.report-dialog .el-dialog__header) {
   background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px 16px;
 }
 :deep(.report-dialog .el-dialog__title) {
-  color: #FFE9A7 !important;
+  color: #1a2e1a !important;
   font-weight: 700;
   font-size: 17px;
 }
 :deep(.report-dialog .el-dialog__headerbtn .el-dialog__close) {
-  color: rgba(255,255,255,0.7) !important;
+  color: #9ead9e !important;
 }
 :deep(.report-dialog .el-dialog__headerbtn:hover .el-dialog__close) {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
 }
 :deep(.report-dialog .el-dialog__body) {
   background: transparent !important;
-  color: #E6E8EB !important;
+  color: #1a2e1a !important;
   padding: 24px;
 }
 :deep(.report-dialog .el-dialog__footer) {
   background: transparent !important;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px 20px;
 }
-:deep(.report-dialog .el-divider--dashed) {
-  border-color: rgba(255,255,255,0.12) !important;
-}
-
-/* 弹窗内按钮 */
 :deep(.report-dialog .el-button--primary) {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.75), rgba(103, 194, 58, 0.5)) !important;
-  border-color: rgba(64, 158, 255, 0.55) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
   color: #fff !important;
   font-weight: 600;
-  border-radius: 10px !important;
-  box-shadow: 0 4px 16px rgba(64, 158, 255, 0.35) !important;
+  border-radius: 8px !important;
 }
 :deep(.report-dialog .el-button--primary:hover) {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.92), rgba(103, 194, 58, 0.65)) !important;
-  border-color: rgba(126, 200, 255, 0.75) !important;
-  color: #fff !important;
+  background: #2d8a55 !important;
+  border-color: #2d8a55 !important;
 }
 
-/* 报告内容 */
+/* Report Content */
 .report-content {
   padding: 0;
-  color: #E6E8EB !important;
+  color: #1a2e1a !important;
 }
 .report-title {
   text-align: center;
   font-size: 22px;
-  color: #fff !important;
+  color: #1a2e1a !important;
   margin-bottom: 20px;
 }
 .report-meta {
   display: flex;
   justify-content: space-between;
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: #6b7b6b !important;
   font-size: 14px;
-  background: rgba(10, 10, 42, 0.55) !important;
+  background: #f5f7f5 !important;
   padding: 14px 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid #e8eee8;
   margin-bottom: 20px;
 }
 .score {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   font-size: 20px;
   font-weight: 700;
 }
@@ -448,76 +374,63 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   margin-bottom: 15px;
   font-size: 17px;
   font-weight: 600;
 }
-.analysis-section h4 .el-icon {
-  color: #7EC8FF !important;
-}
 .analysis-text {
   line-height: 1.9;
-  color: rgba(255, 255, 255, 0.88) !important;
-  background: rgba(255, 255, 255, 0.07) !important;
+  color: #1a2e1a !important;
+  background: #f5f7f5 !important;
   padding: 16px 20px;
-  border-radius: 10px;
-  border-left: 3px solid rgba(255, 233, 167, 0.55) !important;
+  border-radius: 8px;
+  border-left: 3px solid #3dad6f !important;
 }
-
-/* ==================== 通用深色适配（无 scoped） ==================== */
 </style>
 
 <style>
-/* 弹窗背景层（teleport body） */
 .el-dialog.report-dialog {
-  background: linear-gradient(160deg, rgba(12, 12, 46, 0.98) 0%, rgba(26, 26, 74, 0.96) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.65), 0 0 48px rgba(64,158,255,0.14) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(61,173,111,0.12) !important;
 }
 .el-dialog.report-dialog .el-dialog__header {
   background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px 16px;
 }
 .el-dialog.report-dialog .el-dialog__title {
-  color: #FFE9A7 !important;
+  color: #1a2e1a !important;
   font-weight: 700;
   font-size: 17px;
 }
 .el-dialog.report-dialog .el-dialog__headerbtn .el-dialog__close {
-  color: rgba(255,255,255,0.7) !important;
+  color: #9ead9e !important;
 }
 .el-dialog.report-dialog .el-dialog__headerbtn:hover .el-dialog__close {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
 }
 .el-dialog.report-dialog .el-dialog__body {
   background: transparent !important;
-  color: #E6E8EB !important;
+  color: #1a2e1a !important;
   padding: 24px;
 }
 .el-dialog.report-dialog .el-dialog__footer {
   background: transparent !important;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px 20px;
 }
-.el-dialog.report-dialog .el-divider--dashed {
-  border-color: rgba(255,255,255,0.12) !important;
-}
 .el-dialog.report-dialog .el-button--primary {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.75), rgba(103, 194, 58, 0.5)) !important;
-  border-color: rgba(64, 158, 255, 0.55) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
   color: #fff !important;
   font-weight: 600;
-  border-radius: 10px !important;
-  box-shadow: 0 4px 16px rgba(64, 158, 255, 0.35) !important;
+  border-radius: 8px !important;
 }
 .el-dialog.report-dialog .el-button--primary:hover {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.92), rgba(103, 194, 58, 0.65)) !important;
-  border-color: rgba(126, 200, 255, 0.75) !important;
-  color: #fff !important;
+  background: #2d8a55 !important;
+  border-color: #2d8a55 !important;
 }
 </style>

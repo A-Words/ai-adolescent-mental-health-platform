@@ -1,23 +1,13 @@
 <template>
   <div class="psychologist-list-container">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-      <div class="planet planet-1"></div>
-      <div class="planet planet-2"></div>
-      <div class="comet"></div>
-    </div>
-
-    <!-- 页面标题 -->
+<!-- 页面标题 -->
     <div class="page-header">
       <h1 class="page-title-text">预约咨询心理师</h1>
       <p class="page-subtitle">找到最适合您的心理咨询师</p>
     </div>
 
     <!-- 筛选工具栏 -->
-    <div class="filter-toolbar cosmic-toolbar">
+    <div class="filter-toolbar">
       <!-- 筛选条件 -->
       <div class="filter-row">
         <!-- 搜索框 -->
@@ -27,8 +17,7 @@
             placeholder="搜索心理师姓名或地址..."
             clearable
             @input="debouncedSearch"
-            class="cosmic-input"
-          >
+                     >
             <template #prefix>
               <el-icon><Search /></el-icon>
             </template>
@@ -43,9 +32,7 @@
           collapse-tags-tooltip
           placeholder="咨询领域" 
           clearable
-          class="cosmic-select"
-          popper-class="cosmic-select-dropdown"
-        >
+                          >
           <el-option 
             v-for="field in consultationFields" 
             :key="field.id" 
@@ -61,9 +48,7 @@
           collapse-tags
           placeholder="咨询方式" 
           clearable
-          class="cosmic-select"
-          popper-class="cosmic-select-dropdown"
-        >
+                          >
           <el-option label="图文咨询" value="text" />
           <el-option label="视频咨询" value="video" />
           <el-option label="语音咨询" value="voice" />
@@ -75,9 +60,7 @@
           v-model="selectedSex" 
           placeholder="性别" 
           clearable
-          class="cosmic-select"
-          popper-class="cosmic-select-dropdown"
-        >
+                          >
           <el-option label="不限" :value="null" />
           <el-option label="男咨询师" :value="1" />
           <el-option label="女咨询师" :value="2" />
@@ -89,14 +72,14 @@
             v-model="minPrice" 
             placeholder="最低价" 
             type="number"
-            class="price-input cosmic-input"
+            class="price-input"
           />
           <span class="price-separator">-</span>
           <el-input 
             v-model="maxPrice" 
             placeholder="最高价" 
             type="number"
-            class="price-input cosmic-input"
+            class="price-input"
           />
         </div>
 
@@ -105,9 +88,7 @@
           v-model="minRating" 
           placeholder="最低评分" 
           clearable
-          class="cosmic-select"
-          popper-class="cosmic-select-dropdown"
-        >
+                          >
           <el-option label="不限" :value="null" />
           <el-option label="4.5分以上" :value="4.5" />
           <el-option label="4.0分以上" :value="4.0" />
@@ -116,7 +97,7 @@
         </el-select>
 
         <!-- 重置按钮 -->
-        <el-button class="reset-btn cosmic-btn-secondary cosmic-btn" @click="resetFilters">
+        <el-button class="reset-btn" @click="resetFilters">
           <el-icon><Refresh /></el-icon>
           重置
         </el-button>
@@ -148,7 +129,7 @@
     <!-- 心理师列表 -->
     <div v-loading="loading" class="psychologist-list">
       <div v-if="psychologists.length === 0 && !loading" class="empty-wrapper">
-        <el-empty description="暂无符合条件的心理咨询师" class="cosmic-empty" />
+        <el-empty description="暂无符合条件的心理咨询师" />
       </div>
 
       <!-- 网格视图 -->
@@ -156,7 +137,7 @@
         <div 
           v-for="item in psychologists" 
           :key="item.id" 
-          class="psychologist-card cosmic-card"
+          class="psychologist-card"
         >
           <!-- 收藏标记 -->
           <div class="favorite-badge" v-if="item.isFavorite">
@@ -166,7 +147,7 @@
           <!-- 头像区域 -->
           <div class="card-header" @click="goToDetail(item.id)">
             <div class="avatar-section">
-              <el-avatar :size="80" :src="item.headPath" class="psychologist-avatar cosmic-avatar">
+              <el-avatar :size="80" :src="item.headPath" class="psychologist-avatar">
                 <el-icon :size="40"><User /></el-icon>
               </el-avatar>
               <div class="online-badge" :class="{ online: item.onlineStatus === 1 }">
@@ -185,7 +166,7 @@
             </h3>
             
             <div class="rating-row">
-              <el-rate v-model="item.ratingScore" disabled show-score size="small" class="cosmic-rating" />
+              <el-rate v-model="item.ratingScore" disabled show-score size="small" />
               <span class="rating-count">({{ item.ratingCount }}人评价)</span>
             </div>
 
@@ -199,7 +180,7 @@
               <span 
                 v-for="field in item.fields?.slice(0, 3)" 
                 :key="field.id" 
-                class="field-tag cosmic-tag"
+                class="field-tag"
               >
                 {{ field.name }}
               </span>
@@ -246,7 +227,7 @@
             </div>
             <div class="action-buttons">
               <el-button 
-                class="favorite-btn cosmic-btn-secondary cosmic-btn"
+                class="favorite-btn"
                 @click.stop="toggleFavorite(item)"
               >
                 <el-icon :color="item.isFavorite ? '#ffd700' : undefined">
@@ -256,7 +237,7 @@
                 {{ item.isFavorite ? '已收藏' : '收藏' }}
               </el-button>
               <el-button 
-                class="book-btn cosmic-btn-primary cosmic-btn"
+                class="book-btn"
                 @click.stop="goToDetail(item.id)"
               >
                 立即预约
@@ -271,12 +252,12 @@
         <div 
           v-for="item in psychologists" 
           :key="item.id" 
-          class="list-card cosmic-card"
+          class="list-card"
           @click="goToDetail(item.id)"
         >
           <div class="list-left">
             <div class="list-avatar-wrapper">
-              <el-avatar :size="80" :src="item.headPath" class="cosmic-avatar">
+              <el-avatar :size="80" :src="item.headPath">
                 <el-icon :size="40"><User /></el-icon>
               </el-avatar>
               <div class="online-badge" :class="{ online: item.onlineStatus === 1 }">
@@ -285,7 +266,7 @@
             </div>
             <div class="favorite-btn-wrapper">
               <el-button 
-                class="favorite-btn cosmic-btn-secondary cosmic-btn"
+                class="favorite-btn"
                 @click.stop="toggleFavorite(item)"
               >
                 <el-icon :color="item.isFavorite ? '#ffd700' : undefined">
@@ -320,7 +301,7 @@
 
               <div class="list-info">
                 <div class="info-item">
-                  <el-rate v-model="item.ratingScore" disabled show-score size="small" class="cosmic-rating" />
+                  <el-rate v-model="item.ratingScore" disabled show-score size="small" />
                   <span class="rating-count">({{ item.ratingCount }}人评价)</span>
                 </div>
                 <div class="info-item">
@@ -337,7 +318,7 @@
                 <span 
                   v-for="field in item.fields?.slice(0, 5)" 
                   :key="field.id" 
-                  class="field-tag cosmic-tag"
+                  class="field-tag"
                 >
                   {{ field.name }}
                 </span>
@@ -368,7 +349,7 @@
                   <span class="service-amount">¥{{ service.price }}</span>
                 </div>
               </div>
-              <el-button class="book-btn cosmic-btn-primary cosmic-btn">
+              <el-button class="book-btn">
                 立即预约
               </el-button>
             </div>
@@ -386,8 +367,7 @@
           layout="total, sizes, prev, pager, next, jumper"
           @size-change="handleSearch"
           @current-change="handleSearch"
-          class="cosmic-pagination"
-        />
+                 />
       </div>
     </div>
 
@@ -396,13 +376,12 @@
       v-model="bookingDialogVisible" 
       title="预约咨询" 
       width="600px" 
-      class="cosmic-dialog"
-      :close-on-click-modal="false"
+           :close-on-click-modal="false"
     >
       <div class="booking-content" v-if="selectedPsychologist">
         <!-- 心理师信息 -->
         <div class="booking-psychologist-info">
-          <el-avatar :size="60" :src="selectedPsychologist.headPath" class="cosmic-avatar">
+          <el-avatar :size="60" :src="selectedPsychologist.headPath">
             <el-icon :size="30"><User /></el-icon>
           </el-avatar>
           <div class="info-text">
@@ -457,8 +436,7 @@
               type="textarea" 
               :rows="3"
               placeholder="简单描述您的个人情况..."
-              class="cosmic-textarea"
-            />
+                         />
           </el-form-item>
 
           <el-form-item label="主要问题">
@@ -467,8 +445,7 @@
               type="textarea" 
               :rows="4"
               placeholder="请详细描述您想解决的问题..."
-              class="cosmic-textarea"
-            />
+                         />
           </el-form-item>
 
           <!-- 费用预览 -->
@@ -491,12 +468,11 @@
 
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="bookingDialogVisible = false" class="cosmic-btn-secondary cosmic-btn">取消</el-button>
+          <el-button @click="bookingDialogVisible = false">取消</el-button>
           <el-button 
             type="primary" 
             @click="confirmBooking" 
-            class="cosmic-btn-primary cosmic-btn"
-            :loading="submitting"
+                       :loading="submitting"
             :disabled="!canSubmit"
           >
             确认预约（¥{{ selectedPrice }}）
@@ -836,121 +812,7 @@ onMounted(() => {
   margin: 0 auto;
   position: relative;
   overflow-x: hidden;
-}
-
-/* 星空背景 */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  overflow: hidden;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before, .stars:after,
-.stars2:before, .stars2:after,
-.stars3:before, .stars3:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before {
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  animation: starsMove 200s linear infinite;
-}
-
-.stars:after {
-  background-image: radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: starsMove 150s linear infinite;
-}
-
-.stars2:before {
-  background-image: radial-gradient(1px 1px at 90px 120px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: starsMove 100s linear infinite;
-}
-
-.stars3:before {
-  background-image: radial-gradient(3px 3px at 150px 200px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: starsMove 250s linear infinite;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0px) }
-  to { transform: translateY(-2000px) }
-}
-
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  z-index: 0;
-}
-
-.planet-1 {
-  width: 100px;
-  height: 100px;
-  top: 10%;
-  right: 5%;
-  background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
-  box-shadow: 0 0 40px rgba(255, 154, 158, 0.5);
-  animation: float 25s infinite ease-in-out;
-}
-
-.planet-2 {
-  width: 80px;
-  height: 80px;
-  bottom: 15%;
-  left: 3%;
-  background: radial-gradient(circle at 30% 30%, #a1c4fd, #c2e9fb);
-  box-shadow: 0 0 50px rgba(161, 196, 253, 0.5);
-  animation: float 30s infinite ease-in-out reverse;
-}
-
-.comet {
-  position: absolute;
-  top: 15%;
-  left: -50px;
-  width: 150px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  transform: rotate(45deg);
-  animation: cometMove 20s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes cometMove {
-  0% { transform: translateX(-100px) translateY(-100px) rotate(45deg); }
-  100% { transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg); }
+  background: #f5f7f5;
 }
 
 /* 页面头部 */
@@ -964,17 +826,13 @@ onMounted(() => {
 .page-title-text {
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 12px;
-  background: linear-gradient(135deg, #fff 0%, #87ceeb 50%, #dda0dd 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .page-subtitle {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
 }
 
@@ -984,10 +842,10 @@ onMounted(() => {
   z-index: 1;
   margin-bottom: 32px;
   padding: 20px 24px;
-  background: linear-gradient(135deg, rgba(10, 10, 42, 0.7) 0%, rgba(26, 26, 74, 0.5) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .search-wrapper {
@@ -996,14 +854,14 @@ onMounted(() => {
 }
 
 .search-wrapper :deep(.el-input__wrapper) {
-  background: rgba(10, 15, 30, 0.8) !important;
+  background: #ffffff !important;
   border-radius: 12px;
 }
 
 .search-hint {
   display: block;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   margin-top: 6px;
   padding-left: 4px;
 }
@@ -1016,7 +874,7 @@ onMounted(() => {
   margin-bottom: 16px;
 }
 
-.filter-row .cosmic-select {
+.filter-row .el-select {
   width: 160px;
 }
 
@@ -1031,7 +889,7 @@ onMounted(() => {
 }
 
 .price-separator {
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .reset-btn {
@@ -1046,15 +904,15 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  border-color: #e8eee8 !important;
+  color: #3dad6f !important;
 }
 
 .view-switch :deep(.el-radio-button__original-radio:checked + .el-radio-button__inner) {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.2) 100%) !important;
-  border-color: rgba(255, 215, 0, 0.5) !important;
-  color: #ffd700 !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 
 .sort-row {
@@ -1062,24 +920,24 @@ onMounted(() => {
   align-items: center;
   gap: 12px;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #e8eee8;
 }
 
 .sort-label {
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   font-size: 14px;
 }
 
 .sort-row :deep(.el-radio-button__inner) {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  border-color: #e8eee8 !important;
+  color: #3dad6f !important;
 }
 
 .sort-row :deep(.el-radio-button__original-radio:checked + .el-radio-button__inner) {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.2) 100%) !important;
-  border-color: rgba(255, 215, 0, 0.5) !important;
-  color: #ffd700 !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 
 /* 心理师网格 */
@@ -1098,6 +956,16 @@ onMounted(() => {
   padding: 24px;
   position: relative;
   overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
+  transition: all 0.3s;
+}
+
+.psychologist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(61,173,111,0.12);
 }
 
 .favorite-badge {
@@ -1127,8 +995,8 @@ onMounted(() => {
 }
 
 .psychologist-avatar {
-  border: 3px solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  border: 3px solid #e8eee8;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .online-badge {
@@ -1139,13 +1007,14 @@ onMounted(() => {
   padding: 2px 10px;
   border-radius: 10px;
   font-size: 11px;
-  background: rgba(100, 100, 100, 0.8);
-  color: #fff;
+  background: #9ead9e;
+  color: #ffffff;
   white-space: nowrap;
 }
 
 .online-badge.online {
   background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: #ffffff;
 }
 
 .card-body {
@@ -1156,7 +1025,7 @@ onMounted(() => {
 .psychologist-name {
   font-size: 18px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
   display: flex;
   align-items: center;
@@ -1172,13 +1041,13 @@ onMounted(() => {
 }
 
 .sex-tag.male {
-  background: rgba(100, 149, 237, 0.3);
-  color: #87ceeb;
+  background: rgba(100, 149, 237, 0.12);
+  color: #5a7fc0;
 }
 
 .sex-tag.female {
-  background: rgba(255, 182, 193, 0.3);
-  color: #ffb6c1;
+  background: rgba(255, 182, 193, 0.12);
+  color: #d4828a;
 }
 
 .rating-row {
@@ -1191,12 +1060,12 @@ onMounted(() => {
 
 .rating-count {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .experience-text {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0 0 12px;
   display: flex;
   align-items: center;
@@ -1219,7 +1088,7 @@ onMounted(() => {
 
 .more-fields {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .qualifications-row {
@@ -1243,11 +1112,11 @@ onMounted(() => {
   gap: 6px;
   margin-top: 10px;
   padding: 8px 12px;
-  background: rgba(167, 139, 250, 0.1);
-  border: 1px solid rgba(167, 139, 250, 0.2);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 8px;
   font-size: 12px;
-  color: rgba(167, 139, 250, 0.9);
+  color: #6b7b6b;
 }
 
 .offline-address .el-icon {
@@ -1262,14 +1131,14 @@ onMounted(() => {
 
 .introduction {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   line-height: 1.5;
   margin: 0;
 }
 
 .card-footer {
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #e8eee8;
 }
 
 .services-preview {
@@ -1284,19 +1153,19 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 8px;
 }
 
 .service-type {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .service-amount {
   font-size: 16px;
   font-weight: 600;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .action-buttons {
@@ -1322,11 +1191,15 @@ onMounted(() => {
   padding: 24px;
   cursor: pointer;
   transition: all 0.3s;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .list-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(61,173,111,0.12);
 }
 
 .list-left {
@@ -1341,9 +1214,9 @@ onMounted(() => {
   position: relative;
 }
 
-.list-avatar-wrapper .cosmic-avatar {
-  border: 3px solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+.list-avatar-wrapper .el-avatar {
+  border: 3px solid #e8eee8;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .favorite-btn-wrapper :deep(.el-button) {
@@ -1382,7 +1255,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   font-size: 13px;
 }
 
@@ -1404,11 +1277,11 @@ onMounted(() => {
   gap: 6px;
   margin-bottom: 12px;
   padding: 8px 12px;
-  background: rgba(167, 139, 250, 0.1);
-  border: 1px solid rgba(167, 139, 250, 0.2);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 8px;
   font-size: 12px;
-  color: rgba(167, 139, 250, 0.9);
+  color: #6b7b6b;
   width: fit-content;
 }
 
@@ -1418,7 +1291,7 @@ onMounted(() => {
 
 .field-label {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .list-right {
@@ -1440,19 +1313,19 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 8px;
 }
 
 .service-item .service-type {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .service-item .service-amount {
   font-size: 16px;
   font-weight: 600;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .list-right .book-btn {
@@ -1477,25 +1350,25 @@ onMounted(() => {
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   margin-bottom: 24px;
 }
 
 .booking-psychologist-info h4 {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 4px;
   font-size: 18px;
 }
 
 .booking-psychologist-info p {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
   font-size: 13px;
 }
 
 .booking-form :deep(.el-form-item__label) {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #1a2e1a !important;
 }
 
 .service-type-group {
@@ -1506,7 +1379,7 @@ onMounted(() => {
 
 .service-option {
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -1514,16 +1387,16 @@ onMounted(() => {
 }
 
 .service-option.is-selected {
-  background: rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(61, 173, 111, 0.12);
+  border-color: #3dad6f;
 }
 
 .option-label {
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .option-price {
-  color: #ffd700;
+  color: #3dad6f;
   font-weight: 600;
 }
 
@@ -1535,8 +1408,8 @@ onMounted(() => {
 
 .schedule-item {
   padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
@@ -1544,13 +1417,13 @@ onMounted(() => {
 }
 
 .schedule-item:hover:not(.disabled) {
-  background: rgba(100, 149, 237, 0.2);
-  border-color: rgba(100, 149, 237, 0.5);
+  background: rgba(61, 173, 111, 0.08);
+  border-color: #3dad6f;
 }
 
 .schedule-item.selected {
-  background: rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(61, 173, 111, 0.12);
+  border-color: #3dad6f;
 }
 
 .schedule-item.disabled {
@@ -1560,26 +1433,26 @@ onMounted(() => {
 
 .schedule-date {
   display: block;
-  color: #fff;
+  color: #1a2e1a;
   font-weight: 500;
   margin-bottom: 4px;
 }
 
 .schedule-slot {
   display: block;
-  color: #87ceeb;
+  color: #3dad6f;
   font-size: 13px;
   margin-bottom: 4px;
 }
 
 .schedule-status {
   display: block;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   font-size: 12px;
 }
 
 .fee-preview {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   padding: 16px;
   margin-top: 20px;
@@ -1589,20 +1462,20 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
 }
 
 .fee-row.total {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #e8eee8;
   margin-top: 8px;
   padding-top: 12px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .total-price {
   font-size: 24px;
-  color: #ffd700;
+  color: #3dad6f;
   font-weight: 700;
 }
 
@@ -1611,7 +1484,7 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   margin: 12px 0 0;
 }
 
@@ -1652,7 +1525,7 @@ onMounted(() => {
     align-items: stretch;
   }
 
-  .filter-row .cosmic-select {
+  .filter-row .el-select {
     width: 100%;
   }
 

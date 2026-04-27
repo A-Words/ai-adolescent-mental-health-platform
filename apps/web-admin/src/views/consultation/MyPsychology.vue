@@ -1,15 +1,5 @@
 <template>
   <div class="my-psychology-container">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-      <div class="planet planet-1"></div>
-      <div class="planet planet-2"></div>
-      <div class="comet"></div>
-    </div>
-
     <!-- 页面标题 -->
     <div class="page-header">
       <h1 class="page-title">我的心理咨询</h1>
@@ -17,7 +7,7 @@
     </div>
 
     <!-- 标签页 -->
-    <el-tabs v-model="activeTab" class="content-tabs cosmic-tabs">
+    <el-tabs v-model="activeTab" class="content-tabs clean-tabs">
       <!-- 全部预约 -->
       <el-tab-pane label="全部预约" name="all">
         <div class="tab-content">
@@ -27,11 +17,11 @@
               placeholder="筛选状态" 
               clearable 
               size="default" 
-              class="cosmic-select"
+              class="clean-select"
               @change="fetchAllAppointments"
             >
               <template #dropdown>
-                <div class="cosmic-select-dropdown">
+                <div class="clean-select-dropdown">
                   <el-option label="全部状态" :value="undefined" />
                   <el-option label="待审核" :value="0" />
                   <el-option label="已确认" :value="1" />
@@ -48,7 +38,7 @@
           <div v-loading="loadingAll" class="appointment-list">
             <div v-if="allAppointments.length === 0 && !loadingAll" class="empty-wrapper">
               <el-empty description="暂无预约记录">
-                <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="goToFindPsychologist">
+                <el-button type="primary" class="clean-btn-primary clean-btn" @click="goToFindPsychologist">
                   去预约心理师
                 </el-button>
               </el-empty>
@@ -56,12 +46,12 @@
 
             <div v-else class="appointment-grid">
               <div
-                class="appointment-card cosmic-card"
+                class="appointment-card clean-card"
                 v-for="item in allAppointments"
                 :key="item.id"
               >
                 <div class="psychologist-section">
-                  <el-avatar :size="64" :src="item.psychologistHeadPath" class="psychologist-avatar cosmic-avatar">
+                  <el-avatar :size="64" :src="item.psychologistHeadPath" class="psychologist-avatar clean-avatar">
                     <el-icon :size="32"><User /></el-icon>
                   </el-avatar>
                   <div class="psychologist-info">
@@ -95,26 +85,26 @@
 
                 <div class="action-buttons">
                   <template v-if="item.status === 1 || item.status === 7">
-                    <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="showConsultationInfo(item)">
+                    <el-button type="primary" class="clean-btn-primary clean-btn" @click="showConsultationInfo(item)">
                       <el-icon><VideoPlay /></el-icon>
                       进入咨询
                     </el-button>
-                    <el-button class="cosmic-btn-secondary cosmic-btn" @click="openChat(item)">
+                    <el-button class="clean-btn-secondary clean-btn" @click="openChat(item)">
                       <el-icon><ChatDotRound /></el-icon>
                       图文咨询
                     </el-button>
-                    <el-button type="danger" class="cosmic-btn-secondary cosmic-btn" @click="cancelAppointment(item)">
+                    <el-button type="danger" class="clean-btn-secondary clean-btn" @click="cancelAppointment(item)">
                       取消预约
                     </el-button>
                   </template>
                   <template v-else-if="item.status === 0">
                     <el-tag type="warning">等待心理师确认</el-tag>
-                    <el-button type="danger" class="cosmic-btn-secondary cosmic-btn" @click="cancelAppointment(item)">
+                    <el-button type="danger" class="clean-btn-secondary clean-btn" @click="cancelAppointment(item)">
                       取消预约
                     </el-button>
                   </template>
                   <template v-else-if="item.status === 4 && !item.rating">
-                    <el-button type="warning" class="cosmic-btn-secondary cosmic-btn" @click="showRatingDialog(item)">
+                    <el-button type="warning" class="clean-btn-secondary clean-btn" @click="showRatingDialog(item)">
                       <el-icon><Star /></el-icon>
                       立即评价
                     </el-button>
@@ -136,7 +126,7 @@
                 :total="allTotal"
                 layout="prev, pager, next"
                 @current-change="fetchAllAppointments"
-                class="cosmic-pagination"
+                class="clean-pagination"
               />
             </div>
           </div>
@@ -149,7 +139,7 @@
           <div v-loading="loadingCurrent" class="appointment-list">
             <div v-if="currentAppointments.length === 0 && !loadingCurrent" class="empty-wrapper">
               <el-empty description="暂无进行中的预约">
-                <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="goToFindPsychologist">
+                <el-button type="primary" class="clean-btn-primary clean-btn" @click="goToFindPsychologist">
                   去预约心理师
                 </el-button>
               </el-empty>
@@ -157,13 +147,13 @@
 
             <div v-else class="appointment-grid">
               <div 
-                class="appointment-card cosmic-card" 
+                class="appointment-card clean-card" 
                 v-for="item in currentAppointments" 
                 :key="item.id"
               >
                 <!-- 心理师信息 -->
                 <div class="psychologist-section">
-                  <el-avatar :size="64" :src="item.psychologistHeadPath" class="psychologist-avatar cosmic-avatar">
+                  <el-avatar :size="64" :src="item.psychologistHeadPath" class="psychologist-avatar clean-avatar">
                     <el-icon :size="32"><User /></el-icon>
                   </el-avatar>
                   <div class="psychologist-info">
@@ -200,27 +190,27 @@
                 <div class="action-buttons">
                   <template v-if="item.status === 1 || item.status === 7">
                     <!-- 已确认/待进行，显示视频链接 -->
-                    <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="showConsultationInfo(item)">
+                    <el-button type="primary" class="clean-btn-primary clean-btn" @click="showConsultationInfo(item)">
                       <el-icon><VideoPlay /></el-icon>
                       进入咨询
                     </el-button>
-                    <el-button class="cosmic-btn-secondary cosmic-btn" @click="openChat(item)">
+                    <el-button class="clean-btn-secondary clean-btn" @click="openChat(item)">
                       <el-icon><ChatDotRound /></el-icon>
                       图文咨询
                     </el-button>
-                    <el-button type="danger" class="cosmic-btn-secondary cosmic-btn" @click="cancelAppointment(item)">
+                    <el-button type="danger" class="clean-btn-secondary clean-btn" @click="cancelAppointment(item)">
                       取消预约
                     </el-button>
                   </template>
                   <template v-else-if="item.status === 0">
                     <el-tag type="warning">等待心理师确认</el-tag>
-                    <el-button type="danger" class="cosmic-btn-secondary cosmic-btn" @click="cancelAppointment(item)">
+                    <el-button type="danger" class="clean-btn-secondary clean-btn" @click="cancelAppointment(item)">
                       取消预约
                     </el-button>
                   </template>
                   <template v-else-if="item.status === 4">
                     <!-- 已完成，待评价 -->
-                    <el-button type="warning" class="cosmic-btn-secondary cosmic-btn" @click="showRatingDialog(item)">
+                    <el-button type="warning" class="clean-btn-secondary clean-btn" @click="showRatingDialog(item)">
                       <el-icon><Star /></el-icon>
                       立即评价
                     </el-button>
@@ -253,7 +243,7 @@
         <div class="tab-content">
           <div v-loading="loadingHistory" class="history-list">
             <el-empty v-if="consultationHistory.length === 0 && !loadingHistory" description="暂无咨询历史">
-              <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="goToFindPsychologist">
+              <el-button type="primary" class="clean-btn-primary clean-btn" @click="goToFindPsychologist">
                 去预约心理师
               </el-button>
             </el-empty>
@@ -266,7 +256,7 @@
                 placement="top"
                 type="primary"
               >
-                <div class="history-card cosmic-card">
+                <div class="history-card clean-card">
                   <div class="history-header">
                     <div class="psychologist-mini">
                       <el-avatar :size="48" :src="item.psychologistHeadPath">
@@ -299,7 +289,7 @@
                 :total="historyTotal"
                 layout="prev, pager, next"
                 @current-change="fetchHistory"
-                class="cosmic-pagination"
+                class="clean-pagination"
               />
             </div>
           </div>
@@ -311,20 +301,20 @@
         <div class="tab-content">
           <div v-loading="loadingFavorites" class="favorites-list">
             <el-empty v-if="favoritePsychologists.length === 0 && !loadingFavorites" description="暂无收藏的心理咨询师">
-              <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="goToFindPsychologist">
+              <el-button type="primary" class="clean-btn-primary clean-btn" @click="goToFindPsychologist">
                 去发现心理师
               </el-button>
             </el-empty>
 
             <div v-else class="psychologist-grid">
               <div 
-                class="psychologist-card cosmic-card"
+                class="psychologist-card clean-card"
                 v-for="item in favoritePsychologists"
                 :key="item.id"
                 @click="goToPsychologistDetail(item.psychologistId)"
               >
                 <div class="card-header">
-                  <el-avatar :size="72" :src="item.psychologistHead" class="psychologist-avatar cosmic-avatar">
+                  <el-avatar :size="72" :src="item.psychologistHead" class="psychologist-avatar clean-avatar">
                     <el-icon :size="36"><User /></el-icon>
                   </el-avatar>
                   <div class="online-indicator" :class="{ online: item.onlineStatus === 1 }">
@@ -337,15 +327,15 @@
                 </div>
                 <p class="psychologist-experience">{{ item.yearsExperience || 0 }}年经验 | {{ item.consultationCount || 0 }}次咨询</p>
                 <div class="psychologist-tags">
-                  <span v-for="field in item.fields?.slice(0, 2)" :key="field.id" class="mini-tag cosmic-tag">
+                  <span v-for="field in item.fields?.slice(0, 2)" :key="field.id" class="mini-tag clean-tag">
                     {{ field.name }}
                   </span>
                 </div>
                 <div class="card-actions">
-                  <el-button class="book-again-btn cosmic-btn-primary cosmic-btn" @click.stop="bookAgain(item)">
+                  <el-button class="book-again-btn clean-btn-primary clean-btn" @click.stop="bookAgain(item)">
                     再次预约
                   </el-button>
-                  <el-button class="unfavorite-btn cosmic-btn-secondary cosmic-btn" @click.stop="unfavorite(item)">
+                  <el-button class="unfavorite-btn clean-btn-secondary clean-btn" @click.stop="unfavorite(item)">
                     <el-icon><Star /></el-icon>
                   </el-button>
                 </div>
@@ -361,14 +351,14 @@
           <div class="chat-list-wrapper">
             <div v-if="chatAppointments.length === 0" class="empty-chat">
               <el-empty description="暂无图文咨询">
-                <el-button type="primary" class="cosmic-btn-primary cosmic-btn" @click="goToFindPsychologist">
+                <el-button type="primary" class="clean-btn-primary clean-btn" @click="goToFindPsychologist">
                   去预约心理师
                 </el-button>
               </el-empty>
             </div>
             <div v-else class="chat-list-grid">
               <div 
-                class="chat-card cosmic-card"
+                class="chat-card clean-card"
                 v-for="item in chatAppointments"
                 :key="item.id"
               >
@@ -392,7 +382,7 @@
                 <div class="chat-card-footer">
                   <el-button 
                     type="primary" 
-                    class="cosmic-btn-primary cosmic-btn start-chat-btn"
+                    class="clean-btn-primary start-chat-btn"
                     @click="openChat(item)"
                   >
                     <el-icon><ChatDotRound /></el-icon>
@@ -411,7 +401,7 @@
       v-model="ratingDialogVisible" 
       title="评价咨询" 
       width="500px" 
-      class="cosmic-dialog"
+      class="clean-dialog"
     >
       <div class="rating-form" v-if="ratingAppointment">
         <div class="rating-psychologist">
@@ -442,7 +432,7 @@
               type="textarea" 
               :rows="4"
               placeholder="分享您的咨询体验..."
-              class="cosmic-textarea"
+              class="clean-textarea"
             />
           </el-form-item>
           <el-form-item label="匿名评价">
@@ -453,8 +443,8 @@
       </div>
 
       <template #footer>
-        <el-button @click="ratingDialogVisible = false" class="cosmic-btn-secondary cosmic-btn">取消</el-button>
-        <el-button type="primary" @click="submitRating" class="cosmic-btn-primary cosmic-btn" :loading="submittingRating">
+        <el-button @click="ratingDialogVisible = false" class="clean-btn-secondary clean-btn">取消</el-button>
+        <el-button type="primary" @click="submitRating" class="clean-btn-primary clean-btn" :loading="submittingRating">
           提交评价
         </el-button>
       </template>
@@ -465,7 +455,7 @@
       v-model="consultationDialogVisible"
       title="进入咨询"
       width="500px"
-      class="cosmic-dialog"
+      class="clean-dialog"
     >
       <div class="consultation-info" v-if="currentConsultation">
         <div class="consultation-psychologist">
@@ -512,12 +502,12 @@
       </div>
 
       <template #footer>
-        <el-button @click="consultationDialogVisible = false" class="cosmic-btn-secondary cosmic-btn">关闭</el-button>
+        <el-button @click="consultationDialogVisible = false" class="clean-btn-secondary clean-btn">关闭</el-button>
         <el-button
           v-if="currentConsultation?.videoLink"
           type="primary"
           @click="openVideoLink"
-          class="cosmic-btn-primary cosmic-btn"
+          class="clean-btn-primary clean-btn"
         >
           <el-icon><VideoPlay /></el-icon>
           打开视频会议
@@ -530,7 +520,7 @@
       v-model="cancelDialogVisible"
       title="取消预约"
       width="450px"
-      class="cosmic-dialog"
+      class="clean-dialog"
     >
       <div class="cancel-dialog-content" v-if="cancelTarget">
         <div class="cancel-header">
@@ -559,7 +549,7 @@
               type="textarea"
               :rows="3"
               placeholder="请输入取消原因，以便心理师了解情况..."
-              class="cosmic-textarea"
+              class="clean-textarea"
               maxlength="200"
               show-word-limit
             />
@@ -568,8 +558,8 @@
       </div>
 
       <template #footer>
-        <el-button @click="cancelDialogVisible = false" class="cosmic-btn-secondary cosmic-btn">返回</el-button>
-        <el-button type="danger" @click="confirmCancelAppointment" class="cosmic-btn-danger cosmic-btn" :loading="cancelLoading">
+        <el-button @click="cancelDialogVisible = false" class="clean-btn-secondary clean-btn">返回</el-button>
+        <el-button type="danger" @click="confirmCancelAppointment" class="clean-btn-danger clean-btn" :loading="cancelLoading">
           确认取消
         </el-button>
       </template>
@@ -914,121 +904,6 @@ onMounted(() => {
   overflow-x: hidden;
 }
 
-/* 星空背景 */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  overflow: hidden;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before, .stars:after,
-.stars2:before, .stars2:after,
-.stars3:before, .stars3:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before {
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  animation: starsMove 200s linear infinite;
-}
-
-.stars:after {
-  background-image: radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: starsMove 150s linear infinite;
-}
-
-.stars2:before {
-  background-image: radial-gradient(1px 1px at 90px 120px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: starsMove 100s linear infinite;
-}
-
-.stars3:before {
-  background-image: radial-gradient(3px 3px at 150px 200px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: starsMove 250s linear infinite;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0px) }
-  to { transform: translateY(-2000px) }
-}
-
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  z-index: 0;
-}
-
-.planet-1 {
-  width: 100px;
-  height: 100px;
-  top: 10%;
-  right: 5%;
-  background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
-  box-shadow: 0 0 40px rgba(255, 154, 158, 0.5);
-  animation: float 25s infinite ease-in-out;
-}
-
-.planet-2 {
-  width: 80px;
-  height: 80px;
-  bottom: 15%;
-  left: 3%;
-  background: radial-gradient(circle at 30% 30%, #a1c4fd, #c2e9fb);
-  box-shadow: 0 0 50px rgba(161, 196, 253, 0.5);
-  animation: float 30s infinite ease-in-out reverse;
-}
-
-.comet {
-  position: absolute;
-  top: 15%;
-  left: -50px;
-  width: 150px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  transform: rotate(45deg);
-  animation: cometMove 20s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes cometMove {
-  0% { transform: translateX(-100px) translateY(-100px) rotate(45deg); }
-  100% { transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg); }
-}
-
 /* 页面头部 */
 .page-header {
   text-align: center;
@@ -1040,17 +915,16 @@ onMounted(() => {
 .page-title {
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
-  margin: 0 0 12px;
-  background: linear-gradient(135deg, #fff 0%, #87ceeb 50%, #dda0dd 100%);
+  background: linear-gradient(135deg, #3dad6f 0%, #5bc4bf 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0 0 12px;
 }
 
 .page-subtitle {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
 }
 
@@ -1084,7 +958,7 @@ onMounted(() => {
 .psychologist-name {
   font-size: 20px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
 }
 
@@ -1098,7 +972,7 @@ onMounted(() => {
   align-items: center;
   gap: 4px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
 }
 
 .status-tag {
@@ -1107,7 +981,7 @@ onMounted(() => {
 
 .appointment-details {
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 12px;
   margin-bottom: 16px;
 }
@@ -1119,15 +993,15 @@ onMounted(() => {
 }
 
 .detail-label {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .detail-value {
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .detail-value.price {
-  color: #ffd700;
+  color: #3dad6f;
   font-weight: 600;
   font-size: 18px;
 }
@@ -1144,11 +1018,11 @@ onMounted(() => {
   gap: 8px;
   margin-top: 16px;
   padding: 12px 16px;
-  background: rgba(135, 206, 235, 0.1);
-  border: 1px solid rgba(135, 206, 235, 0.3);
+  background: #e8f5ee;
+  border: 1px solid #e8eee8;
   border-radius: 10px;
   font-size: 14px;
-  color: #87ceeb;
+  color: #3dad6f;
 }
 
 /* 咨询历史 */
@@ -1172,7 +1046,7 @@ onMounted(() => {
 .psychologist-mini .name {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .history-meta {
@@ -1183,12 +1057,12 @@ onMounted(() => {
 
 .service-type {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .history-problem {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #6b7b6b;
   margin: 0 0 12px;
   line-height: 1.5;
 }
@@ -1201,7 +1075,7 @@ onMounted(() => {
 
 .rating-comment {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 /* 收藏的心理咨询师 */
@@ -1242,13 +1116,13 @@ onMounted(() => {
 .psychologist-card .psychologist-name {
   font-size: 18px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
 }
 
 .psychologist-experience {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0 0 12px;
 }
 
@@ -1312,14 +1186,14 @@ onMounted(() => {
 }
 
 .chat-info h4 {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 4px;
   font-size: 16px;
 }
 
 .last-message {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1328,14 +1202,14 @@ onMounted(() => {
 
 .chat-time {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
 }
 
 .chat-window {
   height: 600px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -1345,15 +1219,15 @@ onMounted(() => {
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
+  border-bottom: 1px solid #e8eee8;
 }
 
 .chat-psychologist {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #fff;
+  color: #1a2e1a;
   font-weight: 600;
 }
 
@@ -1376,7 +1250,7 @@ onMounted(() => {
 .message-bubble {
   max-width: 70%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #e8eee8;
   border-radius: 16px;
   border-top-left-radius: 4px;
 }
@@ -1388,7 +1262,7 @@ onMounted(() => {
 }
 
 .message-content {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0;
   line-height: 1.5;
 }
@@ -1396,14 +1270,14 @@ onMounted(() => {
 .message-time {
   display: block;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
   margin-top: 4px;
 }
 
 .message-input {
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
+  border-top: 1px solid #e8eee8;
 }
 
 /* 评价表单 */
@@ -1412,63 +1286,63 @@ onMounted(() => {
 }
 
 /* 进入咨询弹窗样式 */
-.cosmic-dialog .consultation-info {
+.clean-dialog .consultation-info {
   padding: 10px 0;
 }
 
-.cosmic-dialog .consultation-psychologist {
+.clean-dialog .consultation-psychologist {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 12px;
   margin-bottom: 20px;
 }
 
-.cosmic-dialog .consultation-details {
-  background: rgba(255, 255, 255, 0.05);
+.clean-dialog .consultation-details {
+  background: #f5f7f5;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
 }
 
-.cosmic-dialog .consultation-details .detail-row {
+.clean-dialog .consultation-details .detail-row {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e8eee8;
 }
 
-.cosmic-dialog .consultation-details .detail-row:last-child {
+.clean-dialog .consultation-details .detail-row:last-child {
   border-bottom: none;
 }
 
-.cosmic-dialog .consultation-details .detail-label {
-  color: rgba(255, 255, 255, 0.6);
+.clean-dialog .consultation-details .detail-label {
+  color: #6b7b6b;
   font-size: 14px;
 }
 
-.cosmic-dialog .consultation-details .detail-value {
-  color: #fff;
+.clean-dialog .consultation-details .detail-value {
+  color: #1a2e1a;
   font-size: 14px;
   font-weight: 500;
   max-width: 60%;
   word-break: break-all;
 }
 
-.cosmic-dialog .consultation-tip {
+.clean-dialog .consultation-tip {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(135, 206, 235, 0.1);
+  background: rgba(61, 173, 111, 0.08);
   border-radius: 10px;
   font-size: 13px;
-  color: rgba(135, 206, 235, 0.9);
+  color: #3dad6f;
 }
 
-.cosmic-dialog .consultation-tip.warning {
+.clean-dialog .consultation-tip.warning {
   background: rgba(230, 162, 60, 0.1);
   color: rgba(230, 162, 60, 0.9);
 }
@@ -1478,18 +1352,18 @@ onMounted(() => {
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 12px;
   margin-bottom: 24px;
 }
 
 .psychologist-info h4 {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 4px;
 }
 
 .psychologist-info p {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
   font-size: 13px;
 }
@@ -1530,7 +1404,7 @@ onMounted(() => {
 }
 
 .psy-name {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 4px;
   font-size: 16px;
 }
@@ -1538,10 +1412,10 @@ onMounted(() => {
 .service-badge {
   display: inline-block;
   padding: 2px 8px;
-  background: rgba(135, 206, 235, 0.2);
+  background: rgba(61, 173, 111, 0.12);
   border-radius: 8px;
   font-size: 11px;
-  color: rgba(135, 206, 235, 0.9);
+  color: #3dad6f;
 }
 
 .chat-card-body {
@@ -1549,7 +1423,7 @@ onMounted(() => {
 }
 
 .problem-preview {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   font-size: 13px;
   margin: 0;
   line-height: 1.5;
@@ -1618,19 +1492,19 @@ onMounted(() => {
 }
 
 .cancel-header h3 {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
   font-size: 18px;
 }
 
 .cancel-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
   font-size: 14px;
 }
 
 .cancel-info {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 20px;
@@ -1640,7 +1514,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e8eee8;
 }
 
 .cancel-info .info-row:last-child {
@@ -1648,79 +1522,77 @@ onMounted(() => {
 }
 
 .cancel-info .info-label {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   font-size: 14px;
 }
 
 .cancel-info .info-value {
-  color: #fff;
+  color: #1a2e1a;
   font-size: 14px;
   font-weight: 500;
 }
 
 /* 危险按钮样式 */
-.cosmic-btn-danger {
+.clean-btn-danger {
   background: linear-gradient(135deg, #f56c6c 0%, #e64242 100%) !important;
   border: none !important;
   color: #fff !important;
 }
 
-.cosmic-btn-danger:hover {
+.clean-btn-danger:hover {
   background: linear-gradient(135deg, #e64242 0%, #d63232 100%) !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(245, 108, 108, 0.3);
 }
 
-/* 星空特效下拉框 */
-.cosmic-select {
+/* 下拉框 */
+.clean-select {
   min-width: 160px;
 }
 
-.cosmic-select :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+.clean-select :deep(.el-input__wrapper) {
+  background: #e8eee8 !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 10px !important;
   box-shadow: none !important;
   transition: all 0.3s ease;
 }
 
-.cosmic-select :deep(.el-input__wrapper:hover) {
-  border-color: rgba(167, 139, 250, 0.6) !important;
-  background: rgba(255, 255, 255, 0.15) !important;
+.clean-select :deep(.el-input__wrapper:hover) {
+  border-color: #3dad6f !important;
+  background: rgba(61, 173, 111, 0.06) !important;
 }
 
-.cosmic-select :deep(.el-input__wrapper.is-focus) {
-  border-color: #a78bfa !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2) !important;
+.clean-select :deep(.el-input__wrapper.is-focus) {
+  border-color: #3dad6f !important;
+  background: rgba(61, 173, 111, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.15) !important;
 }
 
-.cosmic-select :deep(.el-input__inner) {
-  color: #ffffff !important;
+.clean-select :deep(.el-input__inner) {
+  color: #1a2e1a !important;
   font-size: 14px;
 }
 
-.cosmic-select :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.5) !important;
+.clean-select :deep(.el-input__inner::placeholder) {
+  color: #9ead9e !important;
 }
 
-.cosmic-select :deep(.el-select__caret) {
-  color: rgba(255, 255, 255, 0.7) !important;
+.clean-select :deep(.el-select__caret) {
+  color: #9ead9e !important;
 }
 
-.cosmic-select-dropdown {
-  background: rgba(15, 15, 50, 0.98) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.clean-select-dropdown {
+  background: #ffffff !important;
+  border: 1px solid #e8eee8;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   padding: 8px;
   overflow: hidden;
 }
 
-.cosmic-select-dropdown :deep(.el-select-dropdown__item) {
-  color: rgba(255, 255, 255, 0.85);
+.clean-select-dropdown :deep(.el-select-dropdown__item) {
+  color: #1a2e1a;
   border-radius: 8px;
   margin: 2px 0;
   padding: 10px 16px;
@@ -1728,24 +1600,24 @@ onMounted(() => {
   transition: all 0.2s ease;
 }
 
-.cosmic-select-dropdown :deep(.el-select-dropdown__item:hover),
-.cosmic-select-dropdown :deep(.el-select-dropdown__item.hover) {
-  background: rgba(167, 139, 250, 0.2) !important;
-  color: #ffffff;
+.clean-select-dropdown :deep(.el-select-dropdown__item:hover),
+.clean-select-dropdown :deep(.el-select-dropdown__item.hover) {
+  background: rgba(61, 173, 111, 0.08) !important;
+  color: #1a2e1a;
 }
 
-.cosmic-select-dropdown :deep(.el-select-dropdown__item.selected) {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(129, 140, 248, 0.3)) !important;
-  color: #ffffff;
+.clean-select-dropdown :deep(.el-select-dropdown__item.selected) {
+  background: linear-gradient(135deg, rgba(61, 173, 111, 0.12), rgba(91, 196, 191, 0.12)) !important;
+  color: #1a2e1a;
   font-weight: 600;
 }
 
-.cosmic-select-dropdown :deep(.el-select-dropdown__item.is-disabled) {
-  color: rgba(255, 255, 255, 0.3);
+.clean-select-dropdown :deep(.el-select-dropdown__item.is-disabled) {
+  color: #9ead9e;
 }
 
 /* 下拉箭头图标 */
-.cosmic-select :deep(.el-icon-arrow-up::before) {
+.clean-select :deep(.el-icon-arrow-up::before) {
   content: '▼' !important;
   font-size: 10px;
 }

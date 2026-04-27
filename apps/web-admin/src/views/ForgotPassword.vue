@@ -351,7 +351,7 @@ onUnmounted(() => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1A2A3A 0%, #2D3E50 50%, #1A2A3A 100%);
+  background: #f5f7f5;
   position: relative;
   overflow: hidden;
 }
@@ -363,7 +363,7 @@ onUnmounted(() => {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 233, 167, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(61, 173, 111, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -389,7 +389,7 @@ onUnmounted(() => {
 .brand-title span {
   display: inline-block;
   opacity: 0;
-  background: linear-gradient(to right, #FFE9A7, #E6F0FF);
+  background: linear-gradient(to right, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -409,11 +409,10 @@ onUnmounted(() => {
 .forgot-card {
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-  border: none !important;
-  background-color: rgba(58, 74, 90, 0.95) !important;
-  backdrop-filter: blur(10px);
-  border-radius: 20px !important;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06) !important;
+  border: 1px solid #e8eee8 !important;
+  background-color: #ffffff !important;
+  border-radius: 16px !important;
   padding: 40px;
   position: relative;
   z-index: 5;
@@ -441,9 +440,9 @@ onUnmounted(() => {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #2A3A4A;
-  border: 2px solid #4A5A6A;
-  color: #B0BEC5;
+  background: #f5f7f5;
+  border: 2px solid #e8eee8;
+  color: #6b7b6b;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -453,45 +452,45 @@ onUnmounted(() => {
 }
 
 .step-item.active .step-circle {
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F);
-  border-color: #FFE9A7;
-  color: #1A2A3A;
+  background: #3dad6f;
+  border-color: #3dad6f;
+  color: #ffffff;
 }
 
 .step-item.done .step-circle {
-  background: linear-gradient(135deg, #9BB0A0, #7DA080);
-  border-color: #9BB0A0;
+  background: #2d8a55;
+  border-color: #2d8a55;
   color: #fff;
 }
 
 .step-item span {
   font-size: 12px;
-  color: #4A5A6A;
+  color: #9ead9e;
   transition: all 0.3s ease;
 }
 
 .step-item.active span {
-  color: #FFE9A7;
+  color: #3dad6f;
   font-weight: 500;
 }
 
 .step-item.done span {
-  color: #9BB0A0;
+  color: #2d8a55;
 }
 
 .step-line {
   width: 60px;
   height: 2px;
-  background: #2A3A4A;
-  border-top: 2px solid #4A5A6A;
+  background: #f5f7f5;
+  border-top: 2px solid #e8eee8;
   margin-bottom: 20px;
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
 .step-line.active {
-  background: linear-gradient(90deg, #FFE9A7, #9BB0A0);
-  border-top-color: #9BB0A0;
+  background: linear-gradient(90deg, #3dad6f, #5bc4bf);
+  border-top-color: #5bc4bf;
 }
 
 /* 页面标题 */
@@ -503,16 +502,16 @@ onUnmounted(() => {
 .page-title {
   font-size: 26px;
   font-weight: bold;
-  color: #E6F0FF;
+  color: #1a2e1a;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #FFE9A7, #E6F0FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #1a2e1a;
+  background-clip: unset;
 }
 
 .page-subtitle {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 14px;
   margin-bottom: 0;
 }
@@ -523,33 +522,33 @@ onUnmounted(() => {
 }
 
 .forgot-form :deep(.el-form-item__label) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
   font-weight: 500;
   font-size: 14px;
   padding-bottom: 8px !important;
 }
 
 .custom-input :deep(.el-input__wrapper) {
-  background-color: #2A3A4A !important;
-  border: 1px solid #4A5A6A;
-  border-radius: 10px;
+  background-color: #f5f7f5 !important;
+  border: 1px solid #e8eee8;
+  border-radius: 9999px;
   box-shadow: none !important;
   padding: 12px 16px;
 }
 
-.custom-input :deep(.el-input__wrapper:hover) { border-color: #FFE9A7; }
+.custom-input :deep(.el-input__wrapper:hover) { border-color: #3dad6f; }
 .custom-input :deep(.el-input__wrapper.is-focus) {
-  border-color: #FFE9A7;
-  box-shadow: 0 0 0 2px rgba(255, 233, 167, 0.2) !important;
+  border-color: #3dad6f;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.12) !important;
 }
 
 .custom-input :deep(.el-input__inner) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
   font-size: 14px;
 }
 
-.custom-input :deep(.el-input__inner::placeholder) { color: #B0BEC5 !important; opacity: 0.6; }
-.custom-input :deep(.el-input__prefix) { color: #FFE9A7; }
+.custom-input :deep(.el-input__inner::placeholder) { color: #9ead9e !important; opacity: 0.6; }
+.custom-input :deep(.el-input__prefix) { color: #3dad6f; }
 
 /* 邮箱+验证码按钮行 */
 .email-row {
@@ -563,38 +562,38 @@ onUnmounted(() => {
   flex-shrink: 0;
   height: 42px;
   min-width: 110px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 10px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 14px;
   white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .send-code-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  background: #2d8a55 !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3);
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25);
 }
 
 .send-code-btn:disabled {
-  background: #3A4A5A !important;
-  color: #B0BEC5 !important;
+  background: #e8eee8 !important;
+  color: #9ead9e !important;
   cursor: not-allowed;
 }
 
 /* 提示 */
 .form-hint {
   font-size: 12px;
-  color: #9BB0A0;
-  background: rgba(155, 176, 160, 0.08);
+  color: #3dad6f;
+  background: rgba(61, 173, 111, 0.06);
   border-radius: 8px;
   padding: 10px 14px;
   margin-bottom: 20px;
   line-height: 1.5;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* 密码强度 */
@@ -602,7 +601,7 @@ onUnmounted(() => {
 
 .pwd-strength-bar {
   height: 4px;
-  background: rgba(155, 176, 160, 0.2);
+  background: rgba(61, 173, 111, 0.15);
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -615,17 +614,17 @@ onUnmounted(() => {
 
 .pwd-strength.medium .pwd-strength-bar::before {
   content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 60%;
-  background: #F9C48B; border-radius: 2px; transition: all 0.3s ease;
+  background: #f5a623; border-radius: 2px; transition: all 0.3s ease;
 }
 
 .pwd-strength.strong .pwd-strength-bar::before {
   content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 100%;
-  background: #9BB0A0; border-radius: 2px; transition: all 0.3s ease;
+  background: #3dad6f; border-radius: 2px; transition: all 0.3s ease;
 }
 
 .pwd-strength-text {
   font-size: 12px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   margin-top: 4px;
   display: block;
 }
@@ -635,21 +634,21 @@ onUnmounted(() => {
 .goto-login-btn {
   width: 100%;
   height: 48px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 10px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-size: 16px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   margin-top: 8px;
 }
 
 .next-btn:hover,
 .goto-login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3) !important;
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25) !important;
+  background: #2d8a55 !important;
 }
 
 .goto-login-btn {
@@ -663,19 +662,19 @@ onUnmounted(() => {
   justify-content: center;
   gap: 8px;
   margin-top: 16px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 14px;
 }
 
 .back-login-btn {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   font-weight: 500;
   padding: 0;
   height: auto;
 }
 
 .back-login-btn:hover {
-  color: #E6F0FF !important;
+  color: #2d8a55 !important;
   transform: translateX(2px);
 }
 
@@ -700,7 +699,7 @@ onUnmounted(() => {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(155, 176, 160, 0.1);
+  background: rgba(61, 173, 111, 0.1);
   animation: ringPulse 2s infinite;
 }
 
@@ -714,7 +713,7 @@ onUnmounted(() => {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #9BB0A0, #7DA080);
+  background: linear-gradient(135deg, #3dad6f, #5bc4bf);
   color: #fff;
   font-size: 28px;
   font-weight: 700;
@@ -734,12 +733,12 @@ onUnmounted(() => {
 .success-title {
   font-size: 24px;
   font-weight: bold;
-  color: #E6F0FF;
+  color: #1a2e1a;
   margin-bottom: 12px;
 }
 
 .success-desc {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 15px;
   margin-bottom: 0;
 }

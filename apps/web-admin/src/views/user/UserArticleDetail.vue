@@ -91,7 +91,7 @@
 
     <!-- 悬浮按钮组（仅保留返回顶部） -->
     <div class="floating-btns">
-      <el-backtop :right="40" :bottom="160" target=".el-main">
+      <el-backtop :right="40" :bottom="160">
         <div class="fab-container">
           <div class="fab-btn-inner">
             <el-icon class="icon"><CaretTop /></el-icon>
@@ -526,15 +526,16 @@ onMounted(() => {
   padding: 20px;
   gap: 20px;
   padding-bottom: 80px;
-  color: #fff;
+  background: #f5f7f5;
+  color: #1a2e1a;
 }
 
-/* 左侧目录栏 - 半透明 */
+/* ========== Left Sidebar ========== */
 .left-sidebar {
   width: 260px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 8px;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px;
   padding: 15px;
   transition: all 0.3s;
   height: calc(100vh - 120px);
@@ -542,7 +543,7 @@ onMounted(() => {
   top: 20px;
   overflow-y: auto;
   flex-shrink: 0;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
 }
 .left-sidebar.collapsed {
   width: 50px;
@@ -555,7 +556,7 @@ onMounted(() => {
   gap: 8px;
   cursor: pointer;
   margin-bottom: 15px;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7b6b !important;
   font-weight: bold;
 }
 .catalog-content {
@@ -566,7 +567,7 @@ onMounted(() => {
 .catalog-item {
   cursor: pointer;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   padding: 6px 10px;
   border-radius: 4px;
   transition: all 0.2s;
@@ -575,14 +576,14 @@ onMounted(() => {
   text-overflow: ellipsis;
 }
 .catalog-item:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: #7EC8FF !important;
+  background-color: #f5f7f5 !important;
+  color: #3dad6f !important;
 }
-.catalog-item.level-1 { font-weight: bold; color: #fff !important; }
+.catalog-item.level-1 { font-weight: bold; color: #1a2e1a !important; }
 .catalog-item.level-2 { padding-left: 20px; font-size: 13px; }
 .catalog-item.level-3 { padding-left: 30px; font-size: 12px; }
 
-/* 主内容区 */
+/* ========== Main Content ========== */
 .main-content-container {
   flex: 1;
   min-width: 0;
@@ -591,40 +592,40 @@ onMounted(() => {
   margin-bottom: 15px;
 }
 .back-bar :deep(.el-link) {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
 }
 .back-bar :deep(.el-link:hover) {
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
 }
 
-/* 文章卡片 - 半透明 */
+/* ========== Article Card ========== */
 .article-card {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: #ffffff !important;
   padding: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
+  border-radius: 12px;
+  border: 1px solid #e8eee8 !important;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
+  color: #1a2e1a !important;
 }
 .article-card h1 {
   margin-top: 0;
   font-size: 28px;
   line-height: 1.4;
   margin-bottom: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
-/* 作者信息栏 */
+/* ========== Author Info ========== */
 .author-info-bar {
   display: flex;
   align-items: center;
   gap: 15px;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: #f5f7f5 !important;
   border-radius: 8px;
   margin-bottom: 25px;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid #e8eee8 !important;
 }
 .author-meta {
   display: flex;
@@ -639,26 +640,26 @@ onMounted(() => {
 .author-nickname {
   font-size: 18px;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .article-meta-info {
   display: flex;
   gap: 15px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #9ead9e !important;
 }
 
-/* 标签 - 语义色 */
+/* Tag */
 .tag-name {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.1) !important;
+  color: #3dad6f !important;
   padding: 1px 8px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
 }
 
-/* 文章正文内容 */
+/* ========== Article Content ========== */
 .cover-image {
   margin-bottom: 25px;
 }
@@ -671,10 +672,10 @@ onMounted(() => {
 .article-content {
   line-height: 1.8;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #1a2e1a !important;
 }
 
-/* v-md-editor 默认白底 + 卡片白字 → 白底白字；与 GitHub 主题 markdown 一起做星空对比 */
+/* v-md-editor */
 .article-content :deep(.v-md-editor) {
   background: transparent !important;
   box-shadow: none !important;
@@ -684,11 +685,11 @@ onMounted(() => {
 }
 .article-content :deep(.v-md-editor-preview) {
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: #1a2e1a !important;
 }
 .article-content :deep(.github-markdown-body) {
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: #1a2e1a !important;
 }
 .article-content :deep(.github-markdown-body p),
 .article-content :deep(.github-markdown-body li),
@@ -696,127 +697,126 @@ onMounted(() => {
 .article-content :deep(.github-markdown-body th),
 .article-content :deep(.github-markdown-body dd),
 .article-content :deep(.github-markdown-body dt) {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: #1a2e1a !important;
 }
 .article-content :deep(.github-markdown-body h1),
 .article-content :deep(.github-markdown-body h2),
 .article-content :deep(.github-markdown-body h3),
 .article-content :deep(.github-markdown-body h4),
 .article-content :deep(.github-markdown-body h5) {
-  color: #fff !important;
-  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  color: #1a2e1a !important;
+  border-bottom-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body h6) {
-  color: rgba(255, 255, 255, 0.65) !important;
+  color: #6b7b6b !important;
 }
 .article-content :deep(.github-markdown-body a) {
-  color: #7ec8ff !important;
+  color: #3dad6f !important;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .article-content :deep(.github-markdown-body a:hover) {
-  color: #b8e0ff !important;
+  color: #35a062 !important;
 }
 .article-content :deep(.github-markdown-body code:not(pre code)) {
-  background: rgba(0, 0, 0, 0.35) !important;
-  color: #aed9ff !important;
-  border: 1px solid rgba(126, 200, 255, 0.28);
+  background: #f5f7f5 !important;
+  color: #1a2e1a !important;
+  border: 1px solid #e8eee8;
   border-radius: 4px;
 }
 .article-content :deep(.github-markdown-body pre) {
-  background: rgba(10, 14, 28, 0.92) !important;
-  border: 1px solid rgba(126, 200, 255, 0.22) !important;
+  background: #f5f7f5 !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 8px;
 }
 .article-content :deep(.github-markdown-body pre code),
 .article-content :deep(.github-markdown-body pre tt) {
-  color: #e6edf3 !important;
+  color: #1a2e1a !important;
   background: transparent !important;
 }
 .article-content :deep(.github-markdown-body div[class*='v-md-pre-wrapper-']) {
-  background: rgba(10, 14, 28, 0.92) !important;
+  background: #f5f7f5 !important;
   border-radius: 8px;
-  border: 1px solid rgba(126, 200, 255, 0.15);
+  border: 1px solid #e8eee8;
 }
 .article-content :deep(.github-markdown-body div[class*='v-md-pre-wrapper-'].line-numbers-mode::after) {
-  background: rgba(8, 12, 24, 0.95) !important;
-  border-right-color: rgba(126, 200, 255, 0.2) !important;
+  background: #ffffff !important;
+  border-right-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body .hljs) {
   background: transparent !important;
-  color: #e6edf3 !important;
+  color: #1a2e1a !important;
 }
 .article-content :deep(.github-markdown-body .hljs-comment),
 .article-content :deep(.github-markdown-body .hljs-quote) {
-  color: #8b949e !important;
+  color: #9ead9e !important;
 }
 .article-content :deep(.github-markdown-body .hljs-keyword),
 .article-content :deep(.github-markdown-body .hljs-selector-tag),
 .article-content :deep(.github-markdown-body .hljs-subst) {
-  color: #ff7b72 !important;
+  color: #dc2626 !important;
 }
 .article-content :deep(.github-markdown-body .hljs-number),
 .article-content :deep(.github-markdown-body .hljs-literal),
 .article-content :deep(.github-markdown-body .hljs-string),
 .article-content :deep(.github-markdown-body .hljs-doctag) {
-  color: #a5d6ff !important;
+  color: #3dad6f !important;
 }
 .article-content :deep(.github-markdown-body .hljs-title),
 .article-content :deep(.github-markdown-body .hljs-section) {
-  color: #d2a8ff !important;
+  color: #7c3aed !important;
 }
 .article-content :deep(.github-markdown-body blockquote) {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-left-color: rgba(126, 200, 255, 0.55) !important;
-  color: rgba(255, 255, 255, 0.85) !important;
+  background: #f5f7f5 !important;
+  border-left-color: #3dad6f !important;
+  color: #6b7b6b !important;
 }
 .article-content :deep(.github-markdown-body hr) {
-  background-color: rgba(255, 255, 255, 0.18) !important;
+  background-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body table) {
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body table th),
 .article-content :deep(.github-markdown-body table td) {
-  border-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body table tr) {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: #ffffff !important;
+  border-color: #e8eee8 !important;
 }
 .article-content :deep(.github-markdown-body table tr:nth-child(2n)) {
-  background: rgba(0, 0, 0, 0.22) !important;
+  background: #f5f7f5 !important;
 }
 .article-content :deep(.github-markdown-body table th) {
-  background: rgba(126, 200, 255, 0.12) !important;
-  color: #fff !important;
+  background: #f5f7f5 !important;
+  color: #1a2e1a !important;
 }
 .article-content :deep(.github-markdown-body img) {
   background: transparent !important;
 }
 .article-content :deep(.github-markdown-body kbd) {
-  background: rgba(0, 0, 0, 0.35) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: #f5f7f5 !important;
+  color: #1a2e1a !important;
+  border-color: #e8eee8 !important;
   box-shadow: none !important;
 }
 
-/* 底部互动栏 - 半透明 */
+/* ========== Fixed Interaction Bar ========== */
 .fixed-interaction-bar {
   position: sticky;
   bottom: 0;
   width: 100%;
   height: 60px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px;
+  box-shadow: 0 -2px 12px rgba(61, 173, 111, 0.06);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   margin-top: 20px;
-  border-radius: 8px;
 }
 .bar-content {
   width: 100%;
@@ -830,24 +830,21 @@ onMounted(() => {
   align-items: center;
   gap: 2px;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: #6b7b6b !important;
   transition: all 0.2s;
   font-size: 12px;
   padding: 5px 15px;
   border-radius: 20px;
 }
 .action-item:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #7EC8FF !important;
+  background: #f5f7f5 !important;
+  color: #3dad6f !important;
 }
 .action-item.active {
-  color: #7EC8FF !important;
-}
-.action-item.active .el-icon {
-  color: #FF8C9A !important;
+  color: #3dad6f !important;
 }
 
-/* 悬浮按钮组 */
+/* ========== Floating Buttons ========== */
 .floating-btns {
   position: fixed;
   right: 40px;
@@ -860,10 +857,10 @@ onMounted(() => {
 .fab-container {
   width: 48px;
   height: 48px;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -881,13 +878,13 @@ onMounted(() => {
 }
 .fab-btn-inner .icon {
   font-size: 20px;
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
   transition: all 0.3s;
 }
 .fab-btn-inner .text {
   position: absolute;
   font-size: 12px;
-  color: #fff;
+  color: #1a2e1a;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.3s;
@@ -897,18 +894,18 @@ onMounted(() => {
 .fab-container:hover {
   width: 100px;
   border-radius: 24px;
-  background: rgba(64, 158, 255, 0.4) !important;
-  border-color: rgba(64, 158, 255, 0.6) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
 }
 .fab-container:hover .icon {
   opacity: 1;
   transform: translateX(-20px);
-  color: #fff !important;
+  color: #ffffff !important;
 }
 .fab-container:hover .text {
   opacity: 1;
   transform: translateX(15px);
-  color: #fff !important;
+  color: #ffffff !important;
 }
 :deep(.el-backtop) {
   position: static !important;
@@ -919,7 +916,7 @@ onMounted(() => {
   display: block !important;
 }
 
-/* 右侧推荐栏 - 半透明 */
+/* ========== Right Sidebar ========== */
 .right-sidebar {
   width: 280px;
   display: flex;
@@ -928,38 +925,38 @@ onMounted(() => {
   flex-shrink: 0;
 }
 .sidebar-section {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   padding: 15px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
 }
 .sidebar-section h3 {
   margin-top: 0;
   font-size: 16px;
-  border-left: 3px solid rgba(64, 158, 255, 0.6) !important;
+  border-left: 3px solid #3dad6f !important;
   padding-left: 10px;
   margin-bottom: 15px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .recommend-item {
   padding: 8px 0;
   font-size: 14px;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   transition: color 0.2s;
 }
 .recommend-item:hover {
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
 }
 
-/* 评论区 - 半透明 */
+/* ========== Comments ========== */
 .comment-section {
   padding: 0 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 .comment-input-box {
   margin-bottom: 30px;
@@ -980,7 +977,7 @@ onMounted(() => {
   gap: 25px;
 }
 .comment-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid #e8eee8 !important;
   padding-bottom: 15px;
 }
 .comment-user {
@@ -997,21 +994,21 @@ onMounted(() => {
 .nickname {
   font-weight: bold;
   font-size: 14px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .time {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 .comment-content {
   padding-left: 42px;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #6b7b6b !important;
 }
 .comment-actions {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #9ead9e !important;
   display: flex;
   gap: 15px;
 }
@@ -1022,15 +1019,15 @@ onMounted(() => {
   gap: 4px;
 }
 .comment-actions span.liked {
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
 }
 .replies-list {
   margin-top: 10px;
   margin-left: 42px;
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #f5f7f5 !important;
   padding: 10px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px;
+  border: 1px solid #e8eee8 !important;
 }
 .reply-item {
   margin-bottom: 8px;
@@ -1047,11 +1044,12 @@ onMounted(() => {
   flex-wrap: wrap;
 }
 .reply-text {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
 }
 .reply-content {
   font-size: 13px;
   padding-left: 0;
+  color: #6b7b6b;
 }
 .reply-input-box {
   margin-top: 10px;
@@ -1062,25 +1060,27 @@ onMounted(() => {
   text-align: right;
 }
 
-/* Element Plus 输入框适配星空背景 */
+/* ========== Input Overrides ========== */
 :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #f5f7f5 !important;
+  border: 1px solid #e8eee8 !important;
   box-shadow: none !important;
+  border-radius: 8px;
 }
 :deep(.el-input__inner) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 :deep(.el-textarea__inner) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
+  background: #f5f7f5 !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
   box-shadow: none !important;
+  border-radius: 8px;
 }
 :deep(.el-textarea__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 </style>

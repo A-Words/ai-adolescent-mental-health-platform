@@ -1785,7 +1785,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* ========== 太空主题玻璃态样式 ========== */
+/* ========== 容器 ========== */
 .xiaoai-container {
   width: 100%;
   max-width: 900px;
@@ -1793,15 +1793,11 @@ onUnmounted(() => {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(145deg, rgba(15, 25, 60, 0.85) 0%, rgba(30, 60, 114, 0.75) 50%, rgba(20, 40, 80, 0.9) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow:
-    0 0 60px rgba(100, 149, 237, 0.15),
-    0 0 100px rgba(70, 130, 180, 0.1),
-    inset 0 0 80px rgba(100, 149, 237, 0.05);
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
@@ -1811,8 +1807,8 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.08) 0%, transparent 100%);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  background: #f5f7f5;
+  border-bottom: 1px solid #e8eee8;
 }
 
 .nav-title {
@@ -1821,8 +1817,7 @@ onUnmounted(() => {
   gap: 12px;
   font-size: 20px;
   font-weight: 600;
-  color: rgba(255, 215, 0, 0.95);
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  color: #1a2e1a;
 }
 
 .nav-icon {
@@ -1847,29 +1842,29 @@ onUnmounted(() => {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
   border-radius: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid #e8eee8;
 }
 
 .time-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
 }
 
 .time-value {
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
+  color: #1a2e1a;
   font-family: 'Courier New', monospace;
 }
 
 .time-value.warning {
-  color: #ff9800;
+  color: #f0a020;
 }
 
 .time-value.danger {
-  color: #f44336;
+  color: #e06060;
   animation: blink 1s infinite;
 }
 
@@ -1882,10 +1877,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: rgba(255, 215, 0, 0.08);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 20px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #6b7b6b;
   font-size: 14px;
 }
 
@@ -1895,19 +1890,18 @@ onUnmounted(() => {
 
 .btn-exit {
   padding: 8px 16px;
-  background: rgba(255, 100, 100, 0.15);
-  border: 1px solid rgba(255, 100, 100, 0.3);
-  border-radius: 20px;
-  color: rgba(255, 150, 150, 0.95);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #dc2626;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-exit:hover {
-  background: rgba(255, 100, 100, 0.25);
-  border-color: rgba(255, 100, 100, 0.5);
-  box-shadow: 0 0 20px rgba(255, 100, 100, 0.3);
+  background: #fef2f2;
+  border-color: #f87171;
 }
 
 /* ========== 音色选择按钮 ========== */
@@ -1916,18 +1910,18 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 180, 0, 0.08));
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 20px;
-  color: rgba(255, 215, 0, 0.95);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  border-radius: 8px;
+  color: #3dad6f;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .voice-btn:hover {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+  background: #ffffff;
+  border-color: #3dad6f;
 }
 
 .voice-icon {
@@ -1950,8 +1944,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1968,13 +1961,10 @@ onUnmounted(() => {
   width: 90%;
   max-width: 700px;
   max-height: 80vh;
-  background: linear-gradient(145deg, rgba(20, 40, 90, 0.98), rgba(30, 50, 110, 0.95));
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 20px;
-  box-shadow:
-    0 0 60px rgba(100, 149, 237, 0.25),
-    0 20px 60px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   animation: scaleIn 0.3s ease;
 }
@@ -1995,16 +1985,15 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  background: #f5f7f5;
+  border-bottom: 1px solid #e8eee8;
 }
 
 .voice-modal-header h3 {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
-  color: rgba(255, 215, 0, 0.95);
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  color: #1a2e1a;
 }
 
 .voice-modal-close {
@@ -2013,17 +2002,19 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 100, 100, 0.15);
-  border: 1px solid rgba(255, 100, 100, 0.3);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 50%;
-  color: rgba(255, 150, 150, 0.9);
+  color: #6b7b6b;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .voice-modal-close:hover {
-  background: rgba(255, 100, 100, 0.3);
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #dc2626;
   transform: scale(1.1);
 }
 
@@ -2038,16 +2029,15 @@ onUnmounted(() => {
 }
 
 .voice-modal-body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 3px;
 }
 
 .voice-modal-body::-webkit-scrollbar-thumb {
-  background: rgba(255, 215, 0, 0.3);
+  background: #e8eee8;
   border-radius: 3px;
 }
 
-/* 音色卡片网格 */
 .voice-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -2059,27 +2049,25 @@ onUnmounted(() => {
   align-items: center;
   gap: 12px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .voice-card-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: #ffffff;
+  border-color: #3dad6f;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.1);
 }
 
 .voice-card-item.active {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 180, 0, 0.1));
-  border-color: rgba(255, 215, 0, 0.5);
-  box-shadow:
-    0 0 20px rgba(255, 215, 0, 0.2),
-    inset 0 0 20px rgba(255, 215, 0, 0.05);
+  background: rgba(61, 173, 111, 0.06);
+  border-color: #3dad6f;
+  box-shadow: 0 0 12px rgba(61, 173, 111, 0.1);
 }
 
 .voice-card-avatar {
@@ -2088,8 +2076,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: rgba(61, 173, 111, 0.06);
+  border: 1px solid #e8eee8;
   border-radius: 50%;
   font-size: 24px;
   flex-shrink: 0;
@@ -2103,7 +2091,7 @@ onUnmounted(() => {
 .voice-card-name {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
+  color: #1a2e1a;
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -2112,7 +2100,7 @@ onUnmounted(() => {
 
 .voice-card-desc {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2127,12 +2115,11 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  background: #3dad6f;
   border-radius: 50%;
-  color: #1e293b;
+  color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
 }
 
 /* ========== 中间主区域 ========== */
@@ -2144,15 +2131,14 @@ onUnmounted(() => {
   padding: 0 20px;
 }
 
-/* 状态提示区 */
 .status-bar {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 12px 16px;
   margin: 16px 0;
-  background: rgba(100, 149, 237, 0.08);
-  border: 1px solid rgba(100, 149, 237, 0.2);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 12px;
 }
 
@@ -2161,26 +2147,23 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background: #9ead9e;
 }
 
 .status-item.active .status-dot {
-  background: #4ade80;
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
+  background: #3dad6f;
   animation: pulse 2s ease-in-out infinite;
 }
 
 .status-dot.recording {
-  background: #f87171;
-  box-shadow: 0 0 15px rgba(248, 113, 113, 0.6);
+  background: #e06060;
   animation: pulse 1s ease-in-out infinite;
 }
 
@@ -2194,9 +2177,9 @@ onUnmounted(() => {
   flex: 1;
   overflow-y: auto;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 215, 0, 0.1);
-  border-radius: 16px;
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   margin-bottom: 16px;
 }
 
@@ -2205,16 +2188,15 @@ onUnmounted(() => {
 }
 
 .chat-container::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
   border-radius: 3px;
 }
 
 .chat-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 215, 0, 0.3);
+  background: #e8eee8;
   border-radius: 3px;
 }
 
-/* 空状态 */
 .empty-state {
   height: 100%;
   display: flex;
@@ -2222,7 +2204,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .empty-icon {
@@ -2237,6 +2219,7 @@ onUnmounted(() => {
 
 .empty-text {
   font-size: 16px;
+  color: #9ead9e;
 }
 
 /* 消息样式 */
@@ -2244,10 +2227,10 @@ onUnmounted(() => {
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
-  animation: fadeIn 0.3s ease;
+  animation: msgFadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
+@keyframes msgFadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -2259,8 +2242,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 50%;
   font-size: 20px;
 }
@@ -2272,32 +2255,32 @@ onUnmounted(() => {
 
 .message-bubble {
   padding: 12px 16px;
-  border-radius: 16px;
+  border-radius: 12px;
   position: relative;
 }
 
 .message-text {
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
+  color: #1a2e1a;
   word-break: break-word;
 }
 
 .message-time {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
   margin-top: 4px;
 }
 
 /* AI 消息 */
 .message-ai .message-avatar {
-  background: linear-gradient(135deg, rgba(100, 149, 237, 0.2), rgba(70, 130, 180, 0.2));
-  border-color: rgba(100, 149, 237, 0.4);
+  background: rgba(61, 173, 111, 0.08);
+  border-color: rgba(61, 173, 111, 0.2);
 }
 
 .message-ai .message-bubble {
-  background: linear-gradient(135deg, rgba(70, 130, 180, 0.25), rgba(100, 149, 237, 0.2));
-  border: 1px solid rgba(100, 149, 237, 0.3);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-top-left-radius: 4px;
 }
 
@@ -2307,13 +2290,13 @@ onUnmounted(() => {
 }
 
 .message-user .message-avatar {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
-  border-color: rgba(255, 215, 0, 0.4);
+  background: rgba(61, 173, 111, 0.06);
+  border-color: rgba(61, 173, 111, 0.15);
 }
 
 .message-user .message-bubble {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 180, 0, 0.1));
-  border: 1px solid rgba(255, 215, 0, 0.25);
+  background: rgba(61, 173, 111, 0.06);
+  border: 1px solid rgba(61, 173, 111, 0.12);
   border-top-right-radius: 4px;
   text-align: right;
 }
@@ -2339,7 +2322,7 @@ onUnmounted(() => {
 }
 
 .message-system .message-text {
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   font-size: 13px;
   font-style: italic;
 }
@@ -2347,8 +2330,8 @@ onUnmounted(() => {
 /* ========== 底部控制栏 ========== */
 .control-bar {
   padding: 20px 24px;
-  background: linear-gradient(0deg, rgba(255, 215, 0, 0.06) 0%, transparent 100%);
-  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  background: #f5f7f5;
+  border-top: 1px solid #e8eee8;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -2368,10 +2351,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 10px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(34, 197, 94, 0.15));
-  border: 2px solid rgba(74, 222, 128, 0.4);
-  border-radius: 30px;
-  color: #4ade80;
+  background: rgba(61, 173, 111, 0.08);
+  border: 2px solid rgba(61, 173, 111, 0.3);
+  border-radius: 8px;
+  color: #3dad6f;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -2379,8 +2362,8 @@ onUnmounted(() => {
 }
 
 .btn-call:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(34, 197, 94, 0.25));
-  box-shadow: 0 0 30px rgba(74, 222, 128, 0.4);
+  background: rgba(61, 173, 111, 0.12);
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.15);
   transform: translateY(-2px);
 }
 
@@ -2390,14 +2373,14 @@ onUnmounted(() => {
 }
 
 .btn-call.btn-end {
-  background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(239, 68, 68, 0.15));
-  border-color: rgba(248, 113, 113, 0.4);
-  color: #f87171;
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #dc2626;
 }
 
 .btn-call.btn-end:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3), rgba(239, 68, 68, 0.25));
-  box-shadow: 0 0 30px rgba(248, 113, 113, 0.4);
+  background: rgba(220, 38, 38, 0.12);
+  box-shadow: 0 2px 12px rgba(220, 38, 38, 0.15);
 }
 
 /* 说话按钮 */
@@ -2406,10 +2389,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 10px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 180, 0, 0.1));
-  border: 2px solid rgba(255, 215, 0, 0.35);
-  border-radius: 30px;
-  color: rgba(255, 215, 0, 0.95);
+  background: rgba(61, 173, 111, 0.06);
+  border: 2px solid rgba(61, 173, 111, 0.2);
+  border-radius: 8px;
+  color: #1a2e1a;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -2417,8 +2400,8 @@ onUnmounted(() => {
 }
 
 .btn-speak:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 180, 0, 0.2));
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.35);
+  background: rgba(61, 173, 111, 0.1);
+  border-color: rgba(61, 173, 111, 0.3);
   transform: translateY(-2px);
 }
 
@@ -2428,18 +2411,17 @@ onUnmounted(() => {
 }
 
 .btn-speak.btn-speaking {
-  background: linear-gradient(135deg, rgba(248, 113, 113, 0.25), rgba(239, 68, 68, 0.2));
-  border-color: rgba(248, 113, 113, 0.5);
-  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #dc2626;
   animation: glow 1.5s ease-in-out infinite;
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(248, 113, 113, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(248, 113, 113, 0.6); }
+  0%, 100% { box-shadow: 0 0 8px rgba(220, 38, 38, 0.15); }
+  50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
 }
 
-/* 说话指示器 */
 .speaking-indicator {
   display: flex;
   align-items: center;
@@ -2450,7 +2432,7 @@ onUnmounted(() => {
 .speaking-indicator .wave {
   width: 3px;
   height: 16px;
-  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  background: #3dad6f;
   border-radius: 2px;
   animation: wave 0.8s ease-in-out infinite;
 }
@@ -2470,10 +2452,10 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  border-radius: 8px;
+  color: #6b7b6b;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2481,21 +2463,21 @@ onUnmounted(() => {
 
 .btn-mute:hover:not(:disabled),
 .btn-video:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: #ffffff;
+  border-color: #3dad6f;
+  color: #3dad6f;
 }
 
 .btn-mute.active {
-  background: rgba(248, 113, 113, 0.15);
-  border-color: rgba(248, 113, 113, 0.3);
-  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.2);
+  color: #dc2626;
 }
 
 .btn-video.active {
-  background: linear-gradient(135deg, rgba(100, 149, 237, 0.25), rgba(80, 120, 200, 0.2));
-  border-color: rgba(100, 149, 237, 0.5);
-  color: rgba(100, 149, 237, 0.95);
-  box-shadow: 0 0 15px rgba(100, 149, 237, 0.2);
+  background: rgba(61, 173, 111, 0.06);
+  border-color: rgba(61, 173, 111, 0.3);
+  color: #3dad6f;
 }
 
 .btn-mute:disabled,
@@ -2510,28 +2492,28 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  border-radius: 8px;
+  color: #6b7b6b;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-upload:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: #ffffff;
+  border-color: #3dad6f;
+  color: #3dad6f;
 }
 
-/* 图片预览 */
 .image-preview {
   position: relative;
   width: 60px;
   height: 60px;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 2px solid rgba(255, 215, 0, 0.3);
+  border: 2px solid #e8eee8;
 }
 
 .image-preview img {
@@ -2547,10 +2529,10 @@ onUnmounted(() => {
   width: 20px;
   height: 20px;
   padding: 0;
-  background: rgba(239, 68, 68, 0.9);
+  background: rgba(220, 38, 38, 0.9);
   border: none;
   border-radius: 50%;
-  color: white;
+  color: #ffffff;
   font-size: 12px;
   cursor: pointer;
   display: flex;
@@ -2562,14 +2544,11 @@ onUnmounted(() => {
 .video-float-window {
   position: fixed;
   width: 280px;
-  background: linear-gradient(145deg, rgba(20, 40, 90, 0.95), rgba(30, 50, 110, 0.9));
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(100, 149, 237, 0.4);
-  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow:
-    0 0 30px rgba(100, 149, 237, 0.3),
-    0 10px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   cursor: move;
   animation: slideIn 0.3s ease;
@@ -2591,13 +2570,13 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(100, 149, 237, 0.15);
-  border-bottom: 1px solid rgba(100, 149, 237, 0.2);
+  background: #f5f7f5;
+  border-bottom: 1px solid #e8eee8;
 }
 
 .video-float-title {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #1a2e1a;
   font-weight: 500;
 }
 
@@ -2607,17 +2586,19 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 100, 100, 0.2);
-  border: 1px solid rgba(255, 100, 100, 0.3);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 50%;
-  color: rgba(255, 150, 150, 0.9);
+  color: #6b7b6b;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .video-float-close:hover {
-  background: rgba(255, 100, 100, 0.4);
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #dc2626;
   transform: scale(1.1);
 }
 
@@ -2626,7 +2607,7 @@ onUnmounted(() => {
   height: 180px;
   object-fit: cover;
   display: block;
-  transform: scaleX(-1); /* 镜像翻转 */
+  transform: scaleX(-1);
 }
 
 .video-float-body {
@@ -2646,8 +2627,8 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
   font-size: 13px;
 }
 

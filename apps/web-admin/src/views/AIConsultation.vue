@@ -260,29 +260,28 @@ onMounted(() => {
   display: flex;
   gap: 20px;
   padding: 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
-/* 侧边栏 - 半透明 */
+/* 侧边栏 */
 .sidebar {
   width: 280px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(10px);
   flex-shrink: 0;
 }
 
 .sidebar-header {
   padding: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid #e8eee8 !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .session-list {
@@ -300,15 +299,15 @@ onMounted(() => {
   align-items: center;
   margin-bottom: 5px;
   transition: background 0.2s;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7b6b !important;
 }
 .session-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  color: #1a2e1a !important;
 }
 .session-item.active {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  color: #3dad6f !important;
 }
 .session-title {
   font-size: 14px;
@@ -319,25 +318,24 @@ onMounted(() => {
   color: inherit;
 }
 
-/* 聊天主区 - 半透明 */
+/* 聊天主区 */
 .chat-area {
   flex: 1;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
 .chat-header {
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid #e8eee8 !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .header-left {
@@ -348,14 +346,14 @@ onMounted(() => {
 .title {
   font-size: 16px;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .thinking-switch {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
 }
 
 /* 聊天消息窗口 */
@@ -363,14 +361,14 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background: transparent !important;
-  color: #fff;
+  background: #f5f7f5 !important;
+  color: #1a2e1a;
 }
 
 .message {
   margin-bottom: 20px;
   display: flex;
-  color: #fff;
+  color: #1a2e1a;
 }
 .user-message {
   justify-content: flex-end;
@@ -380,40 +378,40 @@ onMounted(() => {
   display: flex;
   gap: 12px;
   max-width: 80%;
-  color: #fff;
+  color: #1a2e1a;
 }
 .user-message .message-content {
   flex-direction: row-reverse;
 }
 
-/* 气泡 - 半透明语义色 */
+/* 气泡 */
 .text-bubble {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: #f0f4f0 !important;
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
-  color: #fff !important;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #1a2e1a !important;
+  border: 1px solid #e8eee8;
 }
 .user-message .text-bubble {
-  background: rgba(103, 194, 58, 0.25) !important;
-  border-color: rgba(103, 194, 58, 0.3);
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  border-color: rgba(61, 173, 111, 0.2);
+  color: #1a2e1a !important;
 }
 .ai-message .text-bubble {
-  background: rgba(64, 158, 255, 0.15) !important;
-  border-color: rgba(64, 158, 255, 0.2);
-  color: #fff !important;
+  background: #f0f4f0 !important;
+  border-color: #e8eee8;
+  color: #1a2e1a !important;
 }
 
 /* 输入区 */
 .input-area {
   padding: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  border-top: 1px solid #e8eee8 !important;
+  background: #fafcfa !important;
   border-radius: 0 0 8px 8px;
 }
 .input-actions {
@@ -424,14 +422,14 @@ onMounted(() => {
 }
 .tip {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 
 .cursor {
   display: inline-block;
   width: 2px;
   height: 14px;
-  background: #fff;
+  background: #1a2e1a;
   animation: blink 1s infinite;
   vertical-align: middle;
   margin-left: 2px;
@@ -442,54 +440,54 @@ onMounted(() => {
   50% { opacity: 0; }
 }
 
-/* Element Plus 输入框适配星空背景 */
+/* Element Plus 输入框适配 */
 .ai-consultation-container :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #f5f7f5 !important;
+  border: 1px solid #e8eee8 !important;
   box-shadow: none !important;
 }
 .ai-consultation-container :deep(.el-input__inner) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .ai-consultation-container :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 .ai-consultation-container :deep(.el-button--primary) {
-  background: rgba(64, 158, 255, 0.3) !important;
-  border-color: rgba(64, 158, 255, 0.4) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
 }
 .ai-consultation-container :deep(.el-button--primary:hover) {
-  background: rgba(64, 158, 255, 0.5) !important;
+  background: #2d8a55 !important;
 }
 .ai-consultation-container :deep(.el-switch) {
-  --el-switch-off-color: rgba(255, 255, 255, 0.2);
+  --el-switch-off-color: rgba(0, 0, 0, 0.1);
 }
 
-/* el-textarea 与空状态（否则仍为白底） */
+/* el-textarea 与空状态 */
 .ai-consultation-container :deep(.el-textarea__inner) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
+  background: #f5f7f5 !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
   box-shadow: none !important;
 }
 .ai-consultation-container :deep(.el-textarea__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: #9ead9e !important;
 }
 .ai-consultation-container :deep(.el-empty) {
   background: transparent !important;
 }
 .ai-consultation-container :deep(.el-empty__description) {
-  color: rgba(255, 255, 255, 0.65) !important;
+  color: #6b7b6b !important;
 }
 .ai-consultation-container :deep(.el-tag--success) {
-  background: rgba(103, 194, 58, 0.25) !important;
+  background: rgba(61, 173, 111, 0.12) !important;
   border: none !important;
-  color: #A8E063 !important;
+  color: #3dad6f !important;
 }
 .ai-consultation-container :deep(.el-button--danger.is-link) {
-  color: #FF8C9A !important;
+  color: #f56c6c !important;
 }
 .ai-consultation-container :deep(.el-loading-mask) {
-  background: rgba(10, 10, 40, 0.5) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
 }
 </style>

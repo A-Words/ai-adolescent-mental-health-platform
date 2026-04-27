@@ -110,7 +110,7 @@ onMounted(() => {
 .my-home-likes h2 {
   margin: 0 0 20px 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .article-item {
@@ -151,7 +151,7 @@ onMounted(() => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .article-meta {

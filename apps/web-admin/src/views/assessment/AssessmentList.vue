@@ -84,7 +84,7 @@ onMounted(() => {
 .assessment-list {
   padding: 20px 40px;
   min-height: calc(100vh - 60px);
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .page-header {
@@ -93,24 +93,23 @@ onMounted(() => {
 }
 .page-header h2 {
   font-size: 28px;
-  color: #fff !important;
+  color: #1a2e1a !important;
   margin-bottom: 10px;
 }
 .subtitle {
-  color: rgba(255, 255, 255, 0.65) !important;
+  color: #6b7b6b !important;
   font-size: 16px;
 }
 
-/* 卡片半透明 */
+/* 卡片 */
 .assessment-list :deep(.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 .assessment-list :deep(.el-card__body) {
   padding: 0 !important;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .assessment-card {
   border-radius: 12px;
@@ -121,7 +120,7 @@ onMounted(() => {
 }
 .assessment-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 .assessment-list :deep(.el-col) {
   background: transparent;
@@ -140,14 +139,14 @@ onMounted(() => {
 .card-content h3 {
   margin: 0 0 10px;
   font-size: 18px;
-  color: #fff !important;
+  color: #1a2e1a !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .card-content p {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: #6b7b6b !important;
   line-height: 1.5;
   height: 40px;
   overflow: hidden;
@@ -163,18 +162,18 @@ onMounted(() => {
   align-items: center;
 }
 
-/* 专业量表标签 - 显眼语义色 */
+/* 标签 */
 .assessment-list :deep(.el-tag) {
   border: none !important;
   font-weight: 600;
 }
 .assessment-list :deep(.el-tag--primary) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  color: #3dad6f !important;
 }
 .assessment-list :deep(.el-tag--success) {
   background: rgba(103, 194, 58, 0.25) !important;
-  color: #A8E063 !important;
+  color: #3dad6f !important;
 }
 .assessment-list :deep(.el-tag--warning) {
   background: rgba(230, 162, 60, 0.25) !important;
@@ -187,19 +186,19 @@ onMounted(() => {
 
 .start-btn {
   font-size: 13px;
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .assessment-list :deep(.el-button.is-plain) {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(64, 158, 255, 0.5) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  border-color: rgba(61, 173, 111, 0.3) !important;
+  color: #3dad6f !important;
 }
 .assessment-list :deep(.el-button.is-plain:hover) {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  color: #1a2e1a !important;
 }
 </style>

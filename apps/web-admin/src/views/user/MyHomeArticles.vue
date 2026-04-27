@@ -182,7 +182,7 @@ onMounted(() => {
 .page-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .article-list {
@@ -232,7 +232,7 @@ onMounted(() => {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -247,8 +247,8 @@ onMounted(() => {
 }
 
 .tag-name {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.2) !important;
+  color: #3dad6f !important;
   padding: 1px 8px;
   border-radius: 4px;
   font-weight: 600;

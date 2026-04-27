@@ -158,7 +158,7 @@ onMounted(() => {
 .my-home-follow h2 {
   margin: 0 0 20px 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .user-list {
@@ -185,7 +185,7 @@ onMounted(() => {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .signature {

@@ -115,6 +115,6 @@ onMounted(() => {
 .my-home-feedback h2 {
   margin: 0 0 20px 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 </style>

@@ -151,125 +151,22 @@ onMounted(() => {
 <style scoped>
 .article-list {
   padding: 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
-/* 分类菜单 - 醒目白字 */
-.article-list :deep(.el-tabs__header) {
-  background: transparent;
-}
-.article-list :deep(.el-tabs__nav-wrap::after) {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-}
 .article-list :deep(.el-tabs__item) {
-  color: rgba(255, 255, 255, 0.7) !important;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.3s;
-}
-.article-list :deep(.el-tabs__item:hover) {
-  color: #fff !important;
 }
 .article-list :deep(.el-tabs__item.is-active) {
-  color: #fff !important;
   font-weight: 700;
   font-size: 16px;
 }
 .article-list :deep(.el-tabs__active-bar) {
-  background-color: #FFE9A7 !important;
+  background-color: #3dad6f !important;
   height: 3px;
 }
 
-/* 所有文本白色 */
-.article-list :deep(h1),
-.article-list :deep(h2),
-.article-list :deep(h3),
-.article-list :deep(h4),
-.article-list :deep(h5),
-.article-list :deep(h6),
-.article-list :deep(p),
-.article-list :deep(span),
-.article-list :deep(.el-text) {
-  color: #fff !important;
-}
-
-/* 卡片半透明白色背景 */
-.article-list :deep(.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
-  transition: background 0.3s, border-color 0.3s, transform 0.2s;
-}
-.article-list :deep(.el-card:hover) {
-  background: rgba(255, 255, 255, 0.16) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  transform: translateY(-2px);
-}
-.article-list :deep(.el-card__body) {
-  color: #fff !important;
-}
-
-/* 链接 */
-.article-list :deep(.el-link) {
-  color: #E0E0E0 !important;
-}
-.article-list :deep(.el-link:hover) {
-  color: #409EFF !important;
-}
-
-/* 分页白色 */
-.article-list :deep(.el-pagination) {
-  color: #fff !important;
-}
-.article-list :deep(.el-pagination button),
-.article-list :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-}
-.article-list :deep(.el-pager li.is-active) {
-  background: #409EFF !important;
-  color: #fff !important;
-}
-
-/* 空状态 */
-.article-list :deep(.el-empty__description) {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 标签根据类型着色 - 心理文章特有语义色 */
-.article-list :deep(.el-tag) {
-  border: none !important;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-/* 焦虑类 - 橙色 */
-.article-list :deep(.el-tag--warning) {
-  background: rgba(230, 162, 60, 0.25) !important;
-  color: #FFB347 !important;
-}
-/* 抑郁类 - 紫红 */
-.article-list :deep(.el-tag--danger) {
-  background: rgba(245, 108, 108, 0.25) !important;
-  color: #FF8C9A !important;
-}
-/* 成长类 - 蓝绿 */
-.article-list :deep(.el-tag--primary) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  color: #7EC8FF !important;
-}
-/* 关系类 - 粉色 */
-.article-list :deep(.el-tag--info) {
-  background: rgba(201, 91, 155, 0.25) !important;
-  color: #FF99CC !important;
-}
-/* 成功/积极类 - 绿色 */
-.article-list :deep(.el-tag--success) {
-  background: rgba(103, 194, 58, 0.25) !important;
-  color: #A8E063 !important;
-}
-
-/* 基础卡片样式 */
 .article-card {
   margin-bottom: 20px;
   cursor: pointer;
@@ -282,7 +179,8 @@ onMounted(() => {
   height: 120px;
   margin-right: 20px;
   flex-shrink: 0;
-  border-radius: 4px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 .info {
   flex: 1;
@@ -302,11 +200,11 @@ onMounted(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #fff !important;
+  color: #1a2e1a;
   font-size: 16px;
 }
 .desc {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7b6b;
   font-size: 14px;
   margin: 0 0 10px 0;
   flex: 1;
@@ -317,7 +215,7 @@ onMounted(() => {
   -webkit-box-orient: vertical;
 }
 .date {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #9ead9e;
   font-size: 12px;
 }
 </style>

@@ -273,30 +273,28 @@ onMounted(() => {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 /* el-card 半透明玻璃态 */
 .user-home-container :deep(.el-card) {
-  background: rgba(10, 10, 42, 0.55) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  color: #1a2e1a !important;
 }
 .user-home-container :deep(.el-card__body) {
   background: transparent !important;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 /* el-empty 半透明 */
 .user-home-container :deep(.el-empty__description) {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
 }
 .user-home-container :deep(.el-empty__image svg) {
-  fill: rgba(255, 255, 255, 0.4) !important;
+  fill: #9ead9e !important;
 }
 
 /* 用户头部 */
@@ -305,7 +303,7 @@ onMounted(() => {
   align-items: center;
   gap: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid #e8eee8 !important;
   margin-bottom: 20px;
 }
 .user-meta {
@@ -315,7 +313,7 @@ onMounted(() => {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .signature {
   font-size: 14px;
@@ -328,7 +326,7 @@ onMounted(() => {
 }
 .stat-item {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   cursor: pointer;
 }
 .stat-item.can-click {
@@ -342,7 +340,7 @@ onMounted(() => {
   color: #7EC8FF !important;
 }
 .stat-item:not(.can-click):hover {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
 }
 .stat-item strong {
   font-size: 16px;
@@ -361,14 +359,14 @@ onMounted(() => {
   background-color: rgba(255, 255, 255, 0.2) !important;
 }
 .user-home-container :deep(.el-tabs__item) {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   font-size: 15px;
 }
 .user-home-container :deep(.el-tabs__item:hover) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .user-home-container :deep(.el-tabs__item.is-active) {
-  color: #fff !important;
+  color: #1a2e1a !important;
   font-weight: 700;
 }
 .user-home-container :deep(.el-tabs__active-bar) {
@@ -384,7 +382,7 @@ onMounted(() => {
   display: flex;
   gap: 15px;
   padding: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(61, 173, 111, 0.06) !important;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -397,7 +395,7 @@ onMounted(() => {
   flex-shrink: 0;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(61, 173, 111, 0.06);
 }
 .article-cover img {
   width: 100%;
@@ -415,7 +413,7 @@ onMounted(() => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .article-meta {
   display: flex;
@@ -426,7 +424,7 @@ onMounted(() => {
 
 /* 标签语义色 */
 .tag {
-  background: rgba(64, 158, 255, 0.2) !important;
+  background: rgba(61, 173, 111, 0.2) !important;
   color: #7EC8FF !important;
   padding: 1px 8px;
   border-radius: 4px;
@@ -455,26 +453,26 @@ onMounted(() => {
   justify-content: center;
 }
 .user-home-container :deep(.el-pagination) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .user-home-container :deep(.el-pagination button),
 .user-home-container :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  color: #1a2e1a !important;
 }
 .user-home-container :deep(.el-pager li.is-active) {
-  background: rgba(64, 158, 255, 0.4) !important;
+  background: rgba(61, 173, 111, 0.4) !important;
 }
 
 /* el-button 半透明适配 */
 .user-home-container :deep(.el-button--primary) {
-  background: rgba(64, 158, 255, 0.6) !important;
-  border-color: rgba(64, 158, 255, 0.6) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.6) !important;
+  border-color: rgba(61, 173, 111, 0.6) !important;
+  color: #1a2e1a !important;
 }
 .user-home-container :deep(.el-button--primary:hover) {
-  background: rgba(64, 158, 255, 0.8) !important;
-  border-color: rgba(64, 158, 255, 0.8) !important;
+  background: rgba(61, 173, 111, 0.8) !important;
+  border-color: rgba(61, 173, 111, 0.8) !important;
 }
 .user-home-container :deep(.el-button--info) {
   background: rgba(144, 147, 153, 0.4) !important;

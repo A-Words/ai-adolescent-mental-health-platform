@@ -1,16 +1,5 @@
 <template>
   <div class="book-detail-page">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-      <div class="planet-1"></div>
-      <div class="planet-2"></div>
-      <div class="planet-3"></div>
-      <div class="comet"></div>
-    </div>
-
     <div class="book-detail-content" v-if="!loading">
       <!-- 返回按钮 -->
       <div class="back-button">
@@ -443,153 +432,8 @@ onMounted(async () => {
 .book-detail-page {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
   padding: 40px 20px;
-}
-
-/* ==================== 星空背景 ==================== */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 20% 80%, #0a1628 0%, #050d1a 50%, #020408 100%);
-}
-
-/* 星星层 */
-.stars,
-.stars2,
-.stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-}
-
-.stars {
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(2px 2px at 15% 85%, rgba(200,220,255,1) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 35%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 75% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(2px 2px at 85% 55%, rgba(180,200,255,1) 0%, transparent 100%);
-  animation: twinkle 8s ease-in-out infinite;
-}
-
-.stars2 {
-  background-image:
-    radial-gradient(1px 1px at 5% 45%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(2px 2px at 40% 25%, rgba(200,220,255,1) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 5%, rgba(255,255,255,0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(2px 2px at 95% 30%, rgba(180,210,255,1) 0%, transparent 100%);
-  animation: twinkle 12s ease-in-out infinite reverse;
-}
-
-.stars3 {
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 38%, rgba(220,235,255,1) 0%, transparent 100%),
-    radial-gradient(1px 1px at 28% 92%, rgba(255,255,255,0.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55% 68%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(2px 2px at 72% 78%, rgba(200,220,255,1) 0%, transparent 100%),
-    radial-gradient(1px 1px at 88% 12%, rgba(255,255,255,0.7) 0%, transparent 100%);
-  animation: twinkle 15s ease-in-out infinite;
-}
-
-/* 行星 */
-.planet-1 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: -80px;
-  right: -80px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%,
-    rgba(80, 120, 200, 0.5) 0%,
-    rgba(40, 60, 120, 0.4) 40%,
-    rgba(20, 30, 60, 0.3) 70%,
-    transparent 100%);
-  box-shadow:
-    inset -20px -20px 60px rgba(0, 0, 0, 0.4),
-    0 0 80px rgba(60, 100, 180, 0.3),
-    0 0 120px rgba(40, 80, 160, 0.15);
-  animation: planetFloat 30s ease-in-out infinite;
-}
-
-.planet-2 {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  bottom: 15%;
-  left: -50px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%,
-    rgba(120, 80, 160, 0.4) 0%,
-    rgba(60, 40, 100, 0.3) 50%,
-    transparent 100%);
-  box-shadow:
-    inset -10px -10px 40px rgba(0, 0, 0, 0.3),
-    0 0 50px rgba(100, 60, 150, 0.2);
-  animation: planetFloat 25s ease-in-out infinite reverse;
-}
-
-.planet-3 {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 40%;
-  right: 8%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%,
-    rgba(255, 160, 80, 0.35) 0%,
-    rgba(200, 100, 40, 0.25) 50%,
-    transparent 100%);
-  box-shadow:
-    inset -8px -8px 25px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(200, 120, 60, 0.2);
-  animation: planetFloat 20s ease-in-out infinite;
-}
-
-.comet {
-  position: absolute;
-  top: 15%;
-  right: 20%;
-  width: 120px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(180, 200, 255, 0.8), transparent);
-  border-radius: 50%;
-  transform: rotate(-30deg);
-  opacity: 0.4;
-  animation: cometMove 20s linear infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes planetFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-
-@keyframes cometMove {
-  0% { transform: rotate(-30deg) translateX(0); opacity: 0; }
-  10% { opacity: 0.4; }
-  90% { opacity: 0.4; }
-  100% { transform: rotate(-30deg) translateX(-500px); opacity: 0; }
+  background: #f5f7f5;
 }
 
 /* ==================== 内容层 ==================== */
@@ -600,44 +444,24 @@ onMounted(async () => {
   margin: 0 auto;
 }
 
-/* ==================== 玻璃卡片通用样式 ==================== */
+/* ==================== 卡片通用样式 ==================== */
 .glass-card {
-  background: linear-gradient(135deg,
-    rgba(15, 30, 60, 0.55) 0%,
-    rgba(10, 20, 45, 0.45) 50%,
-    rgba(5, 15, 35, 0.35) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(100, 140, 200, 0.2);
-  border-radius: 20px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 0 1px rgba(100, 160, 255, 0.05);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
   transition: all 0.3s ease;
 }
 
-/*
- * 注意：.book-main (书籍主信息卡片) 不使用 backdrop-filter，
- * 因为其子元素 el-image 的预览弹窗会被父级模糊滤镜干扰导致闪烁/无法交互。
- * 评论区 .comments-section 保留 backdrop-filter（无图片预览）。
- */
 .book-main {
-  /* 背景渐变不带模糊滤镜，避免 el-image 预览弹窗冲突 */
-  background: linear-gradient(135deg,
-    rgba(15, 30, 60, 0.7) 0%,
-    rgba(10, 20, 45, 0.6) 50%,
-    rgba(5, 15, 35, 0.5) 100%) !important;
+  background: #ffffff !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 
 .glass-card:hover {
-  border-color: rgba(100, 140, 200, 0.3);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 0 1px rgba(100, 160, 255, 0.08);
+  border-color: rgba(61, 173, 111, 0.2);
+  box-shadow: 0 4px 16px rgba(61, 173, 111, 0.1);
 }
 
 /* ==================== 返回按钮 ==================== */
@@ -646,19 +470,19 @@ onMounted(async () => {
 }
 
 .back-btn {
-  color: rgba(220, 230, 255, 0.8);
+  color: #6b7b6b;
   font-size: 14px;
   transition: all 0.3s ease;
-  background: rgba(10, 20, 40, 0.4);
-  border: 1px solid rgba(100, 140, 200, 0.15);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 8px;
   padding: 8px 16px;
 }
 
 .back-btn:hover {
-  color: rgba(255, 255, 255, 0.95);
-  background: rgba(30, 50, 90, 0.5);
-  border-color: rgba(100, 160, 220, 0.35);
+  color: #3dad6f;
+  background: #ffffff;
+  border-color: rgba(61, 173, 111, 0.3);
 }
 
 /* ==================== 书籍主信息卡片 ==================== */
@@ -673,22 +497,21 @@ onMounted(async () => {
   align-items: flex-start;
 }
 
-/* 封面缩小到 30%：原尺寸 200x280 -> 126x176 */
 .cover-section {
   flex-shrink: 0;
   width: 126px;
   height: 176px;
   border-radius: 12px;
   overflow: hidden;
-  background: rgba(5, 10, 20, 0.6);
-  border: 1px solid rgba(100, 140, 200, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
   transition: all 0.3s ease;
 }
 
 .cover-section:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(61, 173, 111, 0.12);
 }
 
 .main-cover {
@@ -704,7 +527,7 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgba(180, 200, 240, 0.5);
+  color: #9ead9e;
   font-size: 12px;
   gap: 8px;
 }
@@ -715,18 +538,15 @@ onMounted(async () => {
   min-width: 0;
 }
 
-/* 标题 */
 .book-title {
   font-size: 26px;
   font-weight: 700;
-  color: rgba(240, 245, 255, 0.95);
+  color: #1a2e1a;
   margin: 0 0 16px 0;
   line-height: 1.3;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.5px;
 }
 
-/* 元信息（浏览、评论、时间） */
 .book-meta {
   display: flex;
   flex-wrap: wrap;
@@ -739,15 +559,14 @@ onMounted(async () => {
   align-items: center;
   gap: 6px;
   font-size: 14px;
-  color: rgba(200, 215, 240, 0.8);
+  color: #6b7b6b;
 }
 
 .meta-item .el-icon {
   font-size: 15px;
-  color: rgba(150, 180, 230, 0.8);
+  color: #9ead9e;
 }
 
-/* 书籍简介 */
 .book-description {
   margin-bottom: 24px;
 }
@@ -755,7 +574,7 @@ onMounted(async () => {
 .book-description h3 {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(210, 225, 255, 0.9);
+  color: #1a2e1a;
   margin: 0 0 10px 0;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -763,53 +582,52 @@ onMounted(async () => {
 
 .book-description p {
   font-size: 14px;
-  color: rgba(200, 215, 240, 0.85);
+  color: #6b7b6b;
   line-height: 1.8;
   margin: 0;
 }
 
-/* 操作按钮组 */
 .action-buttons {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
 }
 
-/* 按钮样式 */
 .read-btn,
 .comment-btn {
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 500;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
 
-.read-btn {
-  background: linear-gradient(135deg, rgba(64, 120, 220, 0.7), rgba(80, 100, 180, 0.6)) !important;
-  border-color: rgba(100, 150, 230, 0.3) !important;
-  color: rgba(230, 240, 255, 0.95) !important;
-  box-shadow: 0 4px 15px rgba(50, 100, 200, 0.25);
+.read-btn.el-button--primary {
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(61, 173, 111, 0.2);
 }
 
-.read-btn:hover {
-  background: linear-gradient(135deg, rgba(80, 140, 240, 0.8), rgba(100, 120, 200, 0.7)) !important;
-  border-color: rgba(120, 170, 255, 0.5) !important;
-  box-shadow: 0 6px 20px rgba(50, 100, 200, 0.35);
+.read-btn.el-button--primary:hover {
+  background: #35a062 !important;
+  border-color: #35a062 !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.3);
   transform: translateY(-1px);
 }
 
-.comment-btn {
-  background: linear-gradient(135deg, rgba(40, 160, 100, 0.65), rgba(50, 130, 80, 0.55)) !important;
-  border-color: rgba(80, 200, 140, 0.25) !important;
-  color: rgba(220, 245, 235, 0.95) !important;
-  box-shadow: 0 4px 15px rgba(40, 150, 90, 0.2);
+.comment-btn.el-button--success {
+  background: #ffffff !important;
+  border-color: #3dad6f !important;
+  color: #3dad6f !important;
+  box-shadow: 0 2px 8px rgba(61, 173, 111, 0.1);
 }
 
-.comment-btn:hover {
-  background: linear-gradient(135deg, rgba(50, 180, 110, 0.75), rgba(60, 150, 95, 0.65)) !important;
-  border-color: rgba(100, 220, 160, 0.4) !important;
-  box-shadow: 0 6px 20px rgba(40, 150, 90, 0.3);
+.comment-btn.el-button--success:hover {
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.2);
   transform: translateY(-1px);
 }
 
@@ -821,7 +639,7 @@ onMounted(async () => {
 .section-header {
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(100, 140, 200, 0.12);
+  border-bottom: 1px solid #e8eee8;
 }
 
 .section-title {
@@ -830,23 +648,22 @@ onMounted(async () => {
   gap: 10px;
   font-size: 18px;
   font-weight: 600;
-  color: rgba(235, 245, 255, 0.95);
+  color: #1a2e1a;
   margin: 0;
 }
 
 .section-title .el-icon {
-  color: rgba(140, 180, 240, 0.9);
+  color: #3dad6f;
   font-size: 20px;
 }
 
 .comment-count {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(180, 200, 240, 0.6);
+  color: #9ead9e;
   margin-left: 4px;
 }
 
-/* 评论列表 */
 .comment-list {
   display: flex;
   flex-direction: column;
@@ -855,15 +672,16 @@ onMounted(async () => {
 
 .comment-item {
   padding: 18px 20px;
-  background: rgba(10, 20, 45, 0.4);
-  border: 1px solid rgba(80, 120, 180, 0.12);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .comment-item:hover {
-  background: rgba(15, 30, 60, 0.5);
-  border-color: rgba(80, 120, 180, 0.2);
+  background: #ffffff;
+  border-color: rgba(61, 173, 111, 0.2);
+  box-shadow: 0 2px 8px rgba(61, 173, 111, 0.06);
 }
 
 .comment-header {
@@ -874,8 +692,8 @@ onMounted(async () => {
 }
 
 .user-avatar {
-  border: 1px solid rgba(100, 140, 200, 0.2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e8eee8;
+  box-shadow: 0 2px 8px rgba(61, 173, 111, 0.06);
 }
 
 .user-info {
@@ -885,90 +703,85 @@ onMounted(async () => {
 .user-name {
   font-size: 14px;
   font-weight: 600;
-  color: rgba(220, 235, 255, 0.9);
+  color: #1a2e1a;
 }
 
 .comment-time {
   font-size: 12px;
-  color: rgba(160, 185, 225, 0.6);
+  color: #9ead9e;
   margin-top: 2px;
 }
 
 .comment-content {
   font-size: 14px;
-  color: rgba(200, 220, 250, 0.88);
+  color: #6b7b6b;
   line-height: 1.7;
   padding-left: 52px;
 }
 
-/* 无评论 */
 .no-comments {
   padding: 20px 0;
 }
 
 .no-comments :deep(.el-empty__description p) {
-  color: rgba(180, 200, 240, 0.7) !important;
+  color: #9ead9e !important;
   font-size: 14px;
 }
 
-/* 评论分页 */
 .comment-pagination {
   margin-top: 24px;
   padding-top: 16px;
-  border-top: 1px solid rgba(100, 140, 200, 0.1);
+  border-top: 1px solid #e8eee8;
   display: flex;
   justify-content: center;
 }
 
-/* 分页颜色覆盖 */
 .comment-pagination :deep(.el-pagination) {
-  --el-pagination-bg-color: transparent;
-  --el-pagination-button-bg-color: rgba(20, 40, 80, 0.6);
-  --el-pagination-hover-color: rgba(100, 160, 240, 0.8);
-  --el-pagination-text-color: rgba(200, 220, 255, 0.8);
-  --el-pagination-button-color: rgba(200, 220, 255, 0.7);
+  --el-pagination-bg-color: #ffffff;
+  --el-pagination-button-bg-color: #f5f7f5;
+  --el-pagination-hover-color: #3dad6f;
+  --el-pagination-text-color: #6b7b6b;
+  --el-pagination-button-color: #6b7b6b;
 }
 
 /* ==================== 加载状态 ==================== */
 .loading {
   padding: 40px;
+  background: #f5f7f5;
 }
 
 .loading :deep(.el-skeleton__item) {
   background: linear-gradient(90deg,
-    rgba(20, 40, 80, 0.3) 25%,
-    rgba(30, 50, 100, 0.4) 50%,
-    rgba(20, 40, 80, 0.3) 75%) !important;
+    #e8eee8 25%,
+    #f0f5f0 50%,
+    #e8eee8 75%) !important;
   background-size: 200% 100% !important;
 }
 
 /* ==================== 对话框 ==================== */
 :deep(.el-dialog) {
-  background: linear-gradient(135deg,
-    rgba(15, 30, 60, 0.95) 0%,
-    rgba(10, 20, 45, 0.95) 100%) !important;
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(100, 140, 200, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
 }
 
 :deep(.el-dialog__header) {
-  border-bottom: 1px solid rgba(100, 140, 200, 0.12);
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px !important;
 }
 
 :deep(.el-dialog__title) {
-  color: rgba(230, 240, 255, 0.95) !important;
+  color: #1a2e1a !important;
   font-weight: 600;
 }
 
 :deep(.el-dialog__close) {
-  color: rgba(180, 200, 240, 0.6) !important;
+  color: #9ead9e !important;
 }
 
 :deep(.el-dialog__close:hover) {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #3dad6f !important;
 }
 
 :deep(.el-dialog__body) {
@@ -976,65 +789,65 @@ onMounted(async () => {
 }
 
 :deep(.el-dialog__footer) {
-  border-top: 1px solid rgba(100, 140, 200, 0.1);
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px !important;
 }
 
-/* 对话框表单 */
 :deep(.el-form-item__label) {
-  color: rgba(210, 225, 255, 0.85) !important;
+  color: #1a2e1a !important;
   font-weight: 500;
 }
 
 :deep(.el-textarea__inner) {
-  background: rgba(5, 15, 35, 0.6) !important;
-  border-color: rgba(80, 120, 180, 0.2) !important;
-  color: rgba(220, 235, 255, 0.9) !important;
-  border-radius: 10px;
+  background: #f5f7f5 !important;
+  border-color: #e8eee8 !important;
+  color: #1a2e1a !important;
+  border-radius: 8px;
 }
 
 :deep(.el-textarea__inner:focus) {
-  border-color: rgba(100, 160, 240, 0.5) !important;
-  box-shadow: 0 0 0 2px rgba(80, 140, 240, 0.15) !important;
+  border-color: #3dad6f !important;
+  box-shadow: 0 0 0 2px rgba(61, 173, 111, 0.1) !important;
 }
 
 :deep(.el-input__wrapper) {
-  background: rgba(5, 15, 35, 0.6) !important;
-  border-color: rgba(80, 120, 180, 0.2) !important;
-  border-radius: 10px;
+  background: #f5f7f5 !important;
+  border-color: #e8eee8 !important;
+  border-radius: 8px;
+  box-shadow: none !important;
 }
 
 :deep(.el-input__inner) {
-  color: rgba(220, 235, 255, 0.9) !important;
+  color: #1a2e1a !important;
 }
 
 :deep(.el-input__inner::placeholder) {
-  color: rgba(160, 185, 225, 0.45) !important;
+  color: #9ead9e !important;
 }
 
 :deep(.el-button--primary) {
-  background: linear-gradient(135deg, rgba(64, 120, 220, 0.7), rgba(80, 100, 180, 0.6)) !important;
-  border-color: rgba(100, 150, 230, 0.3) !important;
-  color: rgba(230, 240, 255, 0.95) !important;
-  border-radius: 10px;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
 }
 
 :deep(.el-button--primary:hover) {
-  background: linear-gradient(135deg, rgba(80, 140, 240, 0.8), rgba(100, 120, 200, 0.7)) !important;
-  border-color: rgba(120, 170, 255, 0.5) !important;
+  background: #35a062 !important;
+  border-color: #35a062 !important;
 }
 
-:deep(.el-button) {
-  border-radius: 10px;
-  background: rgba(20, 40, 80, 0.5) !important;
-  border-color: rgba(80, 120, 180, 0.2) !important;
-  color: rgba(200, 220, 255, 0.85) !important;
+:deep(.el-button--default) {
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  border-color: #e8eee8 !important;
+  color: #6b7b6b !important;
 }
 
-:deep(.el-button:hover) {
-  background: rgba(30, 55, 100, 0.6) !important;
-  border-color: rgba(100, 150, 220, 0.35) !important;
-  color: rgba(230, 240, 255, 0.95) !important;
+:deep(.el-button--default:hover) {
+  background: #f5f7f5 !important;
+  border-color: #3dad6f !important;
+  color: #3dad6f !important;
 }
 
 /* ==================== 响应式适配 ==================== */

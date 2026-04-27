@@ -98,111 +98,22 @@ onMounted(async () => {
 <style scoped>
 .course-list {
   padding: 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
-/* 分类菜单 - 醒目白字 */
-.course-list :deep(.el-tabs__header) {
-  background: transparent;
-}
-.course-list :deep(.el-tabs__nav-wrap::after) {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-}
 .course-list :deep(.el-tabs__item) {
-  color: rgba(255, 255, 255, 0.7) !important;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.3s;
-}
-.course-list :deep(.el-tabs__item:hover) {
-  color: #fff !important;
 }
 .course-list :deep(.el-tabs__item.is-active) {
-  color: #fff !important;
   font-weight: 700;
   font-size: 16px;
 }
 .course-list :deep(.el-tabs__active-bar) {
-  background-color: #FFE9A7 !important;
+  background-color: #3dad6f !important;
   height: 3px;
 }
 
-/* 所有文本白色 */
-.course-list :deep(h1),
-.course-list :deep(h2),
-.course-list :deep(h3),
-.course-list :deep(h4),
-.course-list :deep(h5),
-.course-list :deep(h6),
-.course-list :deep(p),
-.course-list :deep(span),
-.course-list :deep(.el-text) {
-  color: #fff !important;
-}
-
-/* 卡片半透明白色背景 */
-.course-list :deep(.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
-  transition: background 0.3s, border-color 0.3s, transform 0.2s;
-}
-.course-list :deep(.el-card:hover) {
-  background: rgba(255, 255, 255, 0.16) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  transform: translateY(-2px);
-}
-.course-list :deep(.el-card__body) {
-  color: #fff !important;
-}
-
-/* 标签 - 课程来源色 */
-.course-list :deep(.el-tag) {
-  border: none !important;
-  font-weight: 600;
-}
-.course-list :deep(.el-tag--primary) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  color: #7EC8FF !important;
-}
-.course-list :deep(.el-tag--success) {
-  background: rgba(103, 194, 58, 0.25) !important;
-  color: #A8E063 !important;
-}
-.course-list :deep(.el-tag--warning) {
-  background: rgba(230, 162, 60, 0.25) !important;
-  color: #FFB347 !important;
-}
-.course-list :deep(.el-tag--danger) {
-  background: rgba(245, 108, 108, 0.25) !important;
-  color: #FF8C9A !important;
-}
-.course-list :deep(.el-tag--info) {
-  background: rgba(144, 147, 153, 0.25) !important;
-  color: #B0B8C1 !important;
-}
-
-/* 分页白色 */
-.course-list :deep(.el-pagination) {
-  color: #fff !important;
-}
-.course-list :deep(.el-pagination button),
-.course-list :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-}
-.course-list :deep(.el-pager li.is-active) {
-  background: #409EFF !important;
-  color: #fff !important;
-}
-
-/* 空状态 */
-.course-list :deep(.el-empty__description) {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 基础样式 */
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -215,7 +126,8 @@ onMounted(async () => {
 .cover-image {
   width: 100%;
   height: 150px;
-  border-radius: 4px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 .info {
   padding: 10px 0;
@@ -224,14 +136,14 @@ onMounted(async () => {
 }
 .info h3 {
   margin: 0 0 6px 0;
-  color: #fff !important;
+  color: #1a2e1a;
   font-size: 15px;
 }
 .source-tag {
   margin-bottom: 5px;
 }
 .desc {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7b6b;
   font-size: 12px;
   margin: 0;
 }

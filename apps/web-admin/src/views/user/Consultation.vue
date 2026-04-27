@@ -4,14 +4,14 @@
       <el-tab-pane label="找医生/预约挂号" name="offline">
         <!-- Step 1: Select Hospital -->
         <div v-if="step === 1" class="step-container">
-            <div class="search-filter cosmic-toolbar">
-                <div class="filter-options cosmic-filter-row">
-                    <el-select v-model="searchQuery.minRating" placeholder="评分" clearable popper-class="cosmic-select-dropdown" @change="handleSearch" class="cosmic-select">
+            <div class="search-filter clean-toolbar">
+                <div class="filter-options clean-filter-row">
+                    <el-select v-model="searchQuery.minRating" placeholder="评分" clearable popper-class="clean-select-dropdown" @change="handleSearch" class="clean-select">
                         <el-option label="不限" :value="undefined"></el-option>
                         <el-option label="4.5分以上" :value="4.5"></el-option>
                         <el-option label="4.0分以上" :value="4.0"></el-option>
                     </el-select>
-                    <el-select v-model="searchQuery.maxPrice" placeholder="价格" clearable popper-class="cosmic-select-dropdown" @change="handleSearch" class="cosmic-select">
+                    <el-select v-model="searchQuery.maxPrice" placeholder="价格" clearable popper-class="clean-select-dropdown" @change="handleSearch" class="clean-select">
                         <el-option label="不限" :value="undefined"></el-option>
                         <el-option label="50元以下" :value="50"></el-option>
                         <el-option label="100元以下" :value="100"></el-option>
@@ -21,12 +21,12 @@
                 <el-input 
                     v-model="searchQuery.name" 
                     placeholder="按医生姓名搜索..." 
-                    class="search-input cosmic-search-input"
+                    class="search-input clean-search-input"
                     clearable
                     @input="debouncedSearch"
                 >
                     <template #append>
-                        <el-button class="cosmic-search-btn" @click="handleSearch">搜索</el-button>
+                        <el-button class="clean-search-btn" @click="handleSearch">搜索</el-button>
                     </template>
                 </el-input>
             </div>
@@ -74,13 +74,13 @@
         </div>
 
         <!-- Step 2: Select Department -->
-        <div v-if="step === 2" class="step-container cosmic-step">
-            <el-page-header class="cosmic-page-header" @back="step = 1" content="选择科室" />
+        <div v-if="step === 2" class="step-container clean-step">
+            <el-page-header class="clean-page-header" @back="step = 1" content="选择科室" />
             <div class="dept-list">
                 <el-button 
                     v-for="d in departments" 
                     :key="d.id" 
-                    class="dept-btn cosmic-dept-btn" 
+                    class="dept-btn clean-dept-btn" 
                     :type="selectedDepartment?.id === d.id ? 'primary' : 'default'"
                     @click="selectDepartment(d)"
                 >
@@ -91,11 +91,11 @@
         </div>
 
         <!-- Step 3: Select Date & Doctor -->
-        <div v-if="step === 3" class="step-container cosmic-step">
-            <el-page-header class="cosmic-page-header" @back="step = 2" :content="`${selectedHospital?.name} - ${selectedDepartment?.name}`" />
+        <div v-if="step === 3" class="step-container clean-step">
+            <el-page-header class="clean-page-header" @back="step = 2" :content="`${selectedHospital?.name} - ${selectedDepartment?.name}`" />
             
-            <div class="date-selector cosmic-date-selector">
-                <el-radio-group v-model="selectedDate" class="cosmic-date-group" @change="fetchAvailableDoctors">
+            <div class="date-selector clean-date-selector">
+                <el-radio-group v-model="selectedDate" class="clean-date-group" @change="fetchAvailableDoctors">
                     <el-radio-button v-for="date in next7Days" :key="date.value" :label="date.value">
                         <div class="date-cell">
                             <span>{{ date.label }}</span>
@@ -211,8 +211,8 @@
       </el-tab-pane>
 
       <el-tab-pane label="我的咨询/预约" name="history">
-        <div class="history-list cosmic-history-panel">
-             <el-table :data="myAppointments" class="cosmic-appointments-table" style="width: 100%">
+        <div class="history-list clean-history-panel">
+             <el-table :data="myAppointments" class="clean-appointments-table" style="width: 100%">
                  <el-table-column prop="doctorName" label="医生"></el-table-column>
                  <el-table-column prop="hospitalName" label="医院"></el-table-column>
                  <el-table-column prop="date" label="时间"></el-table-column>
@@ -280,7 +280,7 @@
     </el-tabs>
 
     <!-- Detail Dialog -->
-    <el-dialog v-model="detailVisible" title="预约详情" width="600px" class="cosmic-dialog">
+    <el-dialog v-model="detailVisible" title="预约详情" width="600px" class="clean-dialog">
         <el-descriptions :column="1" border v-if="appointmentDetail">
             <el-descriptions-item label="医院">{{ appointmentDetail.hospitalName }}</el-descriptions-item>
             <el-descriptions-item label="地址">{{ appointmentDetail.hospitalAddress || '暂无' }}</el-descriptions-item>
@@ -311,13 +311,13 @@
     </el-dialog>
 
     <!-- Booking Dialog -->
-    <el-dialog v-model="bookingVisible" title="确认预约信息" width="450px" class="cosmic-dialog">
+    <el-dialog v-model="bookingVisible" title="确认预约信息" width="450px" class="clean-dialog">
         <el-form label-width="80px">
             <el-form-item label="医生">
                 <span>{{ currentDoctor?.realName }} ({{ currentDoctor?.title }})</span>
             </el-form-item>
             <el-form-item label="就诊人" required>
-                <el-select v-model="selectedPatientId" placeholder="请选择就诊人" style="width: 100%" class="cosmic-select" popper-class="cosmic-select-dropdown">
+                <el-select v-model="selectedPatientId" placeholder="请选择就诊人" style="width: 100%" class="clean-select" popper-class="clean-select-dropdown">
                     <el-option v-for="p in patients" :key="p.id" :label="p.name" :value="p.id"></el-option>
                 </el-select>
                 <el-link type="primary" underline="never" @click="router.push('/patient-records')" style="font-size: 12px; margin-top: 5px;">管理就诊人</el-link>
@@ -342,7 +342,7 @@
     </el-dialog>
 
     <!-- Feedback Dialog -->
-    <el-dialog v-model="consultationFeedbackVisible" title="咨询反馈" width="500px" class="cosmic-dialog">
+    <el-dialog v-model="consultationFeedbackVisible" title="咨询反馈" width="500px" class="clean-dialog">
         <el-form :model="cfForm">
             <el-form-item label="评分">
                 <el-rate v-model="cfForm.rating"></el-rate>
@@ -358,7 +358,7 @@
     </el-dialog>
 
     <!-- Complaint Dialog -->
-    <el-dialog v-model="complaintVisible" title="投诉医生" width="500px" class="cosmic-dialog">
+    <el-dialog v-model="complaintVisible" title="投诉医生" width="500px" class="clean-dialog">
         <el-form :model="complaintForm" label-width="80px">
             <el-form-item label="投诉内容" required>
                 <el-input type="textarea" v-model="complaintForm.content" :rows="4" placeholder="请详细描述医生在咨询中的不合理行为..."></el-input>
@@ -907,36 +907,36 @@ onUnmounted(() => {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    color: #fff;
+    color: #1a2e1a;
 }
 
-/* 分类菜单 - 醒目白字 */
+/* Tabs */
 .consultation-container :deep(.el-tabs__header) {
   background: transparent;
 }
 .consultation-container :deep(.el-tabs__nav-wrap::after) {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: #e8eee8 !important;
 }
 .consultation-container :deep(.el-tabs__item) {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
 }
 .consultation-container :deep(.el-tabs__item:hover) {
-  color: #fff !important;
+  color: #3dad6f !important;
 }
 .consultation-container :deep(.el-tabs__item.is-active) {
-  color: #fff !important;
+  color: #3dad6f !important;
   font-weight: 700;
   font-size: 16px;
 }
 .consultation-container :deep(.el-tabs__active-bar) {
-  background-color: #FFE9A7 !important;
+  background-color: #3dad6f !important;
   height: 3px;
 }
 
-/* 所有文本白色 */
+/* Headings */
 .consultation-container :deep(h1),
 .consultation-container :deep(h2),
 .consultation-container :deep(h3),
@@ -944,77 +944,75 @@ onUnmounted(() => {
 .consultation-container :deep(h5),
 .consultation-container :deep(h6),
 .consultation-container :deep(p),
-.consultation-container :deep(span),
-.consultation-container :deep(.el-text) {
-  color: #fff !important;
+.consultation-container :deep(span) {
+  color: #1a2e1a !important;
 }
 
-/* 卡片半透明白色背景 */
+/* Card */
 .consultation-container :deep(.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
   transition: background 0.3s, border-color 0.3s, transform 0.2s;
 }
 .consultation-container :deep(.el-card:hover) {
-  background: rgba(255, 255, 255, 0.16) !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: #f5f7f5 !important;
+  border-color: rgba(61, 173, 111, 0.3) !important;
   transform: translateY(-2px);
 }
 .consultation-container :deep(.el-card__body) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
-/* 标签语义色 */
+/* Tags */
 .consultation-container :deep(.el-tag) {
   border: none !important;
   font-weight: 600;
 }
 .consultation-container :deep(.el-tag--primary) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  color: #3dad6f !important;
 }
 .consultation-container :deep(.el-tag--success) {
-  background: rgba(103, 194, 58, 0.25) !important;
-  color: #A8E063 !important;
+  background: rgba(61, 173, 111, 0.12) !important;
+  color: #3dad6f !important;
 }
 .consultation-container :deep(.el-tag--warning) {
-  background: rgba(230, 162, 60, 0.25) !important;
-  color: #FFB347 !important;
+  background: rgba(240, 160, 32, 0.12) !important;
+  color: #d97706 !important;
 }
 .consultation-container :deep(.el-tag--danger) {
-  background: rgba(245, 108, 108, 0.25) !important;
-  color: #FF8C9A !important;
+  background: rgba(220, 38, 38, 0.1) !important;
+  color: #dc2626 !important;
 }
 .consultation-container :deep(.el-tag--info) {
-  background: rgba(144, 147, 153, 0.25) !important;
-  color: #B0B8C1 !important;
+  background: rgba(107, 123, 107, 0.1) !important;
+  color: #6b7b6b !important;
 }
 
-/* 链接 */
+/* Links */
 .consultation-container :deep(.el-link) {
-  color: #E0E0E0 !important;
+  color: #6b7b6b !important;
 }
 .consultation-container :deep(.el-link:hover) {
-  color: #409EFF !important;
+  color: #3dad6f !important;
 }
 
-/* 分页白色 */
+/* Pagination */
 .consultation-container :deep(.el-pagination) {
-  color: #fff !important;
+  color: #6b7b6b !important;
 }
 .consultation-container :deep(.el-pagination button),
 .consultation-container :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  background: #ffffff !important;
+  color: #6b7b6b !important;
 }
 .consultation-container :deep(.el-pager li.is-active) {
-  background: #409EFF !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  color: #ffffff !important;
 }
 
-/* 基础样式 */
+/* ========== Step container ========== */
 .step-container {
     padding: 20px 0;
 }
@@ -1038,11 +1036,11 @@ onUnmounted(() => {
 .hospital-info h4 {
     margin: 0 0 5px;
     font-size: 16px;
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .address {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: #6b7b6b !important;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -1083,26 +1081,28 @@ onUnmounted(() => {
 }
 .doc-info h4 {
     margin: 0 0 5px;
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .price {
-    color: #FF8C9A !important;
+    color: #dc2626 !important;
     font-weight: bold;
 }
 .confirm-info p {
     margin-bottom: 10px;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: #6b7b6b !important;
 }
+
+/* Chat */
 .chat-container {
     height: 600px;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 4px;
+    border: 1px solid #e8eee8 !important;
+    border-radius: 12px;
     display: flex;
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: #ffffff !important;
 }
 .chat-list {
     width: 300px;
-    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-right: 1px solid #e8eee8 !important;
     padding: 10px;
     overflow-y: auto;
 }
@@ -1121,19 +1121,19 @@ onUnmounted(() => {
 .chat-summary h4 {
     margin: 0;
     font-size: 14px;
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .chat-summary p {
     margin: 5px 0 0;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: #6b7b6b !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .chat-summary .time {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4) !important;
+    color: #9ead9e !important;
 }
 .chat-room {
     flex: 1;
@@ -1142,18 +1142,18 @@ onUnmounted(() => {
 }
 .chat-header {
     padding: 10px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-bottom: 1px solid #e8eee8 !important;
     display: flex;
     align-items: center;
     gap: 10px;
     font-weight: bold;
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .messages {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: #f5f7f5 !important;
 }
 .message-row {
     display: flex;
@@ -1167,31 +1167,32 @@ onUnmounted(() => {
     max-width: 60%;
 }
 .text-msg {
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: #f5f7f5 !important;
     padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    color: #fff !important;
+    border-radius: 8px;
+    border: 1px solid #e8eee8;
+    color: #1a2e1a !important;
 }
 .self .text-msg {
-    background: rgba(103, 194, 58, 0.3) !important;
+    background: rgba(61, 173, 111, 0.08) !important;
+    border-color: rgba(61, 173, 111, 0.15);
 }
 .assessment-card {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: #f5f7f5 !important;
     padding: 15px;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.2);
-    color: #fff !important;
+    border-radius: 8px;
+    border: 1px solid #e8eee8;
+    color: #1a2e1a !important;
 }
 .input-area {
     padding: 10px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: 1px solid #e8eee8 !important;
     display: flex;
     gap: 10px;
 }
 
-/* ========== 行星+彗星主题：搜索与筛选 ========== */
-.cosmic-toolbar {
+/* ========== Search Toolbar ========== */
+.clean-toolbar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -1199,546 +1200,464 @@ onUnmounted(() => {
     gap: 16px;
     margin-bottom: 24px;
     padding: 18px 22px;
-    background: linear-gradient(135deg, rgba(10, 10, 42, 0.55) 0%, rgba(26, 26, 74, 0.45) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid #e8eee8;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
 }
-.cosmic-filter-row {
+.clean-filter-row {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     align-items: center;
 }
-.cosmic-select {
+.clean-select {
     width: 150px;
 }
 .search-input {
     min-width: 220px;
     max-width: 320px;
 }
-.consultation-container :deep(.cosmic-toolbar .el-input__wrapper) {
-    background: rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22) inset !important;
-    border-radius: 10px !important;
+.consultation-container :deep(.clean-toolbar .el-input__wrapper) {
+    background: #f5f7f5 !important;
+    box-shadow: 0 0 0 1px #e8eee8 inset !important;
+    border-radius: 8px !important;
 }
-.consultation-container :deep(.cosmic-toolbar .el-input__inner) {
-    color: #fff !important;
+.consultation-container :deep(.clean-toolbar .el-input__inner) {
+    color: #1a2e1a !important;
 }
-.consultation-container :deep(.cosmic-toolbar .el-input__inner::placeholder) {
-    color: rgba(230, 232, 235, 0.45) !important;
+.consultation-container :deep(.clean-toolbar .el-input__inner::placeholder) {
+    color: #9ead9e !important;
 }
-.consultation-container :deep(.cosmic-toolbar .el-input-group__append) {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.55), rgba(54, 207, 201, 0.45)) !important;
+.consultation-container :deep(.clean-toolbar .el-input-group__append) {
+    background: #3dad6f !important;
     border: none !important;
     box-shadow: none !important;
 }
-.consultation-container :deep(.cosmic-search-btn) {
-    color: #fff !important;
+.consultation-container :deep(.clean-search-btn) {
+    color: #ffffff !important;
     font-weight: 600;
     border: none !important;
     background: transparent !important;
 }
-.consultation-container :deep(.cosmic-search-btn:hover) {
-    color: #FFE9A7 !important;
+.consultation-container :deep(.clean-search-btn:hover) {
+    color: #ffffff !important;
 }
-/* Element Plus 2.x：Select 使用 el-select__wrapper（非 el-input__wrapper） */
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__wrapper) {
-    background: linear-gradient(135deg, rgba(10, 10, 42, 0.82), rgba(26, 26, 74, 0.62)) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset !important;
-    border-radius: 10px !important;
+.consultation-container :deep(.clean-toolbar .clean-select.el-select .el-select__wrapper) {
+    background: #f5f7f5 !important;
+    box-shadow: 0 0 0 1px #e8eee8 inset !important;
+    border-radius: 8px !important;
     min-height: 38px !important;
 }
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__placeholder) {
-    color: rgba(230, 232, 235, 0.65) !important;
+.consultation-container :deep(.clean-toolbar .clean-select.el-select .el-select__placeholder) {
+    color: #9ead9e !important;
 }
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__placeholder.is-transparent) {
-    color: rgba(230, 232, 235, 0.5) !important;
+.consultation-container :deep(.clean-toolbar .clean-select.el-select .el-select__selected-item) {
+    color: #1a2e1a !important;
 }
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__selected-item) {
-    color: #fff !important;
+.consultation-container :deep(.clean-toolbar .clean-select.el-select .el-select__caret) {
+    color: #3dad6f !important;
 }
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__tags-text) {
-    color: #fff !important;
-}
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__caret) {
-    color: #FFE9A7 !important;
-}
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__suffix) {
-    color: rgba(255, 233, 167, 0.9) !important;
-}
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__clear) {
-    color: rgba(255, 255, 255, 0.75) !important;
-}
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__clear:hover) {
-    color: #fff !important;
-}
-.consultation-container :deep(.cosmic-toolbar .cosmic-select.el-select .el-select__wrapper.is-focused) {
-    box-shadow: 0 0 0 1px rgba(126, 200, 255, 0.75) inset, 0 0 12px rgba(64, 158, 255, 0.25) !important;
+.consultation-container :deep(.clean-toolbar .clean-select.el-select .el-select__wrapper.is-focused) {
+    box-shadow: 0 0 0 1px #3dad6f inset !important;
 }
 
-/* 下拉与弹窗样式见文件末尾「非 scoped」块（teleport 到 body，scoped 无法命中） */
-
-/* ========== 页头：选择科室 / 医院-科室 白字高对比 ========== */
-.consultation-container :deep(.cosmic-page-header.el-page-header) {
+/* ========== Page Header ========== */
+.consultation-container :deep(.clean-page-header.el-page-header) {
     background: transparent;
     padding: 4px 0 8px;
 }
-.consultation-container :deep(.cosmic-page-header .el-page-header__left) {
-    color: #fff !important;
+.consultation-container :deep(.clean-page-header .el-page-header__left) {
+    color: #1a2e1a !important;
 }
-.consultation-container :deep(.cosmic-page-header .el-page-header__title) {
-    color: #fff !important;
+.consultation-container :deep(.clean-page-header .el-page-header__title) {
+    color: #1a2e1a !important;
     font-size: 17px;
     font-weight: 600;
 }
-.consultation-container :deep(.cosmic-page-header .el-page-header__content) {
-    color: #fff !important;
+.consultation-container :deep(.clean-page-header .el-page-header__content) {
+    color: #1a2e1a !important;
     font-size: 17px;
     font-weight: 600;
 }
-.consultation-container :deep(.cosmic-page-header .el-page-header__back) {
-    color: rgba(255, 255, 255, 0.92) !important;
+.consultation-container :deep(.clean-page-header .el-page-header__back) {
+    color: #6b7b6b !important;
 }
-.consultation-container :deep(.cosmic-page-header .el-page-header__icon) {
-    color: #7EC8FF !important;
+.consultation-container :deep(.clean-page-header .el-page-header__icon) {
+    color: #3dad6f !important;
 }
 
-/* ========== 科室按钮：半透明玻璃 + 清晰文字（非白底白字） ========== */
-.consultation-container :deep(.cosmic-dept-btn.el-button) {
+/* ========== Department Buttons ========== */
+.consultation-container :deep(.clean-dept-btn.el-button) {
     min-height: 48px;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     font-weight: 600;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-.consultation-container :deep(.cosmic-dept-btn.el-button--default) {
-    background: rgba(10, 10, 42, 0.5) !important;
-    border: 1px solid rgba(255, 255, 255, 0.28) !important;
-    color: #fff !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+.consultation-container :deep(.clean-dept-btn.el-button--default) {
+    background: #ffffff !important;
+    border: 1px solid #e8eee8 !important;
+    color: #1a2e1a !important;
+    box-shadow: 0 2px 8px rgba(61, 173, 111, 0.04);
 }
-.consultation-container :deep(.cosmic-dept-btn.el-button--default:hover) {
-    background: rgba(64, 158, 255, 0.22) !important;
-    border-color: rgba(126, 200, 255, 0.55) !important;
-    color: #fff !important;
+.consultation-container :deep(.clean-dept-btn.el-button--default:hover) {
+    background: rgba(61, 173, 111, 0.06) !important;
+    border-color: #3dad6f !important;
+    color: #3dad6f !important;
     transform: translateY(-2px);
 }
-.consultation-container :deep(.cosmic-dept-btn.el-button--primary) {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.65), rgba(255, 233, 167, 0.28)) !important;
-    border: 1px solid rgba(255, 233, 167, 0.45) !important;
-    color: #fff !important;
-    box-shadow: 0 0 24px rgba(64, 158, 255, 0.35);
+.consultation-container :deep(.clean-dept-btn.el-button--primary) {
+    background: #3dad6f !important;
+    border: 1px solid #3dad6f !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(61, 173, 111, 0.2);
 }
-.consultation-container :deep(.cosmic-dept-btn.el-button--primary:hover) {
-    border-color: #FFE9A7 !important;
-    color: #fff !important;
+.consultation-container :deep(.clean-dept-btn.el-button--primary:hover) {
+    background: #35a062 !important;
+    border-color: #35a062 !important;
+    color: #ffffff !important;
 }
 
-/* ========== 日期选择：未选中也可读 + 主题渐变 ========== */
-.cosmic-date-selector {
+/* ========== Date Selector ========== */
+.clean-date-selector {
     padding: 16px 18px;
     margin: 20px 0;
-    background: linear-gradient(135deg, rgba(10, 10, 42, 0.5) 0%, rgba(42, 42, 106, 0.35) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #ffffff;
+    border: 1px solid #e8eee8;
+    border-radius: 12px;
     overflow-x: auto;
 }
-.consultation-container :deep(.cosmic-date-group.el-radio-group) {
+.consultation-container :deep(.clean-date-group.el-radio-group) {
     display: inline-flex;
     flex-wrap: nowrap;
     gap: 10px;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button__inner) {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.28) !important;
-    color: #f0f4ff !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button__inner) {
+    background: #f5f7f5 !important;
+    border: 1px solid #e8eee8 !important;
+    color: #6b7b6b !important;
     box-shadow: none !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     padding: 10px 18px !important;
     min-width: 88px;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button__inner span) {
+.consultation-container :deep(.clean-date-selector .el-radio-button__inner span) {
     color: inherit !important;
 }
-.consultation-container :deep(.cosmic-date-selector .date-cell span) {
+.consultation-container :deep(.clean-date-selector .date-cell span) {
     color: inherit !important;
 }
-.consultation-container :deep(.cosmic-date-selector .date-num) {
-    color: rgba(255, 233, 167, 0.95) !important;
+.consultation-container :deep(.clean-date-selector .date-num) {
+    color: #3dad6f !important;
     font-weight: 600;
     margin-top: 4px;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button:first-child .el-radio-button__inner) {
-    border-radius: 12px !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button:first-child .el-radio-button__inner) {
+    border-radius: 8px !important;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button:last-child .el-radio-button__inner) {
-    border-radius: 12px !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button:last-child .el-radio-button__inner) {
+    border-radius: 8px !important;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button__original-radio:checked + .el-radio-button__inner) {
-    background: linear-gradient(145deg, rgba(64, 158, 255, 0.75), rgba(54, 207, 201, 0.45)) !important;
-    border-color: rgba(255, 233, 167, 0.55) !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px rgba(64, 158, 255, 0.45) !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button__original-radio:checked + .el-radio-button__inner) {
+    background: #3dad6f !important;
+    border-color: #3dad6f !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(61, 173, 111, 0.2) !important;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button.is-active .el-radio-button__inner) {
-    background: linear-gradient(145deg, rgba(64, 158, 255, 0.75), rgba(54, 207, 201, 0.45)) !important;
-    border-color: rgba(255, 233, 167, 0.55) !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px rgba(64, 158, 255, 0.45) !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button.is-active .el-radio-button__inner) {
+    background: #3dad6f !important;
+    border-color: #3dad6f !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(61, 173, 111, 0.2) !important;
 }
-.consultation-container :deep(.cosmic-date-selector .el-radio-button.is-active .date-num) {
-    color: #fff !important;
+.consultation-container :deep(.clean-date-selector .el-radio-button.is-active .date-num) {
+    color: #ffffff !important;
 }
 
-/* ========== 空状态：弱化图标、文字可读 ========== */
+/* ========== Empty State ========== */
 .consultation-container :deep(.el-empty__description) {
-    color: rgba(255, 255, 255, 0.78) !important;
+    color: #6b7b6b !important;
 }
 .consultation-container :deep(.el-empty__image) {
     opacity: 0.55;
-    filter: drop-shadow(0 0 16px rgba(255, 233, 167, 0.2));
 }
 
-/* ========== 我的咨询/预约：表格玻璃态 ========== */
-.cosmic-history-panel {
+/* ========== History Panel / Table ========== */
+.clean-history-panel {
     padding: 8px 4px 20px;
-    background: linear-gradient(180deg, rgba(10, 10, 42, 0.35) 0%, transparent 100%);
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e8eee8;
 }
-.consultation-container :deep(.cosmic-appointments-table.el-table) {
+.consultation-container :deep(.clean-appointments-table.el-table) {
     --el-table-bg-color: transparent;
-    --el-table-tr-bg-color: rgba(10, 10, 42, 0.28);
-    --el-table-header-bg-color: rgba(10, 10, 42, 0.65);
-    --el-table-row-hover-bg-color: rgba(64, 158, 255, 0.15);
-    --el-table-border-color: rgba(255, 255, 255, 0.12);
+    --el-table-tr-bg-color: #ffffff;
+    --el-table-header-bg-color: #f5f7f5;
+    --el-table-row-hover-bg-color: rgba(61, 173, 111, 0.04);
+    --el-table-border-color: #e8eee8;
     background: transparent !important;
-    color: #E6E8EB !important;
+    color: #1a2e1a !important;
 }
-.consultation-container :deep(.cosmic-appointments-table .el-table__inner-wrapper::before) {
+.consultation-container :deep(.clean-appointments-table .el-table__inner-wrapper::before) {
     display: none;
 }
-.consultation-container :deep(.cosmic-appointments-table th.el-table__cell) {
-    background: rgba(10, 10, 42, 0.72) !important;
-    color: #FFE9A7 !important;
+.consultation-container :deep(.clean-appointments-table th.el-table__cell) {
+    background: #f5f7f5 !important;
+    color: #1a2e1a !important;
     font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-bottom: 1px solid #e8eee8 !important;
 }
-.consultation-container :deep(.cosmic-appointments-table td.el-table__cell) {
+.consultation-container :deep(.clean-appointments-table td.el-table__cell) {
     background: transparent !important;
-    color: #E6E8EB !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #6b7b6b !important;
+    border-bottom: 1px solid #e8eee8 !important;
 }
-.consultation-container :deep(.cosmic-appointments-table .el-button) {
+.consultation-container :deep(.clean-appointments-table .el-button) {
     margin: 2px 4px 2px 0;
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.45), rgba(103, 194, 58, 0.3)) !important;
-    border: 1px solid rgba(64, 158, 255, 0.4) !important;
-    color: #fff !important;
-    font-weight: 500;
     border-radius: 8px !important;
+    font-weight: 500;
     transition: all 0.2s;
 }
-.consultation-container :deep(.cosmic-appointments-table .el-button:hover) {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.7), rgba(103, 194, 58, 0.5)) !important;
-    border-color: rgba(126, 200, 255, 0.7) !important;
-    color: #fff !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(64, 158, 255, 0.35) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--small) {
+.consultation-container :deep(.clean-appointments-table .el-button--small) {
     padding: 8px 14px;
     font-size: 13px;
 }
-.consultation-container :deep(.cosmic-appointments-table .el-button--danger) {
-    background: linear-gradient(135deg, rgba(245, 108, 108, 0.45), rgba(230, 162, 60, 0.3)) !important;
-    border-color: rgba(245, 108, 108, 0.4) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--danger:hover) {
-    background: linear-gradient(135deg, rgba(245, 108, 108, 0.7), rgba(230, 162, 60, 0.5)) !important;
-    border-color: rgba(245, 108, 108, 0.7) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--warning) {
-    background: linear-gradient(135deg, rgba(230, 162, 60, 0.45), rgba(255, 233, 167, 0.2)) !important;
-    border-color: rgba(230, 162, 60, 0.4) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--warning:hover) {
-    background: linear-gradient(135deg, rgba(230, 162, 60, 0.7), rgba(255, 233, 167, 0.4)) !important;
-    border-color: rgba(230, 162, 60, 0.7) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--success) {
-    background: linear-gradient(135deg, rgba(103, 194, 58, 0.45), rgba(64, 158, 255, 0.3)) !important;
-    border-color: rgba(103, 194, 58, 0.4) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-button--success:hover) {
-    background: linear-gradient(135deg, rgba(103, 194, 58, 0.7), rgba(64, 158, 255, 0.5)) !important;
-    border-color: rgba(103, 194, 58, 0.7) !important;
-}
-.consultation-container :deep(.cosmic-appointments-table .el-tag) {
-    border: none !important;
-    font-weight: 600;
-}
 
-/* 表单、结果页等通用深色适配 */
+/* Form */
 .consultation-container :deep(.el-form-item__label) {
-    color: rgba(255, 255, 255, 0.88) !important;
+    color: #1a2e1a !important;
 }
 .consultation-container :deep(.el-textarea__inner),
 .consultation-container :deep(.el-input__wrapper) {
-    background: rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+    background: #f5f7f5 !important;
+    box-shadow: 0 0 0 1px #e8eee8 inset !important;
 }
 .consultation-container :deep(.el-textarea__inner) {
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .consultation-container :deep(.el-result__title) {
-    color: #fff !important;
+    color: #1a2e1a !important;
 }
 .consultation-container :deep(.el-result__subtitle) {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: #6b7b6b !important;
+}
+
+/* Doctor list search results heading */
+.doctor-list h3 {
+    color: #1a2e1a !important;
 }
 </style>
 
 <style>
-/* 心理咨询页：Select 下拉与 Dialog 挂载在 body，须使用非 scoped 全局选择器 */
-/* ========== 心理咨询：Select 下拉（popper + 内层） ========== */
-.el-popper.el-select__popper.cosmic-select-dropdown {
-    background: rgba(12, 12, 46, 0.98) !important;
-    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+/* ========== Select Dropdown (popper) ========== */
+.el-popper.el-select__popper.clean-select-dropdown {
+    background: #ffffff !important;
+    border: 1px solid #e8eee8 !important;
     border-radius: 12px !important;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(64, 158, 255, 0.15) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown {
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-scrollbar__wrap {
+.el-popper.el-select__popper.clean-select-dropdown .el-scrollbar__wrap {
     background: transparent !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__item {
-    color: #E8ECF4 !important;
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__item {
+    color: #1a2e1a !important;
     font-weight: 500;
     margin: 2px 6px;
     border-radius: 8px;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__item:hover,
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__item.hover {
-    background: rgba(64, 158, 255, 0.35) !important;
-    color: #fff !important;
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__item:hover,
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__item.hover {
+    background: rgba(61, 173, 111, 0.08) !important;
+    color: #3dad6f !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__item.is-selected {
-    color: #FFE9A7 !important;
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__item.is-selected {
+    color: #3dad6f !important;
     font-weight: 700;
-    background: rgba(255, 233, 167, 0.14) !important;
+    background: rgba(61, 173, 111, 0.06) !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__item.is-hovering {
-    background: rgba(64, 158, 255, 0.3) !important;
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__item.is-hovering {
+    background: rgba(61, 173, 111, 0.08) !important;
 }
-.el-popper.el-select__popper.cosmic-select-dropdown .el-select-dropdown__empty {
-    color: rgba(255, 255, 255, 0.55) !important;
+.el-popper.el-select__popper.clean-select-dropdown .el-select-dropdown__empty {
+    color: #9ead9e !important;
     padding: 12px;
 }
 
-/* 兼容：下拉根节点直接带 cosmic-select-dropdown */
-.el-select-dropdown.cosmic-select-dropdown {
-    background: rgba(12, 12, 46, 0.98) !important;
-    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+.el-select-dropdown.clean-select-dropdown {
+    background: #ffffff !important;
+    border: 1px solid #e8eee8 !important;
     border-radius: 12px !important;
 }
-.el-select-dropdown.cosmic-select-dropdown .el-select-dropdown__item {
-    color: #E8ECF4 !important;
+.el-select-dropdown.clean-select-dropdown .el-select-dropdown__item {
+    color: #1a2e1a !important;
     font-weight: 500;
 }
-.el-select-dropdown.cosmic-select-dropdown .el-select-dropdown__item:hover,
-.el-select-dropdown.cosmic-select-dropdown .el-select-dropdown__item.hover {
-    background: rgba(64, 158, 255, 0.35) !important;
-    color: #fff !important;
+.el-select-dropdown.clean-select-dropdown .el-select-dropdown__item:hover,
+.el-select-dropdown.clean-select-dropdown .el-select-dropdown__item.hover {
+    background: rgba(61, 173, 111, 0.08) !important;
+    color: #3dad6f !important;
 }
-.el-select-dropdown.cosmic-select-dropdown .el-select-dropdown__item.is-selected {
-    color: #FFE9A7 !important;
-    background: rgba(255, 233, 167, 0.14) !important;
+.el-select-dropdown.clean-select-dropdown .el-select-dropdown__item.is-selected {
+    color: #3dad6f !important;
+    background: rgba(61, 173, 111, 0.06) !important;
 }
 
-/* ========== 心理咨询：cosmic-dialog（teleport 到 body） ========== */
-.el-dialog.cosmic-dialog {
-    background: linear-gradient(160deg, rgba(12, 12, 46, 0.98) 0%, rgba(26, 26, 74, 0.96) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65), 0 0 48px rgba(64, 158, 255, 0.14) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+/* ========== Dialog ========== */
+.el-dialog.clean-dialog {
+    background: #ffffff !important;
+    border: 1px solid #e8eee8 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1) !important;
 }
-.el-dialog.cosmic-dialog .el-dialog__header {
+.el-dialog.clean-dialog .el-dialog__header {
     background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid #e8eee8;
     padding: 20px 24px 16px;
 }
-.el-dialog.cosmic-dialog .el-dialog__title {
-    color: #FFE9A7 !important;
+.el-dialog.clean-dialog .el-dialog__title {
+    color: #1a2e1a !important;
     font-size: 17px;
     font-weight: 700;
 }
-.el-dialog.cosmic-dialog .el-dialog__headerbtn .el-dialog__close {
-    color: rgba(255, 255, 255, 0.75) !important;
+.el-dialog.clean-dialog .el-dialog__headerbtn .el-dialog__close {
+    color: #6b7b6b !important;
     font-size: 18px;
 }
-.el-dialog.cosmic-dialog .el-dialog__headerbtn:hover .el-dialog__close {
-    color: #FFE9A7 !important;
+.el-dialog.clean-dialog .el-dialog__headerbtn:hover .el-dialog__close {
+    color: #3dad6f !important;
 }
-.el-dialog.cosmic-dialog .el-dialog__body {
+.el-dialog.clean-dialog .el-dialog__body {
     background: transparent !important;
-    color: #E6E8EB !important;
+    color: #1a2e1a !important;
     padding: 24px;
 }
-.el-dialog.cosmic-dialog .el-dialog__footer {
+.el-dialog.clean-dialog .el-dialog__footer {
     background: transparent !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid #e8eee8;
     padding: 16px 24px 20px;
 }
 
-.el-dialog.cosmic-dialog .el-form-item__label {
-    color: rgba(255, 255, 255, 0.9) !important;
+.el-dialog.clean-dialog .el-form-item__label {
+    color: #1a2e1a !important;
     font-weight: 500;
 }
-.el-dialog.cosmic-dialog .el-input__wrapper,
-.el-dialog.cosmic-dialog .el-textarea__inner {
-    background: rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22) inset !important;
-    border-radius: 10px !important;
+.el-dialog.clean-dialog .el-input__wrapper,
+.el-dialog.clean-dialog .el-textarea__inner {
+    background: #f5f7f5 !important;
+    box-shadow: 0 0 0 1px #e8eee8 inset !important;
+    border-radius: 8px !important;
 }
-.el-dialog.cosmic-dialog .el-input__inner,
-.el-dialog.cosmic-dialog .el-textarea__inner {
-    color: #fff !important;
+.el-dialog.clean-dialog .el-input__inner,
+.el-dialog.clean-dialog .el-textarea__inner {
+    color: #1a2e1a !important;
 }
-.el-dialog.cosmic-dialog .el-input__inner::placeholder,
-.el-dialog.cosmic-dialog .el-textarea__inner::placeholder {
-    color: rgba(200, 210, 220, 0.45) !important;
-}
-
-.el-dialog.cosmic-dialog .el-select .el-select__wrapper {
-    background: linear-gradient(135deg, rgba(10, 10, 42, 0.75), rgba(26, 26, 74, 0.55)) !important;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) inset !important;
-}
-.el-dialog.cosmic-dialog .el-select .el-select__placeholder {
-    color: rgba(230, 232, 235, 0.55) !important;
-}
-.el-dialog.cosmic-dialog .el-select .el-select__selected-item,
-.el-dialog.cosmic-dialog .el-select .el-select__tags-text {
-    color: #fff !important;
-}
-.el-dialog.cosmic-dialog .el-select .el-select__caret {
-    color: #FFE9A7 !important;
+.el-dialog.clean-dialog .el-input__inner::placeholder,
+.el-dialog.clean-dialog .el-textarea__inner::placeholder {
+    color: #9ead9e !important;
 }
 
-.el-dialog.cosmic-dialog .el-radio__label {
-    color: #E6E8EB !important;
+.el-dialog.clean-dialog .el-select .el-select__wrapper {
+    background: #f5f7f5 !important;
+    box-shadow: 0 0 0 1px #e8eee8 inset !important;
 }
-.el-dialog.cosmic-dialog .el-radio-button__inner {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.28) !important;
-    color: #E6E8EB !important;
+.el-dialog.clean-dialog .el-select .el-select__placeholder {
+    color: #9ead9e !important;
 }
-.el-dialog.cosmic-dialog .el-radio-button.is-active .el-radio-button__inner {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.7), rgba(103, 194, 58, 0.45)) !important;
-    border-color: rgba(255, 233, 167, 0.5) !important;
-    color: #fff !important;
-    box-shadow: 0 0 14px rgba(64, 158, 255, 0.35) !important;
+.el-dialog.clean-dialog .el-select .el-select__selected-item,
+.el-dialog.clean-dialog .el-select .el-select__tags-text {
+    color: #1a2e1a !important;
+}
+.el-dialog.clean-dialog .el-select .el-select__caret {
+    color: #3dad6f !important;
 }
 
-/* 边框表格：标签列 + 内容列（覆盖默认白底浅灰字） */
-.el-dialog.cosmic-dialog .el-descriptions {
-    --el-descriptions-item-bordered-label-background: rgba(10, 10, 42, 0.92);
-    --el-text-color-primary: #E6E8EB;
-    color: #E6E8EB !important;
+.el-dialog.clean-dialog .el-radio__label {
+    color: #1a2e1a !important;
 }
-.el-dialog.cosmic-dialog .el-descriptions__body {
+.el-dialog.clean-dialog .el-radio-button__inner {
+    background: #f5f7f5 !important;
+    border-color: #e8eee8 !important;
+    color: #6b7b6b !important;
+}
+.el-dialog.clean-dialog .el-radio-button.is-active .el-radio-button__inner {
+    background: #3dad6f !important;
+    border-color: #3dad6f !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(61, 173, 111, 0.2) !important;
+}
+
+/* Descriptions */
+.el-dialog.clean-dialog .el-descriptions {
+    --el-descriptions-item-bordered-label-background: #f5f7f5;
+    --el-text-color-primary: #1a2e1a;
+    color: #1a2e1a !important;
+}
+.el-dialog.clean-dialog .el-descriptions__body {
     background: transparent !important;
 }
-.el-dialog.cosmic-dialog .el-descriptions__body .el-descriptions__table.is-bordered .el-descriptions__cell {
-    border-color: rgba(255, 255, 255, 0.14) !important;
+.el-dialog.clean-dialog .el-descriptions__body .el-descriptions__table.is-bordered .el-descriptions__cell {
+    border-color: #e8eee8 !important;
 }
-.el-dialog.cosmic-dialog .el-descriptions__label.is-bordered-label {
-    background: rgba(10, 10, 42, 0.92) !important;
-    color: #FFE9A7 !important;
+.el-dialog.clean-dialog .el-descriptions__label.is-bordered-label {
+    background: #f5f7f5 !important;
+    color: #1a2e1a !important;
     font-weight: 600;
 }
-.el-dialog.cosmic-dialog .el-descriptions__content.is-bordered-content {
-    background: rgba(255, 255, 255, 0.08) !important;
-    color: #F2F6FA !important;
+.el-dialog.clean-dialog .el-descriptions__content.is-bordered-content {
+    background: #ffffff !important;
+    color: #1a2e1a !important;
     font-weight: 500;
 }
-.el-dialog.cosmic-dialog .el-descriptions__content.is-bordered-content * {
+.el-dialog.clean-dialog .el-descriptions__content.is-bordered-content * {
     color: inherit;
 }
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag {
+.el-dialog.clean-dialog .el-descriptions__content .el-tag {
     border: none !important;
     font-weight: 600;
 }
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag--success {
-    background: rgba(103, 194, 58, 0.45) !important;
-    color: #fff !important;
-    border: 1px solid rgba(163, 220, 120, 0.5) !important;
-}
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag--primary {
-    background: rgba(64, 158, 255, 0.4) !important;
-    color: #fff !important;
-}
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag--warning {
-    background: rgba(230, 162, 60, 0.45) !important;
-    color: #fff !important;
-}
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag--info {
-    background: rgba(144, 147, 153, 0.4) !important;
-    color: #fff !important;
-}
-.el-dialog.cosmic-dialog .el-descriptions__content .el-tag--danger {
-    background: rgba(245, 108, 108, 0.45) !important;
-    color: #fff !important;
-}
 
-.el-dialog.cosmic-dialog .el-rate__text {
-    color: #FFE9A7 !important;
+.el-dialog.clean-dialog .el-rate__text {
+    color: #3dad6f !important;
 }
-.el-dialog.cosmic-dialog .el-rate {
+.el-dialog.clean-dialog .el-rate {
     --el-rate-icon-font-size: 24px;
 }
 
-.el-dialog.cosmic-dialog .el-button {
-    border-radius: 10px !important;
+.el-dialog.clean-dialog .el-button {
+    border-radius: 8px !important;
     font-weight: 600;
 }
-.el-dialog.cosmic-dialog .el-button--primary {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.75), rgba(103, 194, 58, 0.5)) !important;
-    border-color: rgba(64, 158, 255, 0.55) !important;
-    color: #fff !important;
-    box-shadow: 0 4px 16px rgba(64, 158, 255, 0.35) !important;
+.el-dialog.clean-dialog .el-button--primary {
+    background: #3dad6f !important;
+    border-color: #3dad6f !important;
+    color: #ffffff !important;
 }
-.el-dialog.cosmic-dialog .el-button--primary:hover {
-    background: linear-gradient(135deg, rgba(64, 158, 255, 0.92), rgba(103, 194, 58, 0.65)) !important;
-    border-color: rgba(126, 200, 255, 0.75) !important;
-    color: #fff !important;
+.el-dialog.clean-dialog .el-button--primary:hover {
+    background: #35a062 !important;
+    border-color: #35a062 !important;
 }
-.el-dialog.cosmic-dialog .el-button--default {
-    background: rgba(255, 255, 255, 0.12) !important;
-    border: 1px solid rgba(255, 255, 255, 0.38) !important;
-    color: #fff !important;
+.el-dialog.clean-dialog .el-button--default {
+    background: #ffffff !important;
+    border: 1px solid #e8eee8 !important;
+    color: #6b7b6b !important;
 }
-.el-dialog.cosmic-dialog .el-button--default:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
-    border-color: rgba(255, 233, 167, 0.45) !important;
-    color: #fff !important;
+.el-dialog.clean-dialog .el-button--default:hover {
+    background: #f5f7f5 !important;
+    border-color: #3dad6f !important;
+    color: #3dad6f !important;
 }
 
-.el-dialog.cosmic-dialog .el-upload--picture-card {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px dashed rgba(255, 255, 255, 0.38) !important;
-    border-radius: 10px !important;
+.el-dialog.clean-dialog .el-upload--picture-card {
+    background: #f5f7f5 !important;
+    border: 1px dashed #e8eee8 !important;
+    border-radius: 8px !important;
 }
-.el-dialog.cosmic-dialog .el-upload-list__item {
+.el-dialog.clean-dialog .el-upload-list__item {
     border-radius: 8px !important;
 }
 </style>

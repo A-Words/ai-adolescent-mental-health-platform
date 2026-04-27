@@ -411,7 +411,7 @@ const handleRegister = async () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1A2A3A 0%, #2D3E50 50%, #1A2A3A 100%);
+  background: #f5f7f5;
   position: relative;
   overflow: hidden;
 }
@@ -423,7 +423,7 @@ const handleRegister = async () => {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 233, 167, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(61, 173, 111, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -457,7 +457,7 @@ const handleRegister = async () => {
 .brand-title span {
   display: inline-block;
   opacity: 0;
-  background: linear-gradient(to right, #FFE9A7, #E6F0FF);
+  background: linear-gradient(to right, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -477,11 +477,10 @@ const handleRegister = async () => {
 .register-card {
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-  border: none !important;
-  background-color: rgba(58, 74, 90, 0.95) !important;
-  backdrop-filter: blur(10px);
-  border-radius: 20px !important;
+  box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06) !important;
+  border: 1px solid #e8eee8 !important;
+  background-color: #ffffff !important;
+  border-radius: 16px !important;
   padding: 40px;
 }
 
@@ -494,16 +493,16 @@ const handleRegister = async () => {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #E6F0FF;
+  color: #1a2e1a;
   text-align: center;
-  background: linear-gradient(135deg, #FFE9A7, #E6F0FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #1a2e1a;
+  background-clip: unset;
 }
 
 .register-subtitle {
-  color: #B0BEC5;
+  color: #6b7b6b;
   text-align: center;
   margin-bottom: 10px;
   font-size: 14px;
@@ -514,41 +513,41 @@ const handleRegister = async () => {
 }
 
 .register-form :deep(.el-form-item__label) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
   font-weight: 500;
   font-size: 14px;
   padding-right: 20px;
 }
 
 .custom-input :deep(.el-input__wrapper) {
-  background-color: #2A3A4A !important;
-  border: 1px solid #4A5A6A;
-  border-radius: 10px;
+  background-color: #f5f7f5 !important;
+  border: 1px solid #e8eee8;
+  border-radius: 9999px;
   box-shadow: none !important;
   padding: 12px 16px;
 }
 
 .custom-input :deep(.el-input__wrapper:hover) {
-  border-color: #FFE9A7;
+  border-color: #3dad6f;
 }
 
 .custom-input :deep(.el-input__wrapper.is-focus) {
-  border-color: #FFE9A7;
-  box-shadow: 0 0 0 2px rgba(255, 233, 167, 0.2) !important;
+  border-color: #3dad6f;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.12) !important;
 }
 
 .custom-input :deep(.el-input__inner) {
-  color: #E6F0FF !important;
+  color: #1a2e1a !important;
   font-size: 14px;
 }
 
 .custom-input :deep(.el-input__inner::placeholder) {
-  color: #B0BEC5 !important;
+  color: #9ead9e !important;
   opacity: 0.6;
 }
 
 .custom-input :deep(.el-input__prefix) {
-  color: #FFE9A7;
+  color: #3dad6f;
 }
 
 /* 验证码输入行 */
@@ -566,49 +565,49 @@ const handleRegister = async () => {
   flex-shrink: 0;
   height: 42px;
   min-width: 120px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 10px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 14px;
   white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .send-code-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  background: #2d8a55 !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3);
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25);
 }
 
 .send-code-btn:disabled {
-  background: #3A4A5A !important;
-  color: #B0BEC5 !important;
+  background: #e8eee8 !important;
+  color: #9ead9e !important;
   cursor: not-allowed;
 }
 
 .phone-prefix {
-  color: #FFE9A7;
+  color: #3dad6f;
   font-size: 14px;
   margin-right: 8px;
 }
 
 .input-hint {
   font-size: 12px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   margin-top: 6px;
   margin-left: 0;
 }
 
 .input-hint.optional {
-  color: #9BB0A0;
+  color: #3dad6f;
   opacity: 0.7;
 }
 
 .character-count {
   font-size: 12px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   opacity: 0.6;
 }
 
@@ -618,7 +617,7 @@ const handleRegister = async () => {
 
 .strength-bar {
   height: 4px;
-  background: rgba(155, 176, 160, 0.2);
+  background: rgba(61, 173, 111, 0.15);
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -635,19 +634,19 @@ const handleRegister = async () => {
   content: '';
   position: absolute;
   left: 0; top: 0; height: 100%; width: 60%;
-  background: #F9C48B; border-radius: 2px;
+  background: #f5a623; border-radius: 2px;
 }
 
 .strength-strength.strong .strength-bar::before {
   content: '';
   position: absolute;
   left: 0; top: 0; height: 100%; width: 100%;
-  background: #9BB0A0; border-radius: 2px;
+  background: #3dad6f; border-radius: 2px;
 }
 
 .strength-text {
   font-size: 12px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   margin-top: 4px;
 }
 
@@ -659,20 +658,20 @@ const handleRegister = async () => {
 .register-btn {
   width: 100%;
   height: 48px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 10px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-size: 16px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   margin-bottom: 16px;
 }
 
 .register-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3) !important;
-  background: linear-gradient(135deg, #FFD54F, #FFE9A7) !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25) !important;
+  background: #2d8a55 !important;
 }
 
 .login-link {
@@ -680,106 +679,102 @@ const handleRegister = async () => {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 14px;
 }
 
 .login-link .login-btn {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   font-weight: 500;
   padding: 0;
   height: auto;
 }
 
 .login-link .login-btn:hover {
-  color: #E6F0FF !important;
+  color: #2d8a55 !important;
   transform: translateX(2px);
 }
 
 .agreement {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(74, 90, 106, 0.5);
+  border-top: 1px solid #e8eee8;
   text-align: center;
 }
 
 .agreement :deep(.el-checkbox__label) {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 13px;
 }
 
 .agreement :deep(.el-checkbox__inner) {
-  border-color: #4A5A6A;
-  background-color: #2A3A4A;
+  border-color: #e8eee8;
+  background-color: #ffffff;
 }
 
 .agreement :deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
-  background-color: #FFE9A7;
-  border-color: #FFE9A7;
+  background-color: #3dad6f;
+  border-color: #3dad6f;
 }
 
 .agreement-link {
-  color: #FFE9A7 !important;
+  color: #3dad6f !important;
   font-size: 13px !important;
   padding: 0 2px !important;
 }
 
 .agreement-link:hover {
-  color: #E6F0FF !important;
+  color: #2d8a55 !important;
   text-decoration: underline;
 }
 
 /* 隐私政策弹窗样式 */
 :deep(.privacy-dialog .el-dialog) {
   border-radius: 16px;
-  border: 1px solid #4A5A6A;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e8eee8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
   max-height: 90vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 :deep(.privacy-dialog) {
-  background: #2A3A4A !important;
+  background: #ffffff !important;
 }
 
 :deep(.privacy-dialog .el-dialog__header) {
-  border-bottom: 1px solid #4A5A6A;
+  border-bottom: 1px solid #e8eee8;
   padding: 20px 24px;
   margin-right: 0;
   flex-shrink: 0;
 }
 
 :deep(.privacy-dialog .el-dialog__title) {
-  color: #E6F0FF;
+  color: #1a2e1a;
   font-size: 18px;
   font-weight: 600;
-
 }
 
-
 :deep(.privacy-dialog .el-dialog__headerbtn .el-dialog__close) {
-  color: #B0BEC5;
+  color: #6b7b6b;
   font-size: 20px;
-
 }
 
 :deep(.privacy-dialog .el-dialog__headerbtn:hover .el-dialog__close) {
-  color: #FFE9A7;
+  color: #3dad6f;
 }
-
 
 :deep(.privacy-dialog .el-dialog__body) {
   padding: 24px;
   height: 400px;
   overflow-y: auto;
-  color: #B0BEC5;
+  color: #6b7b6b;
   flex: 1;
-  background-color: #2A3A4A !important;
+  background-color: #ffffff !important;
 }
 
 .privacy-content h3 {
-  color: #E6F0FF;
+  color: #1a2e1a;
   font-size: 16px;
   font-weight: 600;
   margin: 20px 0 12px 0;
@@ -797,38 +792,38 @@ const handleRegister = async () => {
 }
 
 :deep(.privacy-dialog .el-dialog__footer) {
-  border-top: 1px solid #4A5A6A;
+  border-top: 1px solid #e8eee8;
   padding: 16px 24px;
   text-align: center;
 }
 
 :deep(.privacy-dialog .el-dialog__footer .el-button) {
   width: 120px;
-  background: linear-gradient(135deg, #FFE9A7, #FFD54F) !important;
+  background: #3dad6f !important;
   border: none !important;
-  border-radius: 8px;
-  color: #1A2A3A !important;
+  border-radius: 9999px;
+  color: #ffffff !important;
   font-weight: 500;
 }
 
 :deep(.privacy-dialog .el-dialog__footer .el-button:hover) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 233, 167, 0.3);
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.25);
 }
 
 :deep(.success-message) {
-  background: #9BB0A0 !important;
+  background: #3dad6f !important;
   border: none !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(155, 176, 160, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.3) !important;
 }
 
 :deep(.error-message) {
-  background: rgba(249, 196, 139, 0.95) !important;
+  background: rgba(231, 76, 60, 0.9) !important;
   border: none !important;
   border-radius: 8px !important;
-  color: #2F3E46 !important;
-  box-shadow: 0 4px 12px rgba(249, 196, 139, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3) !important;
 }
 
 @media (max-width: 768px) {

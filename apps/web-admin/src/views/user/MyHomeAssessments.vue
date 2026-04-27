@@ -114,7 +114,7 @@ onMounted(() => {
 .page-header h2 {
   margin: 0 0 8px 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .subtitle {
@@ -136,7 +136,7 @@ onMounted(() => {
 .report-title {
   text-align: center;
   font-size: 22px;
-  color: #fff !important;
+  color: #1a2e1a !important;
   margin-bottom: 20px;
 }
 
@@ -160,7 +160,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
   margin-bottom: 15px;
   font-size: 18px;
 }
@@ -168,9 +168,9 @@ onMounted(() => {
 .analysis-text {
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9) !important;
-  background: rgba(64, 158, 255, 0.08) !important;
+  background: rgba(61, 173, 111, 0.08) !important;
   padding: 15px;
   border-radius: 8px;
-  border-left: 4px solid rgba(64, 158, 255, 0.5) !important;
+  border-left: 4px solid rgba(61, 173, 111, 0.5) !important;
 }
 </style>

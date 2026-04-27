@@ -575,12 +575,12 @@ onUnmounted(() => {
 <style scoped>
 .profile-edit {
   max-width: 700px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 h2 {
   margin-bottom: 24px;
-  color: #fff !important;
+  color: #1a2e1a !important;
   font-size: 20px;
 }
 
@@ -588,20 +588,20 @@ h2 {
   margin-bottom: 20px;
 }
 .mode-toggle :deep(.el-button--primary) {
-  background: rgba(64, 158, 255, 0.3) !important;
-  border-color: rgba(64, 158, 255, 0.5) !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 .mode-toggle :deep(.el-button--primary:hover) {
-  background: rgba(64, 158, 255, 0.5) !important;
+  background: #2d8d5f !important;
 }
 
 /* 查看模式 */
 .info-card {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
   overflow: hidden;
 }
 
@@ -609,7 +609,7 @@ h2 {
   display: flex;
   align-items: flex-start;
   padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid #e8eee8 !important;
   min-height: 56px;
 }
 .info-row:last-child {
@@ -623,14 +623,14 @@ h2 {
   width: 100px;
   flex-shrink: 0;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: #6b7b6b !important;
   line-height: 40px;
 }
 
 .info-value {
   flex: 1;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #1a2e1a !important;
   line-height: 40px;
   word-break: break-all;
 }
@@ -645,7 +645,7 @@ h2 {
 .signature-value {
   line-height: 1.6;
   white-space: pre-wrap;
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: #6b7b6b !important;
 }
 
 /* 标签 */
@@ -665,46 +665,46 @@ h2 {
   margin-bottom: 20px;
 }
 .profile-form :deep(.el-form-item__label) {
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: #6b7b6b !important;
   font-weight: 500;
 }
 .profile-form :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   box-shadow: none !important;
 }
 .profile-form :deep(.el-input__inner) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .profile-form :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 .profile-form :deep(.el-input.is-disabled .el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #f5f7f5 !important;
 }
 .profile-form :deep(.el-input.is-disabled .el-input__inner) {
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: #9ead9e !important;
 }
 .profile-form :deep(.el-radio__label) {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #1a2e1a !important;
 }
 .profile-form :deep(.el-radio__input.is-checked .el-radio__inner) {
-  background: rgba(64, 158, 255, 0.5) !important;
-  border-color: rgba(64, 158, 255, 0.6) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
 }
 .profile-form :deep(.el-textarea__inner) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #fff !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
   box-shadow: none !important;
 }
 .profile-form :deep(.el-textarea__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 .profile-form :deep(.el-upload__trigger) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  border-color: rgba(64, 158, 255, 0.4) !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 
 .avatar-upload {
@@ -714,15 +714,15 @@ h2 {
 
 .email-current {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.65) !important;
+  color: #6b7b6b !important;
   margin-bottom: 12px;
 }
 
 .email-change-area {
-  border: 1px dashed rgba(255, 255, 255, 0.25) !important;
+  border: 1px dashed #e8eee8 !important;
   border-radius: 8px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #f5f7f5 !important;
 }
 
 .new-email-input {
@@ -731,7 +731,7 @@ h2 {
 
 .email-change-hint {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.45) !important;
+  color: #6b7b6b !important;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -745,8 +745,8 @@ h2 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(144, 147, 153, 0.4) !important;
-  color: #fff !important;
+  background: #9ead9e !important;
+  color: #ffffff !important;
   font-size: 11px;
   font-style: normal;
   flex-shrink: 0;
@@ -764,20 +764,22 @@ h2 {
 
 .send-code-btn {
   flex-shrink: 0;
-  background: rgba(64, 158, 255, 0.3) !important;
-  border: 1px solid rgba(64, 158, 255, 0.5) !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  border: 1px solid #3dad6f !important;
+  color: #ffffff !important;
   white-space: nowrap;
   height: 32px;
 }
 .send-code-btn:disabled {
-  background: rgba(144, 147, 153, 0.2) !important;
+  background: #e8eee8 !important;
+  border-color: #e8eee8 !important;
+  color: #9ead9e !important;
   cursor: not-allowed;
 }
 
 .code-error {
   font-size: 12px;
-  color: #FF8C9A !important;
+  color: #f56c6c !important;
   margin-top: 4px;
 }
 
@@ -788,16 +790,16 @@ h2 {
   justify-content: center;
 }
 .form-actions :deep(.el-button--primary) {
-  background: rgba(64, 158, 255, 0.3) !important;
-  border-color: rgba(64, 158, 255, 0.5) !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 .form-actions :deep(.el-button--default) {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  background: #ffffff !important;
+  border-color: #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 .form-actions :deep(.el-button--primary:hover) {
-  background: rgba(64, 158, 255, 0.5) !important;
+  background: #2d8d5f !important;
 }
 </style>

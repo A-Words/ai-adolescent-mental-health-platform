@@ -168,22 +168,21 @@ onMounted(() => {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 /* 卡片 */
 .my-messages-container :deep(.el-card) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px);
-  color: #fff !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 .my-messages-container :deep(.el-card__body) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .my-messages-container :deep(.el-card__header) {
-  border-bottom-color: rgba(255, 255, 255, 0.15) !important;
-  color: #fff !important;
+  border-bottom-color: #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 
 /* 所有文本白色 */
@@ -195,7 +194,7 @@ onMounted(() => {
 .my-messages-container :deep(h6),
 .my-messages-container :deep(p),
 .my-messages-container :deep(span) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 /* 消息列表项 */
@@ -207,18 +206,18 @@ onMounted(() => {
   align-items: flex-start;
   gap: 15px;
   padding: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(61, 173, 111, 0.06) !important;
   cursor: pointer;
   transition: background 0.2s;
 }
 .message-item:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(61, 173, 111, 0.06) !important;
 }
 .message-item.unread {
-  background: rgba(64, 158, 255, 0.08) !important;
+  background: rgba(61, 173, 111, 0.08) !important;
 }
 .message-item.follow-msg {
-  border-left: 3px solid rgba(64, 158, 255, 0.6) !important;
+  border-left: 3px solid rgba(61, 173, 111, 0.6) !important;
 }
 
 /* 消息图标 - 渐变色语义 */
@@ -233,8 +232,8 @@ onMounted(() => {
   flex-shrink: 0;
 }
 .message-icon.icon-follow {
-  background: linear-gradient(135deg, rgba(64,158,255,0.4), rgba(54,207,201,0.4)) !important;
-  color: #7EC8FF !important;
+  background: linear-gradient(135deg, rgba(64,158,255,0.4), rgba(91,196,191,0.4)) !important;
+  color: #3dad6f !important;
 }
 .message-icon.icon-like {
   background: linear-gradient(135deg, rgba(245,108,108,0.4), rgba(230,82,82,0.4)) !important;
@@ -265,17 +264,17 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .message-body {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   margin-bottom: 8px;
   line-height: 1.5;
 }
 .message-time {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 .message-status {
   flex-shrink: 0;
@@ -287,14 +286,14 @@ onMounted(() => {
   justify-content: center;
 }
 .my-messages-container :deep(.el-pagination) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .my-messages-container :deep(.el-pagination button),
 .my-messages-container :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  color: #1a2e1a !important;
 }
 .my-messages-container :deep(.el-pager li.is-active) {
-  background: rgba(64, 158, 255, 0.4) !important;
+  background: rgba(61, 173, 111, 0.4) !important;
 }
 </style>

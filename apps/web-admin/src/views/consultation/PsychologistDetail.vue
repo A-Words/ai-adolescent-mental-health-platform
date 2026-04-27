@@ -1,15 +1,5 @@
 <template>
   <div class="psychologist-detail-container">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-      <div class="planet planet-1"></div>
-      <div class="planet planet-2"></div>
-      <div class="comet"></div>
-    </div>
-
     <!-- 返回按钮 -->
     <div class="back-nav">
       <el-button link @click="goBack" class="back-btn" >
@@ -20,11 +10,11 @@
 
     <div v-loading="loading" class="detail-content">
       <!-- 心理师信息卡片 -->
-      <div class="info-card cosmic-card" v-if="psychologist">
+      <div class="info-card" v-if="psychologist">
         <!-- 头部信息 -->
         <div class="info-header">
           <div class="avatar-section">
-            <el-avatar :size="130" :src="psychologist.headPath" class="psychologist-avatar cosmic-avatar">
+            <el-avatar :size="130" :src="psychologist.headPath" class="psychologist-avatar">
               <el-icon :size="60"><User /></el-icon>
             </el-avatar>
             <div class="online-indicator" :class="{ online: psychologist.onlineStatus === 1 }">
@@ -109,7 +99,7 @@
             </el-button>
             <el-button 
               type="primary" 
-              class="book-now-btn cosmic-btn-primary cosmic-btn"
+              class="book-now-btn"
               @click="scrollToSchedule"
             >
               立即预约
@@ -118,7 +108,7 @@
         </div>
 
         <!-- 标签页 -->
-        <el-tabs v-model="activeTab" class="detail-tabs cosmic-tabs">
+        <el-tabs v-model="activeTab" class="detail-tabs">
           <!-- 个人简介 -->
           <el-tab-pane label="个人简介" name="intro">
             <div class="intro-content">
@@ -153,7 +143,7 @@
           <el-tab-pane label="擅长领域" name="fields">
             <div class="fields-content">
               <div class="field-grid">
-                <div class="field-card cosmic-card" v-for="field in psychologist.fields" :key="field.id">
+                <div class="field-card" v-for="field in psychologist.fields" :key="field.id">
                   <div class="field-icon" v-html="getFieldIcon(field.icon)"></div>
                   <h4 class="field-name">{{ field.name || field.fieldName || '未知领域' }}</h4>
                 </div>
@@ -167,7 +157,7 @@
             <div class="services-content">
               <div class="service-cards">
                 <div
-                  class="service-card cosmic-card"
+                  class="service-card"
                   :class="{ selected: selectedService?.id === service.id, 'service-disabled': service.disabled }"
                   v-for="service in displayedServices"
                   :key="service.id"
@@ -254,7 +244,7 @@
                     {{ selectedService?.displayName }}：¥{{ formatPrice(selectedService) }}
                   </p>
                 </div>
-                <el-button type="primary" size="large" class="confirm-btn cosmic-btn-primary cosmic-btn" @click="showBookingForm">
+                <el-button type="primary" size="large" class="confirm-btn" @click="showBookingForm">
                   立即预约
                 </el-button>
               </div>
@@ -273,7 +263,7 @@
               </div>
 
               <div class="reviews-list" v-if="reviews.length > 0">
-                <div class="review-item cosmic-card" v-for="review in reviews" :key="review.id">
+                <div class="review-item" v-for="review in reviews" :key="review.id">
                   <div class="review-header">
                     <el-avatar :size="40" :src="review.userAvatar">{{ review.userName?.charAt(0) }}</el-avatar>
                     <div class="review-user">
@@ -297,7 +287,7 @@
       v-model="bookingFormVisible"
       title="填写预约信息"
       width="600px"
-      class="cosmic-dialog booking-dialog"
+      class="booking-dialog"
     >
       <div class="booking-modal-content">
         <!-- 顶部：服务信息 -->
@@ -338,14 +328,13 @@
         </div>
 
         <!-- 表单内容 -->
-        <el-form label-position="top" class="booking-form cosmic-form">
+        <el-form label-position="top" class="booking-form">
           <el-form-item label="主要问题" required>
             <el-input
               v-model="bookingForm.problems"
               type="textarea"
               :rows="3"
               placeholder="请详细描述您想解决的问题，以便心理师更好地帮助您..."
-              class="cosmic-textarea"
             />
           </el-form-item>
 
@@ -355,7 +344,6 @@
               type="textarea"
               :rows="2"
               placeholder="简单描述您的个人情况（可选）..."
-              class="cosmic-textarea"
             />
           </el-form-item>
         </el-form>
@@ -368,8 +356,8 @@
       </div>
 
       <template #footer>
-        <el-button @click="bookingFormVisible = false" class="cosmic-btn-secondary cosmic-btn">取消</el-button>
-        <el-button type="primary" @click="submitBooking" class="cosmic-btn-primary cosmic-btn" :loading="submitting">
+        <el-button @click="bookingFormVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitBooking" :loading="submitting">
           确认预约（¥{{ formatPrice(selectedService) }}）
         </el-button>
       </template>
@@ -380,7 +368,7 @@
       v-model="timeSlotDialogVisible"
       title="选择预约时段"
       width="500px"
-      class="cosmic-dialog time-slot-dialog"
+      class="time-slot-dialog"
       :show-close="false"
     >
       <div class="time-slot-modal">
@@ -438,12 +426,11 @@
 
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="timeSlotDialogVisible = false" class="cosmic-btn-secondary cosmic-btn">取消</el-button>
+          <el-button @click="timeSlotDialogVisible = false">取消</el-button>
           <el-button
             type="primary"
             @click="confirmTimeSlot"
-            class="cosmic-btn-primary cosmic-btn"
-            :disabled="!selectedTimeSlot"
+                       :disabled="!selectedTimeSlot"
           >
             确认时段
           </el-button>
@@ -456,7 +443,7 @@
       v-model="paymentDialogVisible"
       title="确认支付"
       width="450px"
-      class="cosmic-dialog payment-dialog"
+      class="payment-dialog"
       :show-close="false"
     >
       <div class="payment-modal-content" v-if="pendingAppointment">
@@ -494,8 +481,8 @@
       </div>
 
       <template #footer>
-        <el-button @click="handlePaymentCancel" class="cosmic-btn-secondary cosmic-btn">取消支付</el-button>
-        <el-button type="primary" @click="handlePaymentConfirm" class="cosmic-btn-primary cosmic-btn" :loading="paymentLoading">
+        <el-button @click="handlePaymentCancel">取消支付</el-button>
+        <el-button type="primary" @click="handlePaymentConfirm" :loading="paymentLoading">
           确认支付（¥{{ pendingAppointment?.price }}）
         </el-button>
       </template>
@@ -1137,121 +1124,7 @@ onMounted(() => {
   margin: 0 auto;
   position: relative;
   overflow-x: hidden;
-}
-
-/* 星空背景 */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  overflow: hidden;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before, .stars:after,
-.stars2:before, .stars2:after,
-.stars3:before, .stars3:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before {
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  animation: starsMove 200s linear infinite;
-}
-
-.stars:after {
-  background-image: radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: starsMove 150s linear infinite;
-}
-
-.stars2:before {
-  background-image: radial-gradient(1px 1px at 90px 120px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: starsMove 100s linear infinite;
-}
-
-.stars3:before {
-  background-image: radial-gradient(3px 3px at 150px 200px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: starsMove 250s linear infinite;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0px) }
-  to { transform: translateY(-2000px) }
-}
-
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  z-index: 0;
-}
-
-.planet-1 {
-  width: 100px;
-  height: 100px;
-  top: 10%;
-  right: 5%;
-  background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
-  box-shadow: 0 0 40px rgba(255, 154, 158, 0.5);
-  animation: float 25s infinite ease-in-out;
-}
-
-.planet-2 {
-  width: 80px;
-  height: 80px;
-  bottom: 15%;
-  left: 3%;
-  background: radial-gradient(circle at 30% 30%, #a1c4fd, #c2e9fb);
-  box-shadow: 0 0 50px rgba(161, 196, 253, 0.5);
-  animation: float 30s infinite ease-in-out reverse;
-}
-
-.comet {
-  position: absolute;
-  top: 15%;
-  left: -50px;
-  width: 150px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  transform: rotate(45deg);
-  animation: cometMove 20s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes cometMove {
-  0% { transform: translateX(-100px) translateY(-100px) rotate(45deg); }
-  100% { transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg); }
+  background: #f5f7f5;
 }
 
 /* 返回导航 */
@@ -1262,12 +1135,12 @@ onMounted(() => {
 }
 
 .back-btn {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6b7b6b !important;
   font-size: 20px;
 }
 
 .back-btn:hover {
-  color: #fff !important;
+  color: #1a2e1a !important;
 
 }
 
@@ -1280,6 +1153,10 @@ onMounted(() => {
 
 .info-card {
   padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 /* 头部信息 */
@@ -1295,8 +1172,8 @@ onMounted(() => {
 }
 
 .psychologist-avatar {
-  border: 4px solid rgba(255, 215, 0, 0.5);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  border: 4px solid #e8eee8;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .online-indicator {
@@ -1307,13 +1184,13 @@ onMounted(() => {
   padding: 4px 16px;
   border-radius: 12px;
   font-size: 12px;
-  background: rgba(100, 100, 100, 0.9);
-  color: #fff;
+  background: #9ead9e;
+  color: #ffffff;
 }
 
 .online-indicator.online {
-  background: linear-gradient(135deg, #4ade80, #22c55e);
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+  background: #3dad6f;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 
 
 }
@@ -1332,7 +1209,7 @@ onMounted(() => {
 .psychologist-name {
   font-size: 40px;
   font-weight: 700;
-  color: #fff;
+  color: #1a2e1a;
   margin: 10px;
 }
 
@@ -1351,15 +1228,15 @@ onMounted(() => {
 }
 
 .verified-badge {
-  background: rgba(255, 215, 0, 0.2);
-  color: #ffd700;
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: rgba(61, 173, 111, 0.1);
+  color: #3dad6f;
+  border: 1px solid rgba(61, 173, 111, 0.3);
 }
 
 .active-badge {
-  background: rgba(74, 222, 128, 0.2);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.4);
+  background: rgba(61, 173, 111, 0.1);
+  color: #3dad6f;
+  border: 1px solid rgba(61, 173, 111, 0.3);
 }
 
 .stats-row {
@@ -1379,18 +1256,18 @@ onMounted(() => {
 .stat-value {
   font-size: 28px;
   font-weight: 700;
-  color: #ffd700;
+  color: #1a2e1a;
 }
 
 .stat-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.2);
+  background: #e8eee8;
 }
 
 .tags-row {
@@ -1401,16 +1278,16 @@ onMounted(() => {
 }
 
 .field-tag {
-  background: rgba(135, 206, 235, 0.2) !important;
-  border: 1px solid rgba(135, 206, 235, 0.4) !important;
-  color: #87ceeb !important;
+  background: rgba(61, 173, 111, 0.08) !important;
+  border: 1px solid #e8eee8 !important;
+  color: #3dad6f !important;
   font-size: 15px;
 }
 
 .qualification-tag {
-  background: rgba(255, 215, 0, 0.2) !important;
-  border: 1px solid rgba(255, 215, 0, 0.4) !important;
-  color: #ffd700 !important;
+  background: rgba(61, 173, 111, 0.08) !important;
+  border: 1px solid #e8eee8 !important;
+  color: #3dad6f !important;
   font-size: 15px;
 }
 
@@ -1423,21 +1300,21 @@ onMounted(() => {
 .language-label {
   font-size: 20px;
   padding: 5px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .language-tag {
   margin: 3px;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  border: 1px solid #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 
 .offline-info {
   margin-top: 16px;
   padding: 16px;
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(129, 140, 248, 0.1) 100%);
-  border: 1px solid rgba(167, 139, 250, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 12px;
 }
 
@@ -1450,13 +1327,13 @@ onMounted(() => {
 
 .offline-location .el-icon {
   font-size: 18px;
-  color: #a78bfa;
+  color: #3dad6f;
 }
 
 .offline-label {
   font-size: 14px;
   font-weight: 600;
-  color: #a78bfa;
+  color: #3dad6f;
 }
 
 .offline-address-detail {
@@ -1468,13 +1345,13 @@ onMounted(() => {
 
 .offline-address-detail .region {
   font-size: 15px;
-  color: #ffffff;
+  color: #1a2e1a;
   font-weight: 500;
 }
 
 .offline-address-detail .address {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
 }
 
 .action-section {
@@ -1489,16 +1366,16 @@ onMounted(() => {
   padding: 12px 32px;
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #3dad6f;
   border: none;
-  color: #fff;
+  color: #ffffff;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .book-now-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 2px 12px rgba(61,173,111,0.15);
 }
 
 /* 详情标签页 */
@@ -1507,7 +1384,7 @@ onMounted(() => {
   padding: 30px 0;
 
 }
-.cosmic-tabs :deep(.el-tabs__item) {
+.detail-tabs :deep(.el-tabs__item) {
   font-size: 20px;
 }
 /* 个人简介 */
@@ -1518,16 +1395,16 @@ onMounted(() => {
 .section-title {
   font-size: 30px;
   font-weight: 600;
-  color: #ffd700;
+  color: #1a2e1a;
   margin: 0 0 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid #e8eee8;
 
 }
 
 .intro-text {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #1a2e1a;
   line-height: 1.8;
   margin: 0;
 }
@@ -1543,10 +1420,10 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 10px;
-  color: #ffd700;
+  color: #1a2e1a;
 }
 
 /* 擅长领域 */
@@ -1559,6 +1436,10 @@ onMounted(() => {
 .field-card {
   padding: 24px;
   text-align: center;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .field-icon {
@@ -1569,13 +1450,13 @@ onMounted(() => {
 .field-name {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
 }
 
 .field-desc {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
 }
 
@@ -1592,11 +1473,15 @@ onMounted(() => {
   padding: 20px 24px;
   cursor: pointer;
   position: relative;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .service-card.selected {
-  border-color: rgba(255, 215, 0, 0.5) !important;
-  background: rgba(255, 215, 0, 0.1) !important;
+  border-color: #3dad6f !important;
+  background: rgba(61, 173, 111, 0.06) !important;
 }
 
 .service-card.service-disabled {
@@ -1612,12 +1497,12 @@ onMounted(() => {
   width: 60px;
   height: 60px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(135, 206, 235, 0.2), rgba(135, 206, 235, 0.1));
-  border: 1px solid rgba(135, 206, 235, 0.3);
+  background: rgba(61, 173, 111, 0.08);
+  border: 1px solid #e8eee8;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #87ceeb;
+  color: #3dad6f;
 }
 
 .service-info {
@@ -1627,13 +1512,13 @@ onMounted(() => {
 .service-name {
   font-size: 18px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 4px;
 }
 
 .service-desc {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
 }
 
@@ -1644,18 +1529,18 @@ onMounted(() => {
 
 .price-currency {
   font-size: 16px;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .price-amount {
   font-size: 32px;
   font-weight: 700;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .price-unit {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .select-indicator {
@@ -1665,8 +1550,8 @@ onMounted(() => {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #ffd700;
-  color: #1a1a2e;
+  background: #3dad6f;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1689,7 +1574,7 @@ onMounted(() => {
 .current-month {
   font-size: 30px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   min-width: 100px;
   text-align: center;
 }
@@ -1706,7 +1591,7 @@ onMounted(() => {
 .week-day {
   text-align: center;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   padding: 8px;
 }
 
@@ -1715,9 +1600,9 @@ onMounted(() => {
 .day-cell {
   min-height: 80px;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e8eee8;
 
 }
 
@@ -1731,14 +1616,14 @@ onMounted(() => {
 }
 
 .day-cell.today {
-  border-color: rgba(255, 215, 0, 0.5);
+  border-color: #3dad6f;
 }
 
 .day-number {
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin-bottom: 8px;
 }
 
@@ -1751,7 +1636,7 @@ onMounted(() => {
 
 .no-slots {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.3);
+  color: #9ead9e;
   text-align: center;
   padding: 4px 0;
 }
@@ -1766,13 +1651,13 @@ onMounted(() => {
 }
 
 .slot-item.available {
-  background: rgba(74, 222, 128, 0.2);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(61, 173, 111, 0.1);
+  color: #3dad6f;
+  border: 1px solid rgba(61, 173, 111, 0.2);
 }
 
 .slot-item.available:hover {
-  background: rgba(74, 222, 128, 0.4);
+  background: rgba(61, 173, 111, 0.2);
 }
 
 /* 7天视图 */
@@ -1784,8 +1669,9 @@ onMounted(() => {
 }
 
 .week-view {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   padding: 50px;
 }
 
@@ -1806,13 +1692,13 @@ onMounted(() => {
 
 .day-week {
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .day-date {
   font-size: 20px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .week-grid {
@@ -1825,9 +1711,9 @@ onMounted(() => {
 .day-cell {
   min-height: 100px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e8eee8;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -1836,8 +1722,8 @@ onMounted(() => {
 }
 
 .day-cell:hover:not(.disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  border-color: #3dad6f;
   transform: translateY(-2px);
 }
 
@@ -1847,12 +1733,12 @@ onMounted(() => {
 }
 
 .day-cell.today {
-  border-color: rgba(255, 215, 0, 0.5);
-  background: rgba(255, 215, 0, 0.1);
+  border-color: #3dad6f;
+  background: rgba(61, 173, 111, 0.04);
 }
 
 .day-cell.has-available {
-  border-color: rgba(74, 222, 128, 0.5);
+  border-color: #3dad6f;
 }
 
 .day-slots {
@@ -1867,10 +1753,10 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   padding: 4px 8px;
-  background: rgba(74, 222, 128, 0.2);
+  background: rgba(61, 173, 111, 0.08);
   border-radius: 6px;
   font-size: 12px;
-  color: #4ade80;
+  color: #3dad6f;
 }
 
 .slot-dot {
@@ -1880,7 +1766,7 @@ onMounted(() => {
 }
 
 .slot-dot.available {
-  background: #4ade80;
+  background: #3dad6f;
 }
 
 .slot-dot.booked {
@@ -1888,7 +1774,7 @@ onMounted(() => {
 }
 
 .slot-dot.rest {
-  background: rgba(255, 255, 255, 0.3);
+  background: #9ead9e;
 }
 
 .slot-label {
@@ -1899,7 +1785,7 @@ onMounted(() => {
 
 .no-slots {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.3);
+  color: #9ead9e;
   text-align: center;
 }
 
@@ -1910,19 +1796,18 @@ onMounted(() => {
   gap: 8px;
   margin-top: 20px;
   padding: 12px;
-  background: rgba(135, 206, 235, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 10px;
-  color: rgba(135, 206, 235, 0.8);
+  color: #6b7b6b;
   font-size: 20px;
   padding: 20px;
 }
 
 /* 时段选择弹窗 */
 .time-slot-dialog :deep(.el-dialog) {
-  background: linear-gradient(135deg, rgba(10, 10, 42, 0.95), rgba(26, 26, 74, 0.95)) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   margin-top: 10vh;
 }
 
@@ -1936,20 +1821,20 @@ onMounted(() => {
   justify-content: center;
   gap: 12px;
   padding: 16px;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   margin-bottom: 24px;
 }
 
 .selected-date-display .date-icon {
   font-size: 24px;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .selected-date-display .date-text {
   font-size: 20px;
   font-weight: 600;
-  color: #ffd700;
+  color: #1a2e1a;
 }
 
 .time-slots-container {
@@ -1959,10 +1844,10 @@ onMounted(() => {
 }
 
 .time-period-section {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e8eee8;
 }
 
 .period-header {
@@ -1971,18 +1856,18 @@ onMounted(() => {
   gap: 10px;
   margin-bottom: 12px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e8eee8;
 }
 
 .period-icon {
   font-size: 20px;
-  color: #87ceeb;
+  color: #3dad6f;
 }
 
 .period-name {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .period-slots {
@@ -1997,8 +1882,8 @@ onMounted(() => {
   align-items: center;
   gap: 4px;
   padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2006,8 +1891,8 @@ onMounted(() => {
 }
 
 .time-slot-item.available:hover {
-  background: rgba(74, 222, 128, 0.2);
-  border-color: rgba(74, 222, 128, 0.5);
+  background: rgba(61, 173, 111, 0.08);
+  border-color: #3dad6f;
   transform: translateY(-2px);
 }
 
@@ -2022,23 +1907,23 @@ onMounted(() => {
 }
 
 .time-slot-item.selected {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(61, 173, 111, 0.08);
+  border-color: #3dad6f;
 }
 
 .slot-time {
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .slot-status {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .time-slot-item.available .slot-status {
-  color: #4ade80;
+  color: #3dad6f;
 }
 
 .no-slots-tip {
@@ -2047,17 +1932,16 @@ onMounted(() => {
   justify-content: center;
   gap: 8px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 /* 预约表单弹窗 */
 .booking-dialog :deep(.el-dialog) {
-  background: linear-gradient(135deg, rgba(10, 10, 42, 0.95), rgba(26, 26, 74, 0.95)) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
 }
 
 .booking-modal-content {
@@ -2069,10 +1953,10 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.1));
-  border-radius: 16px;
+  background: rgba(61, 173, 111, 0.04);
+  border-radius: 12px;
   margin-bottom: 16px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid #e8eee8;
 }
 
 .service-badge {
@@ -2087,16 +1971,16 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(61, 173, 111, 0.08);
   border-radius: 12px;
   font-size: 24px;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .service-name {
   font-size: 18px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .service-price-display {
@@ -2106,13 +1990,13 @@ onMounted(() => {
 
 .price-symbol {
   font-size: 16px;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .price-value {
   font-size: 32px;
   font-weight: 700;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .booking-time-info {
@@ -2120,15 +2004,15 @@ onMounted(() => {
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  background: rgba(135, 206, 235, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   margin-bottom: 16px;
-  border: 1px solid rgba(135, 206, 235, 0.3);
+  border: 1px solid #e8eee8;
 }
 
 .time-icon {
   font-size: 24px;
-  color: #87ceeb;
+  color: #3dad6f;
 }
 
 .time-details {
@@ -2140,12 +2024,12 @@ onMounted(() => {
 .date-text {
   font-size: 16px;
   font-weight: 600;
-  color: #87ceeb;
+  color: #1a2e1a;
 }
 
 .slot-text {
   font-size: 14px;
-  color: rgba(135, 206, 235, 0.8);
+  color: #6b7b6b;
 }
 
 .offline-address-card {
@@ -2153,15 +2037,15 @@ onMounted(() => {
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  background: rgba(74, 222, 128, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   margin-bottom: 16px;
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  border: 1px solid #e8eee8;
 }
 
 .address-icon {
   font-size: 24px;
-  color: #4ade80;
+  color: #3dad6f;
 }
 
 .address-text {
@@ -2172,19 +2056,19 @@ onMounted(() => {
 
 .address-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .address-value {
   font-size: 14px;
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .booking-notice {
   display: flex;
   gap: 12px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   margin-top: 16px;
 }
@@ -2192,25 +2076,25 @@ onMounted(() => {
 .booking-notice p {
   margin: 0;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   line-height: 1.5;
 }
 
 .booking-notice .el-icon {
-  color: #87ceeb;
+  color: #3dad6f;
   font-size: 18px;
   flex-shrink: 0;
 }
 
 .slot-item.booked {
-  background: rgba(245, 108, 108, 0.2);
+  background: rgba(245, 108, 108, 0.1);
   color: #f87171;
-  border: 1px solid rgba(245, 108, 108, 0.3);
+  border: 1px solid rgba(245, 108, 108, 0.2);
 }
 
 .slot-item.rest {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  color: #9ead9e;
 }
 
 .schedule-legend {
@@ -2225,7 +2109,7 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
 }
 
 .legend-dot {
@@ -2235,8 +2119,8 @@ onMounted(() => {
 }
 
 .legend-dot.available {
-  background: rgba(74, 222, 128, 0.5);
-  border: 1px solid #4ade80;
+  background: rgba(61, 173, 111, 0.3);
+  border: 1px solid #3dad6f;
 }
 
 .legend-dot.booked {
@@ -2245,8 +2129,8 @@ onMounted(() => {
 }
 
 .legend-dot.rest {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(61, 173, 111, 0.06);
+  border: 1px solid #e8eee8;
 }
 
 .booking-confirm {
@@ -2255,25 +2139,25 @@ onMounted(() => {
   justify-content: space-between;
   margin-top: 24px;
   padding: 20px 24px;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 12px;
 }
 
 .confirm-info h4 {
-  color: #ffd700;
+  color: #1a2e1a;
   margin: 0 0 8px;
   font-size: 14px;
 }
 
 .confirm-info p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #6b7b6b;
   margin: 0 0 4px;
 }
 
 .confirm-price {
   font-size: 18px;
-  color: #ffd700 !important;
+  color: #3dad6f !important;
   font-weight: 600;
 }
 
@@ -2286,7 +2170,7 @@ onMounted(() => {
 .reviews-summary {
   text-align: center;
   padding: 32px;
-  background: rgba(255, 215, 0, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 16px;
   margin-bottom: 24px;
 }
@@ -2301,12 +2185,12 @@ onMounted(() => {
 .big-score {
   font-size: 64px;
   font-weight: 700;
-  color: #ffd700;
+  color: #3dad6f;
   line-height: 1;
 }
 
 .review-count {
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
   font-size: 14px;
 }
 
@@ -2318,6 +2202,10 @@ onMounted(() => {
 
 .review-item {
   padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 
 .review-header {
@@ -2335,18 +2223,18 @@ onMounted(() => {
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin-bottom: 4px;
 }
 
 .review-date {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
 }
 
 .review-content {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #6b7b6b;
   line-height: 1.6;
   margin: 0;
 }
@@ -2357,17 +2245,17 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 10px;
-  color: #ffd700;
+  color: #3dad6f;
   font-weight: 500;
 }
 
 .form-price {
   font-size: 28px;
   font-weight: 700;
-  color: #ffd700;
+  color: #3dad6f;
 }
 
 .offline-address {
@@ -2375,17 +2263,17 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(135, 206, 235, 0.1);
-  border: 1px solid rgba(135, 206, 235, 0.3);
+  background: rgba(61, 173, 111, 0.04);
+  border: 1px solid #e8eee8;
   border-radius: 10px;
-  color: #87ceeb;
+  color: #3dad6f;
 }
 
 .booking-notice {
   display: flex;
   gap: 12px;
   padding: 16px;
-  background: rgba(135, 206, 235, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 10px;
   margin-top: 16px;
 }
@@ -2393,7 +2281,7 @@ onMounted(() => {
 .booking-notice p {
   margin: 0;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   line-height: 1.5;
 }
 
@@ -2436,7 +2324,7 @@ onMounted(() => {
 .no-services {
   text-align: center;
   padding: 40px 20px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 .no-services p {
@@ -2446,10 +2334,9 @@ onMounted(() => {
 
 /* 支付对话框样式 */
 .payment-dialog :deep(.el-dialog) {
-  background: linear-gradient(135deg, rgba(10, 10, 42, 0.95), rgba(26, 26, 74, 0.95)) !important;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
 }
 
 .payment-modal-content {
@@ -2465,30 +2352,30 @@ onMounted(() => {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.1));
-  border: 2px solid #4ade80;
+  background: rgba(61, 173, 111, 0.08);
+  border: 2px solid #3dad6f;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  color: #4ade80;
+  color: #3dad6f;
   font-size: 32px;
 }
 
 .payment-header h3 {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0 0 8px;
   font-size: 20px;
 }
 
 .payment-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   margin: 0;
   font-size: 14px;
 }
 
 .payment-order-info {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
@@ -2498,7 +2385,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e8eee8;
 }
 
 .order-row:last-child {
@@ -2506,18 +2393,18 @@ onMounted(() => {
 }
 
 .order-label {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   font-size: 14px;
 }
 
 .order-value {
-  color: #fff;
+  color: #1a2e1a;
   font-size: 14px;
   font-weight: 500;
 }
 
 .order-value.price {
-  color: #ffd700;
+  color: #3dad6f;
   font-size: 18px;
   font-weight: 700;
 }
@@ -2527,10 +2414,10 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(135, 206, 235, 0.1);
+  background: rgba(61, 173, 111, 0.04);
   border-radius: 10px;
   font-size: 13px;
-  color: rgba(135, 206, 235, 0.9);
+  color: #6b7b6b;
 }
 
 

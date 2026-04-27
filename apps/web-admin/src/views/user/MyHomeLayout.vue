@@ -78,8 +78,6 @@
       </main>
     </div>
 
-    <!-- 全局悬浮按钮 -->
-    <FloatingButtons />
   </div>
 </template>
 
@@ -88,8 +86,6 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { User, Document, Star, Lock, List, ChatDotRound, FolderOpened, Pointer, ChatDotSquare } from '@element-plus/icons-vue'
 import { getMyStats } from '@/api/userStats'
-import FloatingButtons from '@/components/FloatingButtons.vue'
-
 const route = useRoute()
 const router = useRouter()
 const user = JSON.parse(localStorage.getItem('user') || '{}')
@@ -120,7 +116,7 @@ onMounted(() => {
 <style scoped>
 .my-home-layout {
   min-height: calc(100vh - 60px);
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .my-home-container {
@@ -134,24 +130,24 @@ onMounted(() => {
 .sidebar {
   width: 240px;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
   overflow: hidden;
 }
 
 .user-info-header {
   padding: 30px 20px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid #e8eee8 !important;
 }
 
 .user-name {
   margin-top: 12px;
   font-size: 16px;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .user-stats {
@@ -173,23 +169,23 @@ onMounted(() => {
 }
 
 .stat-item:hover {
-  background-color: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(61, 173, 111, 0.06) !important;
 }
 
 .stat-value {
   font-size: 18px;
   font-weight: bold;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .stat-label {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: #6b7b6b !important;
   margin-top: 2px;
 }
 
 .stat-divider {
-  color: rgba(255, 255, 255, 0.25) !important;
+  color: #e8eee8 !important;
   font-size: 14px;
 }
 
@@ -201,18 +197,18 @@ onMounted(() => {
 .sidebar-menu :deep(.el-menu-item) {
   height: 50px;
   line-height: 50px;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #1a2e1a !important;
   background: transparent !important;
 }
 
 .sidebar-menu :deep(.el-menu-item.is-active) {
-  background: rgba(64, 158, 255, 0.2) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.1) !important;
+  color: #3dad6f !important;
 }
 
 .sidebar-menu :deep(.el-menu-item:hover) {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #fff !important;
+  background: rgba(61, 173, 111, 0.06) !important;
+  color: #3dad6f !important;
 }
 
 .sidebar-menu :deep(.el-icon) {
@@ -221,13 +217,13 @@ onMounted(() => {
 
 .content {
   flex: 1;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
   padding: 20px;
   min-height: calc(100vh - 100px);
-  color: #fff;
+  color: #1a2e1a;
 }
 
 /* === 全局覆盖：所有子页面 h 标题、段落、文本 → 白色 === */
@@ -240,7 +236,7 @@ onMounted(() => {
 .content :deep(p),
 .content :deep(span),
 .content :deep(.el-text) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 /* Element Plus 通用组件 */
@@ -249,137 +245,139 @@ onMounted(() => {
   font-weight: 600;
 }
 .content :deep(.el-tag--primary) {
-  background: rgba(64, 158, 255, 0.25) !important;
-  color: #7EC8FF !important;
+  background: rgba(61, 173, 111, 0.15) !important;
+  color: #3dad6f !important;
 }
 .content :deep(.el-tag--success) {
-  background: rgba(103, 194, 58, 0.25) !important;
-  color: #A8E063 !important;
+  background: rgba(103, 194, 58, 0.15) !important;
+  color: #67c23a !important;
 }
 .content :deep(.el-tag--warning) {
-  background: rgba(230, 162, 60, 0.25) !important;
-  color: #FFB347 !important;
+  background: rgba(230, 162, 60, 0.15) !important;
+  color: #e6a23c !important;
 }
 .content :deep(.el-tag--danger) {
-  background: rgba(245, 108, 108, 0.25) !important;
-  color: #FF8C9A !important;
+  background: rgba(245, 108, 108, 0.15) !important;
+  color: #f56c6c !important;
 }
 .content :deep(.el-tag--info) {
-  background: rgba(144, 147, 153, 0.25) !important;
-  color: #B0B8C1 !important;
+  background: rgba(144, 147, 153, 0.15) !important;
+  color: #909399 !important;
 }
 
 /* 分页 */
 .content :deep(.el-pagination) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-pagination button),
 .content :deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  background: #f5f7f5 !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-pager li.is-active) {
-  background: rgba(64, 158, 255, 0.4) !important;
+  background: #3dad6f !important;
+  color: #ffffff !important;
 }
 .content :deep(.el-pagination .el-pagination__total) {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: #9ead9e !important;
 }
 
 /* 按钮 */
 .content :deep(.el-button--primary) {
-  background: rgba(64, 158, 255, 0.3) !important;
-  border-color: rgba(64, 158, 255, 0.5) !important;
-  color: #fff !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
+  color: #ffffff !important;
 }
 .content :deep(.el-button--primary:hover) {
-  background: rgba(64, 158, 255, 0.5) !important;
+  background: #2d8d5f !important;
+  border-color: #2d8d5f !important;
 }
 .content :deep(.el-button--default) {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  background: #ffffff !important;
+  border-color: #e8eee8 !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-button--default:hover) {
-  background: rgba(255, 255, 255, 0.14) !important;
+  background: #f5f7f5 !important;
 }
 .content :deep(.el-button--text) {
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
 }
 
 /* 输入框 */
 .content :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
   box-shadow: none !important;
 }
 .content :deep(.el-input__inner) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 
 /* 表格 */
 .content :deep(.el-table) {
   background: transparent !important;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-table tr) {
   background: transparent !important;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-table th.el-table__cell) {
-  background: rgba(255, 255, 255, 0.06) !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: #f5f7f5 !important;
+  color: #6b7b6b !important;
+  border-color: #e8eee8 !important;
 }
 .content :deep(.el-table td.el-table__cell) {
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: #e8eee8 !important;
 }
 .content :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(61, 173, 111, 0.02) !important;
 }
 .content :deep(.el-table__body tr:hover > td.el-table__cell) {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(61, 173, 111, 0.04) !important;
 }
 .content :deep(.el-table__empty-block) {
   background: transparent !important;
 }
 .content :deep(.el-table__empty-text) {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #9ead9e !important;
 }
 
 /* 对话框 */
 .content :deep(.el-dialog) {
-  background: rgba(20, 20, 50, 0.95) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(20px);
+  background: #ffffff !important;
+  border: 1px solid #e8eee8 !important;
+  box-shadow: 0 2px 12px rgba(61,173,111,0.06);
 }
 .content :deep(.el-dialog__title) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-dialog__body) {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #1a2e1a !important;
 }
 .content :deep(.el-dialog__footer) {
-  border-top-color: rgba(255, 255, 255, 0.1) !important;
+  border-top-color: #e8eee8 !important;
 }
 
 /* 空状态 */
 .content :deep(.el-empty__description) {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #9ead9e !important;
 }
 
 /* 加载遮罩 */
 .content :deep(.el-loading-mask) {
-  background: rgba(10, 10, 40, 0.5) !important;
+  background: rgba(245, 247, 245, 0.7) !important;
 }
 
 /* 链接 */
 .content :deep(.el-link) {
-  color: #7EC8FF !important;
+  color: #3dad6f !important;
 }
 .content :deep(.el-link:hover) {
-  color: #409EFF !important;
+  color: #2d8d5f !important;
 }
 </style>

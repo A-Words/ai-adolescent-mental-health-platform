@@ -68,7 +68,7 @@ onUnmounted(() => {
 .float-btn {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #409eff, #36cfc9);
+  background: linear-gradient(135deg, #3dad6f, #5bc4bf);
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -76,22 +76,22 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(64, 158, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(61, 173, 111, 0.35);
   transition: all 0.3s ease;
 }
 
 .float-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(64, 158, 255, 0.5);
+  box-shadow: 0 6px 16px rgba(61, 173, 111, 0.5);
 }
 
 .back-to-top {
-  background: linear-gradient(135deg, #909399, #606266);
-  box-shadow: 0 4px 12px rgba(144, 147, 153, 0.4);
+  background: linear-gradient(135deg, #9ead9e, #6b7b6b);
+  box-shadow: 0 4px 12px rgba(107, 123, 107, 0.35);
 }
 
 .back-to-top:hover {
-  box-shadow: 0 6px 16px rgba(144, 147, 153, 0.5);
+  box-shadow: 0 6px 16px rgba(107, 123, 107, 0.5);
 }
 
 .consultation-btn {

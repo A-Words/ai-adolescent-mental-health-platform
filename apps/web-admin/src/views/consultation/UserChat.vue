@@ -1,12 +1,5 @@
 <template>
   <div class="user-chat-container">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-    </div>
-
     <!-- 返回按钮 -->
     <div class="back-header">
       <el-button link @click="goBack" class="back-btn">
@@ -127,7 +120,7 @@
           <!-- 发送按钮 -->
           <el-button
             type="primary"
-            class="send-btn cosmic-btn-primary"
+            class="send-btn clean-btn-primary"
             @click="sendTextMessage"
             :disabled="!canSend || sending"
             :loading="sending"
@@ -499,77 +492,11 @@ const goBack = () => {
 
 <style scoped>
 .user-chat-container {
-  position: relative;
   height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-/* 星空背景 */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  overflow: hidden;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before, .stars:after,
-.stars2:before, .stars2:after,
-.stars3:before, .stars3:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before {
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  animation: starsMove 200s linear infinite;
-}
-
-.stars:after {
-  background-image: radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: starsMove 150s linear infinite;
-}
-
-.stars2:before {
-  background-image: radial-gradient(1px 1px at 90px 120px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: starsMove 100s linear infinite;
-}
-
-.stars3:before {
-  background-image: radial-gradient(3px 3px at 150px 200px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: starsMove 250s linear infinite;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0px) }
-  to { transform: translateY(-2000px) }
+  background: #f5f7f5;
 }
 
 /* 返回按钮 */
@@ -580,7 +507,7 @@ const goBack = () => {
 }
 
 .back-btn {
-  color: rgba(255, 255, 255, 0.8);
+  color: #6b7b6b;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -588,7 +515,7 @@ const goBack = () => {
 }
 
 .back-btn:hover {
-  color: #fff;
+  color: #3dad6f;
 }
 
 /* 聊天主体 */
@@ -602,10 +529,9 @@ const goBack = () => {
   width: 100%;
   margin: 0 auto;
   padding: 0 20px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -615,12 +541,12 @@ const goBack = () => {
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
+  border-bottom: 1px solid #e8eee8;
 }
 
 .psy-avatar {
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #e8eee8;
 }
 
 .psy-details {
@@ -628,14 +554,14 @@ const goBack = () => {
 }
 
 .psy-name {
-  color: #fff;
+  color: #1a2e1a;
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 4px;
 }
 
 .psy-title {
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   font-size: 13px;
   margin: 0;
 }
@@ -645,15 +571,15 @@ const goBack = () => {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: rgba(255, 100, 100, 0.2);
+  background: #ffeee8;
   border-radius: 20px;
   font-size: 12px;
-  color: rgba(255, 150, 150, 0.9);
+  color: #f4836c;
 }
 
 .connection-status.connected {
-  background: rgba(74, 222, 128, 0.2);
-  color: rgba(74, 222, 128, 0.9);
+  background: #e8f5ee;
+  color: #3dad6f;
 }
 
 .status-dot {
@@ -684,11 +610,11 @@ const goBack = () => {
 }
 
 .messages-area::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
 }
 
 .messages-area::-webkit-scrollbar-thumb {
-  background: rgba(255, 215, 0, 0.3);
+  background: #e8eee8;
   border-radius: 3px;
 }
 
@@ -699,7 +625,7 @@ const goBack = () => {
   align-items: center;
   justify-content: center;
   height: 200px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   gap: 12px;
 }
 
@@ -710,7 +636,7 @@ const goBack = () => {
   align-items: center;
   justify-content: center;
   height: 300px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #6b7b6b;
   text-align: center;
 }
 
@@ -727,7 +653,7 @@ const goBack = () => {
 
 .empty-hint {
   font-size: 13px !important;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
 }
 
 /* 消息列表 */
@@ -769,19 +695,21 @@ const goBack = () => {
 .message-bubble {
   max-width: 100%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
+  border: 1px solid #e8eee8;
   border-radius: 16px;
   border-top-left-radius: 4px;
 }
 
 .message-self .message-bubble {
-  background: rgba(135, 206, 235, 0.3);
+  background: #e8f5ee;
+  border-color: rgba(61, 173, 111, 0.15);
   border-top-left-radius: 16px;
   border-top-right-radius: 4px;
 }
 
 .message-text {
-  color: #fff;
+  color: #1a2e1a;
   margin: 0;
   line-height: 1.5;
   word-break: break-word;
@@ -789,7 +717,7 @@ const goBack = () => {
 
 .message-time {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
 }
 
 .image-bubble {
@@ -805,31 +733,31 @@ const goBack = () => {
 
 .system-message {
   padding: 8px 16px;
-  background: rgba(255, 215, 0, 0.1);
+  background: #fff8e1;
   border-radius: 8px;
-  color: rgba(255, 215, 0, 0.8);
+  color: #f5a623;
   font-size: 13px;
   text-align: center;
   margin: 0 auto;
 }
 
 .self-avatar {
-  background: linear-gradient(135deg, rgba(135, 206, 235, 0.3), rgba(100, 149, 237, 0.3));
-  border: 1px solid rgba(135, 206, 235, 0.3);
+  background: #e8f5ee;
+  border: 1px solid #e8eee8;
 }
 
 /* 加载更多 */
 .load-more {
   text-align: center;
   padding: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #9ead9e;
 }
 
 /* 输入区域 */
 .input-area {
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f5f7f5;
+  border-top: 1px solid #e8eee8;
 }
 
 /* 图片预览 */
@@ -872,12 +800,12 @@ const goBack = () => {
 }
 
 .upload-btn {
-  color: rgba(255, 255, 255, 0.7);
+  color: #9ead9e;
   font-size: 20px;
 }
 
 .upload-btn:hover {
-  color: #fff;
+  color: #3dad6f;
 }
 
 .message-input {
@@ -885,19 +813,20 @@ const goBack = () => {
 }
 
 .message-input :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
   box-shadow: none;
 }
 
 .message-input :deep(.el-input__inner) {
-  color: #fff;
+  color: #1a2e1a;
 }
 
 .message-input :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4);
+  color: #9ead9e;
 }
 
+/* clean-btn-primary styled via design-tokens.css (el-button--primary) */
 .send-btn {
   padding: 10px 20px;
 }

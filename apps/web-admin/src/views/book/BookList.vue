@@ -1,16 +1,5 @@
 <template>
   <div class="book-list-page">
-    <!-- 星空背景 -->
-    <div class="stars-background">
-      <div class="stars"></div>
-      <div class="stars2"></div>
-      <div class="stars3"></div>
-      <div class="planet-1"></div>
-      <div class="planet-2"></div>
-      <div class="planet-3"></div>
-      <div class="comet"></div>
-    </div>
-
     <div class="book-content">
       <!-- 头部搜索和筛选 -->
       <div class="book-header glass-card">
@@ -233,141 +222,8 @@ onMounted(() => {
 
 <style scoped>
 .book-list-page {
-  position: relative;
   min-height: calc(100vh - 60px);
-  overflow-x: hidden;
-}
-
-/* 星空背景样式复用自SearchResults.vue */
-.stars-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  background: linear-gradient(to bottom, #0a0a2a, #1a1a4a, #2a2a6a);
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before, .stars:after,
-.stars2:before, .stars2:after,
-.stars3:before, .stars3:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.stars:before {
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  animation: starsMove 200s linear infinite;
-}
-
-.stars:after {
-  background-image: radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: starsMove 150s linear infinite;
-}
-
-.stars2:before {
-  background-image: radial-gradient(1px 1px at 90px 120px, #fff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: starsMove 100s linear infinite;
-}
-
-.stars3:before {
-  background-image: radial-gradient(3px 3px at 150px 200px, #ddd, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-  animation: starsMove 250s linear infinite;
-}
-
-@keyframes starsMove {
-  from { transform: translateY(0px) }
-  to { transform: translateY(-2000px) }
-}
-
-/* 行星样式 */
-.planet-1 {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top: 10%;
-  right: 10%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
-  box-shadow: 0 0 40px rgba(255, 154, 158, 0.5);
-  animation: float 25s infinite ease-in-out;
-  filter: blur(1px);
-  opacity: 0.7;
-}
-
-.planet-2 {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  bottom: 15%;
-  left: 5%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #a1c4fd, #c2e9fb);
-  box-shadow: 0 0 50px rgba(161, 196, 253, 0.5);
-  animation: float 30s infinite ease-in-out reverse;
-  filter: blur(1px);
-  opacity: 0.7;
-}
-
-.planet-3 {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  top: 60%;
-  right: 20%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ffecd2, #fcb69f);
-  box-shadow: 0 0 30px rgba(252, 182, 159, 0.5);
-  animation: float 20s infinite ease-in-out;
-  filter: blur(1px);
-  opacity: 0.7;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-/* 彗星 */
-.comet {
-  position: absolute;
-  top: 20%;
-  left: -50px;
-  width: 150px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  transform: rotate(45deg);
-  animation: cometMove 20s linear infinite;
-}
-
-@keyframes cometMove {
-  0% { transform: translateX(-100px) translateY(-100px) rotate(45deg); }
-  100% { transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg); }
+  background: #f5f7f5;
 }
 
 .book-content {
@@ -378,12 +234,11 @@ onMounted(() => {
   padding: 30px 20px;
 }
 
-/* 玻璃态卡片 */
+/* 卡片 */
 .glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
+  border-radius: 16px;
   padding: 24px;
 }
 
@@ -400,9 +255,8 @@ onMounted(() => {
 .page-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #fff;
   margin-bottom: 10px;
-  background: linear-gradient(to right, #FFE9A7, #7EC8FF);
+  background: linear-gradient(to right, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -410,7 +264,7 @@ onMounted(() => {
 
 .page-subtitle {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   margin-bottom: 30px;
   line-height: 1.6;
 }
@@ -422,28 +276,28 @@ onMounted(() => {
 
 /* 输入框样式 */
 :deep(.el-input__wrapper) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: #f5f7f5 !important;
+  border-color: #e8eee8 !important;
   box-shadow: none !important;
 }
 
 :deep(.el-input__inner) {
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 :deep(.el-input__inner::placeholder) {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #9ead9e !important;
 }
 
 :deep(.el-input-group__prepend) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  background: #f5f7f5 !important;
+  border-color: #e8eee8 !important;
+  color: #6b7b6b !important;
 }
 
 :deep(.el-input-group__append) {
-  background: rgba(64, 158, 255, 0.6) !important;
-  border-color: rgba(64, 158, 255, 0.6) !important;
+  background: #3dad6f !important;
+  border-color: #3dad6f !important;
   color: #fff !important;
 }
 
@@ -465,10 +319,10 @@ onMounted(() => {
 }
 
 .book-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(64, 158, 255, 0.5);
-  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(61, 173, 111, 0.12);
+  border-color: #3dad6f;
+  background: #ffffff;
 }
 
 .book-cover {
@@ -477,7 +331,7 @@ onMounted(() => {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f7f5;
 }
 
 .cover-image {
@@ -498,8 +352,8 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.05);
+  color: #9ead9e;
+  background: #f5f7f5;
 }
 
 .cover-error .el-icon {
@@ -516,7 +370,7 @@ onMounted(() => {
 .book-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
+  color: #1a2e1a;
   margin-bottom: 12px;
   line-height: 1.4;
   display: -webkit-box;
@@ -528,7 +382,7 @@ onMounted(() => {
 
 .book-desc {
   flex: 1;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7b6b;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 16px;
@@ -550,7 +404,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #9ead9e;
   font-size: 0.85rem;
 }
 
@@ -578,25 +432,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-:deep(.el-pagination) {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-:deep(.el-pagination button),
-:deep(.el-pager li) {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-:deep(.el-pager li.is-active) {
-  background: rgba(64, 158, 255, 0.4) !important;
-}
-
-:deep(.el-pagination .el-pagination__total) {
-  color: rgba(255, 255, 255, 0.5) !important;
+  border-top: 1px solid #e8eee8;
 }
 
 /* 响应式调整 */

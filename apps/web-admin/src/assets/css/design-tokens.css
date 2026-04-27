@@ -1,0 +1,381 @@
+/* ========================================
+   Design Tokens — based on web-user green theme
+   ======================================== */
+
+:root {
+  /* Brand colors */
+  --color-primary: #3dad6f;
+  --color-primary-light: #e8f5ee;
+  --color-primary-dark: #2d8a55;
+  --color-accent-orange: #f5a623;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-coral: #f4836c;
+  --color-accent-yellow: #f6c84e;
+  --color-accent-teal: #5bc4bf;
+
+  /* Surfaces */
+  --color-bg-page: #f5f7f5;
+  --color-bg-card: #ffffff;
+  --color-sidebar-bg: #ffffff;
+
+  /* Text */
+  --color-text-primary: #1a2e1a;
+  --color-text-secondary: #6b7b6b;
+  --color-text-tertiary: #9ead9e;
+
+  /* Borders & interactive */
+  --color-border: #e8eee8;
+  --color-error: #e74c3c;
+
+  /* Typography */
+  --font-brand-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(61, 173, 111, 0.06);
+  --shadow-card-hover: 0 6px 24px rgba(61, 173, 111, 0.12);
+  --shadow-dropdown: 0 8px 32px rgba(0, 0, 0, 0.10);
+
+  /* Transitions */
+  --transition-fast: 120ms ease-out;
+  --transition-normal: 200ms ease-out;
+  --transition-slow: 320ms ease-out;
+}
+
+/* ===== Element Plus CSS Variable Overrides ===== */
+
+:root {
+  /* Primary */
+  --el-color-primary: #3dad6f;
+  --el-color-primary-light-3: #5dd48a;
+  --el-color-primary-light-5: #8ce5ad;
+  --el-color-primary-light-7: #bdf0cf;
+  --el-color-primary-light-8: #d6f5e0;
+  --el-color-primary-light-9: #e8f5ee;
+  --el-color-primary-dark-2: #2d8a55;
+
+  /* Semantic */
+  --el-color-success: #3dad6f;
+  --el-color-warning: #f5a623;
+  --el-color-danger: #e74c3c;
+  --el-color-info: #8b5cf6;
+  --el-color-error: #e74c3c;
+
+  /* Backgrounds */
+  --el-bg-color: #f5f7f5;
+  --el-bg-color-page: #f5f7f5;
+  --el-bg-color-overlay: #ffffff;
+  --el-fill-color-blank: #ffffff;
+  --el-fill-color-light: #e8f5ee;
+  --el-fill-color-lighter: #f0faf5;
+
+  /* Text */
+  --el-text-color-primary: #1a2e1a;
+  --el-text-color-regular: #6b7b6b;
+  --el-text-color-secondary: #9ead9e;
+  --el-text-color-placeholder: #bcc5bc;
+  --el-text-color-disabled: #c8d0c8;
+
+  /* Borders */
+  --el-border-color: #e8eee8;
+  --el-border-color-base: #e8eee8;
+  --el-border-color-light: #f0f5f0;
+  --el-border-color-lighter: #f5f8f5;
+  --el-border-color-dark: #d0d8d0;
+  --el-border-color-extra-light: #f8faf8;
+
+  /* Radius */
+  --el-border-radius-base: 12px;
+  --el-border-radius-small: 8px;
+  --el-border-radius-round: 9999px;
+  --el-border-radius-circle: 50%;
+
+  /* Shadows */
+  --el-box-shadow-light: 0 2px 12px rgba(61, 173, 111, 0.06);
+  --el-box-shadow-lighter: 0 0 8px rgba(0, 0, 0, 0.04);
+  --el-box-shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.10);
+  --el-box-shadow: 0 2px 12px rgba(61, 173, 111, 0.06);
+
+  /* Disabled */
+  --el-disabled-bg-color: #f0f5f0;
+  --el-disabled-text-color: #c8d0c8;
+  --el-disabled-border-color: #e8eee8;
+
+  /* Font */
+  --el-font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* ===== Element Plus component overrides ===== */
+
+/* Buttons */
+.el-button {
+  border-radius: 8px !important;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+.el-button--primary {
+  background-color: #3dad6f !important;
+  border-color: #3dad6f !important;
+}
+.el-button--primary:hover {
+  background-color: #2d8a55 !important;
+  border-color: #2d8a55 !important;
+}
+.el-button:hover {
+  transform: translateY(-1px);
+}
+.el-button:active {
+  transform: scale(0.97);
+}
+
+/* Inputs */
+.el-input__wrapper {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--color-border);
+  background-color: #ffffff;
+  transition: all var(--transition-normal);
+}
+.el-input__wrapper:hover {
+  border-color: #3dad6f !important;
+}
+.el-input__wrapper.is-focus {
+  border-color: #3dad6f !important;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.12) !important;
+}
+.el-textarea__inner {
+  border-radius: 12px !important;
+  border: 1px solid var(--color-border);
+}
+.el-textarea__inner:focus {
+  border-color: #3dad6f !important;
+  box-shadow: 0 0 0 3px rgba(61, 173, 111, 0.12) !important;
+}
+
+/* Cards */
+.el-card {
+  border-radius: 16px !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all var(--transition-normal);
+}
+.el-card:hover {
+  box-shadow: var(--shadow-card-hover) !important;
+  transform: translateY(-2px);
+}
+
+/* Menu — clean top nav */
+.el-menu {
+  background-color: transparent !important;
+}
+.el-menu--horizontal > .el-menu-item {
+  border-radius: 8px !important;
+  margin: 0 2px;
+  height: 40px;
+  line-height: 40px;
+  color: var(--color-text-secondary) !important;
+  font-weight: 500;
+}
+.el-menu--horizontal > .el-menu-item:hover {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+}
+.el-menu--horizontal > .el-menu-item.is-active {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+  font-weight: 600;
+}
+
+/* Tabs */
+.el-tabs__item {
+  color: var(--color-text-secondary) !important;
+  font-weight: 500;
+}
+.el-tabs__item.is-active {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+}
+.el-tabs__active-bar {
+  background-color: var(--color-primary) !important;
+}
+.el-tabs__nav-wrap::after {
+  background-color: var(--color-border) !important;
+}
+
+/* Dialog */
+.el-dialog {
+  border-radius: 16px !important;
+}
+.el-overlay {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dropdown */
+.el-dropdown-menu {
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-dropdown) !important;
+  border: 1px solid var(--color-border) !important;
+}
+.el-dropdown-menu__item:hover {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Select */
+.el-select .el-input__wrapper {
+  border-radius: 8px !important;
+}
+.el-select-dropdown {
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-dropdown) !important;
+}
+.el-select-dropdown__item.selected {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+}
+.el-select-dropdown__item:hover {
+  background-color: var(--color-primary-light) !important;
+}
+
+/* Table */
+.el-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.el-table th.el-table__cell {
+  background-color: #f5f7f5 !important;
+  color: var(--color-text-secondary) !important;
+  font-weight: 600;
+}
+
+/* Pagination */
+.el-pager li.is-active {
+  background-color: var(--color-primary) !important;
+  border-radius: 6px !important;
+}
+.el-pagination .btn-prev,
+.el-pagination .btn-next {
+  border-radius: 6px !important;
+}
+
+/* Tag */
+.el-tag {
+  border-radius: 6px !important;
+  font-weight: 500;
+}
+
+/* Badge */
+.el-badge__content {
+  border-radius: 9999px !important;
+}
+
+/* Avatar */
+.el-avatar {
+  border-radius: 50% !important;
+}
+
+/* Checkbox */
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: var(--color-primary) !important;
+}
+
+/* Radio */
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+.el-radio__input.is-checked + .el-radio__label {
+  color: var(--color-primary) !important;
+}
+
+/* Switch */
+.el-switch.is-checked .el-switch__core {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Slider */
+.el-slider__bar {
+  background-color: var(--color-primary) !important;
+}
+.el-slider__button {
+  border-color: var(--color-primary) !important;
+}
+
+/* Progress */
+.el-progress-bar__outer {
+  border-radius: 9999px !important;
+}
+.el-progress-bar__inner {
+  background: linear-gradient(90deg, #3dad6f 0%, #5dd48a 100%) !important;
+}
+
+/* Message box / Notification */
+.el-message {
+  border-radius: 12px !important;
+}
+
+/* Empty */
+.el-empty__description p {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Date picker */
+.el-date-picker {
+  border-radius: 16px !important;
+}
+
+/* ===== Utility classes ===== */
+
+.xyl-card-shadow {
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+}
+.xyl-card-shadow:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.xyl-tone-green {
+  background: #e8f5ee;
+  color: #3dad6f;
+}
+.xyl-tone-yellow {
+  background: #fff8e1;
+  color: #f5a623;
+}
+.xyl-tone-purple {
+  background: #ede9ff;
+  color: #8b5cf6;
+}
+.xyl-tone-coral {
+  background: #ffeee8;
+  color: #f4836c;
+}
+
+/* ===== Page background ===== */
+body {
+  background-color: #f5f7f5;
+  color: #1a2e1a;
+  font-family: var(--font-brand-sans);
+}

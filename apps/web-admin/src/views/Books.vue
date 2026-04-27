@@ -384,16 +384,15 @@ onMounted(() => {
   text-align: center;
   margin-bottom: 40px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e8eee8;
 }
 
 .page-title {
   font-size: 32px;
   font-weight: bold;
-  background: linear-gradient(to right, #409EFF, #36cfc9);
+  background: linear-gradient(to right, #3dad6f, #5bc4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -401,7 +400,7 @@ onMounted(() => {
 }
 
 .page-subtitle {
-  color: #B0B8C1;
+  color: #6b7b6b;
   font-size: 16px;
   margin-bottom: 20px;
 }
@@ -413,13 +412,13 @@ onMounted(() => {
 }
 
 .search-box :deep(.el-input-group__append) {
-  background-color: #409EFF;
+  background-color: #3dad6f;
   color: white;
   border: none;
 }
 
 .search-box :deep(.el-input-group__append:hover) {
-  background-color: #66b1ff;
+  background-color: #5dd48a;
 }
 
 .books-list {
@@ -434,15 +433,14 @@ onMounted(() => {
   height: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  border: 1px solid #e8eee8;
 }
 
 .book-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(64, 158, 255, 0.2);
-  border-color: rgba(64, 158, 255, 0.3);
+  box-shadow: 0 6px 24px rgba(61, 173, 111, 0.12);
+  border-color: rgba(61, 173, 111, 0.2);
 }
 
 .book-cover {
@@ -494,7 +492,7 @@ onMounted(() => {
 .book-title {
   font-size: 16px;
   font-weight: 600;
-  color: #E6E8EB;
+  color: #1a2e1a;
   margin-bottom: 8px;
   line-height: 1.4;
   height: 44px;
@@ -517,7 +515,7 @@ onMounted(() => {
 }
 
 .book-description {
-  color: #B0B8C1;
+  color: #6b7b6b;
   font-size: 13px;
   line-height: 1.5;
   margin-bottom: 16px;
@@ -543,19 +541,19 @@ onMounted(() => {
 }
 
 .read-btn {
-  background: linear-gradient(135deg, #409EFF, #36cfc9);
+  background: linear-gradient(135deg, #3dad6f, #5bc4bf);
   border: none;
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 8px 20px;
   font-weight: 500;
 }
 
 .comment-btn {
-  color: #B0B8C1;
+  color: #9ead9e;
 }
 
 .comment-btn:hover {
-  color: #409EFF;
+  color: #3dad6f;
 }
 
 .empty-state {
@@ -570,10 +568,9 @@ onMounted(() => {
 }
 
 .pagination-container :deep(.el-pagination) {
-  --el-pagination-bg-color: rgba(255, 255, 255, 0.05);
-  --el-pagination-button-bg-color: rgba(255, 255, 255, 0.05);
-  --el-pagination-button-disabled-bg-color: rgba(255, 255, 255, 0.02);
-  --el-pagination-hover-color: #409EFF;
+  --el-pagination-bg-color: #ffffff;
+  --el-pagination-button-bg-color: #f5f7f5;
+  --el-pagination-hover-color: #3dad6f;
 }
 
 /* 评论弹窗样式 */
@@ -586,7 +583,7 @@ onMounted(() => {
 .comment-form {
   margin-bottom: 30px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f5f7f5;
   border-radius: 8px;
 }
 
@@ -606,9 +603,9 @@ onMounted(() => {
 .comment-item {
   padding: 16px;
   margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f5f7f5;
   border-radius: 8px;
-  border-left: 3px solid #409EFF;
+  border-left: 3px solid #3dad6f;
 }
 
 .comment-header {
@@ -628,7 +625,7 @@ onMounted(() => {
 
 .user-name {
   font-weight: 500;
-  color: #E6E8EB;
+  color: #1a2e1a;
   font-size: 14px;
 }
 
@@ -639,7 +636,7 @@ onMounted(() => {
 }
 
 .comment-content {
-  color: #B0B8C1;
+  color: #6b7b6b;
   font-size: 14px;
   line-height: 1.6;
 }

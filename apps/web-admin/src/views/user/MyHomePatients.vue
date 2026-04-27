@@ -409,7 +409,7 @@ onMounted(() => {
 .page-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 
 .patient-info-bar {
@@ -432,6 +432,6 @@ onMounted(() => {
 .section-header h3 {
   margin: 0;
   font-size: 16px;
-  color: #fff !important;
+  color: #1a2e1a !important;
 }
 </style>
